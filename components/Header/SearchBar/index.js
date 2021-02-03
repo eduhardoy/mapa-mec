@@ -2,44 +2,62 @@ import * as React from "react";
 import styled from "styled-components";
 
 // styles
-
-const HeaderStyle = styled.main`
-  background-color: #7CB342;
-  box-shadow: 0px 1px 5px 3px rgba(53,53,53,0.47);
-  height: 8vh;
-  position: sticky;
-  z-index: 5;
-  left: 0;
+const SearchBarWrapper = styled.div`
   padding: 0;
   margin: 0;
-  font-family: -apple-system, Roboto, sans-serif, serif;
   display: flex;
+  width: 60%;
+  height: 60%;
+  background-color: #fff;
+  border: solid 2px #fff;
+  border-radius: 5px;
+  overflow: hidden;
 `;
 
-const LogoCtes = styled.div`
-  width: 30%;
-  height: auto;
-  img{
-    width: 100%;
+const SearchBarInput = styled.input`
+  padding: 0;
+  margin: 0;
+  width: 85%;
+  padding: 15px;
+  background-color: #E9ECEF;
+  outline: none;
+  border: none;
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+`;
+
+const SearchBarButton = styled.button`
+  padding: 0;
+  margin: 0;
+  width: 15%;
+  border: none;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+  cursor: pointer;
+  color: #E9ECEF;
+  img {
+    width: auto;
+    height: 50%;
+    color: #E9ECEF;
   }
 `;
 
-const LogoMec = styled.div`
-  width: 30%;
-  height: auto;
-`;
 
 
 // markup
-const Header = () => {
-  return <HeaderStyle>
-    <LogoCtes>
-      <img src="" alt=""/>
-    </LogoCtes>
-    <LogoMec>
-      <img src="" alt=""/>
-    </LogoMec>
-  </HeaderStyle>;
+const SearchBar = () => {
+  return <SearchBarWrapper>
+        <SearchBarInput>
+        </SearchBarInput>
+        <SearchBarButton>
+          <img src="./images/search.svg" alt=""/>
+        </SearchBarButton>
+      </SearchBarWrapper>
 };
 
-export default Header;
+export default SearchBar;

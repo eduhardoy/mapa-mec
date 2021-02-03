@@ -7,6 +7,7 @@ import LeftSideBarMenu from "../components/LeftSideBarMenu";
 import Map from "../components/Map";
 import { useDispatch } from "react-redux";
 import { fetchLocalizaciones } from "../redux/actions/LocalizacionesActions";
+import TestMap from "../components/Map/staticMap";
 
 // markup
 const IndexPage = () => {
@@ -20,7 +21,7 @@ const IndexPage = () => {
     <Layout>
       <div>
         <Header />
-        <Map />
+        <TestMap/>
         <LeftSideBarMenu />
       </div>
     </Layout>

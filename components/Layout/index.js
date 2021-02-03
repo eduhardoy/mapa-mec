@@ -5,6 +5,7 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     margin: 0 auto;
+    font-family: 'Lato', sans-serif;
   }
 `;
 export default function Layout({ children }) {

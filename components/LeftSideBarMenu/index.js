@@ -7,7 +7,7 @@ const LeftSideBarMenuStyle = styled.main`
   background-color: #fff;
   border-right: solid #D3D3D3 2px;
   box-shadow: 1px 0px 8px 1px rgba(211,211,211,0.72);
-  height: calc(100vh - 80px);
+  height: calc(100vh - 77px);
   width: 4vw;
   min-width: 50px;
   position: sticky;
@@ -74,6 +74,18 @@ align-items: center;
 justify-content:center;
 border: none;
 background-color: #fff;
+:hover{
+  img{
+    width: 85%;
+  }
+}
+:focus{
+  border: none;
+  outline:none;
+  img{
+    width: 85%;
+  }
+}
 img{
   width: 80%;
   height: auto;

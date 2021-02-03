@@ -5,12 +5,13 @@ import {
   Marker,
   InfoWindow,
 } from "@react-google-maps/api";
+import { useSelector } from "react-redux";
 
 //TODO Map Container styled component as MapContainer
 const containerStyle = {
   width: "96vw",
-  height: "calc(100vh - 80px)",
-  position:"absolute",
+  height: "calc(100vh - 77px)",
+  position: "absolute",
   right: "0",
 };
 
@@ -30,31 +31,7 @@ function MyComponent() {
     setMap(null);
   }, []);
 
-  useEffect(() => {
-    fetch("http://mapa.mec.gob.ar:8082/api/localizacion")
-      .then((res) => res.json())
-      .then(
-        (result) => {
-          var count = 0;
-          var array = [];
-          console.log(result);
-          result.forEach((element) => {
-            array.push({
-              lat: element.domicilio.position[1],
-              lng: element.domicilio.position[0],
-            });
-            //count++
-          });
-          setStores(array);
-        },
-        (error) => {
-          this.setState({
-            isLoaded: true,
-            error,
-          });
-        }
-      );
-  }, []);
+  const { localizaciones } = useSelector((state) => state.localizacion);
 
   const clickMarker = (position) => {
     setPositionInfoWindow(position);
@@ -75,13 +52,21 @@ function MyComponent() {
         onLoad={onLoad}
         onUnmount={onUnmount}
       >
-        {stores.map((position) => (
-          <Marker
-            position={position}
-            icon="./images/pin-se.png"
-            onClick={() => clickMarker(position)}
-          />
-        ))}
+        {localizaciones.map((ele) => {
+          if (ele && ele.domicilio) {
+            const latlng = {
+              lng: ele?.domicilio.geo.geometry.coordinates[0],
+              lat: ele?.domicilio.geo.geometry.coordinates[1],
+            };
+            return (
+              <Marker
+                position={latlng}
+                icon="./images/pin-varios.png"
+                onClick={() => clickMarker(latlng)}
+              />
+            );
+          }
+        })}
         {console.log("POSITION", positionInfoWindow)}
         {showInfoWindow && (
           <InfoWindow
