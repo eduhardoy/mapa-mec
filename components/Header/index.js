@@ -36,7 +36,6 @@ const Logos = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: 40px;
   img{
     height: 80%;
     width: auto;
@@ -48,7 +47,7 @@ const SearchBarContainer = styled.div`
 width: 60%;
 height: 100%;
 display: flex;
-justify-content: flex-start;
+justify-content: center;
 align-items: center;
 `;
 

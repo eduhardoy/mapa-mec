@@ -18,12 +18,11 @@ const LeftSideBarMenuStyle = styled.main`
   margin: 0;
   padding: 0;
   opacity: 90%;
-  font-family: -apple-system, Roboto, sans-serif, serif;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
+  position: relative;
   @media (max-width: 768px) {
-    flex-direction: column;
   }
 `;
 
@@ -50,14 +49,14 @@ const IconButton = styled.button`
   cursor: pointer;
   :hover {
     img {
-      width: 80%;
+      width: 70%;
     }
   }
   :focus {
     border: none;
     outline: none;
     img {
-      width: 80%;
+      width: 70%;
     }
   }
   img {
@@ -70,7 +69,7 @@ const IconButton = styled.button`
 
 const Account = styled.button`
   width: 100%;
-  height: 8%;
+  height: 15%;
   margin: 0;
   display: flex;
   flex-direction: column;
@@ -79,21 +78,28 @@ const Account = styled.button`
   border: none;
   background-color: transparent;
   color: #979897;
-  :hover {
-    img {
-      width: 85%;
+  :hover{
+    p{
+      font-size: 16px;
+    }
+    img{
+      width: 65%;
     }
   }
   :focus {
     border: none;
     outline: none;
-    img {
-      width: 85%;
-    }
   }
   img {
-    width: 80%;
+    width: 60%;
     height: auto;
+  }
+  p{
+    color: black;
+    font-family: "Lato";
+    font-weight: 700;
+    font-size: 14px;
+    margin: 10px;
   }
 `;
 
@@ -118,8 +124,9 @@ const LeftSideBarMenu = () => {
       </BarIconContainer>
       <Account>
         <img src="./images/user.svg" alt="" />
+        <p>Cerrar Sesión</p>
       </Account>
-      <Filtros />
+      <Filtros></Filtros>
     </LeftSideBarMenuStyle>
   );
 };
