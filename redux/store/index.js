@@ -8,12 +8,12 @@ const initialState = {};
 const middlewares = [thunk];
 
 // create a makeStore function
-const makeStore = (context) =>
+const makeStore = (preloadState,options) =>
   createStore(
     rootReducer,
-    initialState,
+    {},
     composeWithDevTools(applyMiddleware(...middlewares))
   );
 
 // export an assembled wrapper
-export const wrapper = createWrapper(makeStore, { debug: true });
+export const wrapper = createWrapper(makeStore);

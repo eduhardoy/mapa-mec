@@ -4,7 +4,8 @@ import { useSelector } from "react-redux";
 import MapInfoWindow from "../MapInfoWindow";
 
 const MapMarcadores = ({ map }) => {
-  const { marcadores } = useSelector((state) => state.marcador);
+  // const { marcadores } = useSelector((state) => state.marcador);
+  const marcadores = []
   const [positionInfoWindow, setPositionInfoWindow] = React.useState({});
   const [showInfoWindow, setShowInfoWindow] = React.useState(false);
   const [mapInfoData, setMapInfoData] = React.useState({});
