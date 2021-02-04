@@ -2,10 +2,12 @@ import React from "react";
 import { wrapper } from "../redux/store";
 import Head from "next/head";
 import App from "next/app";
-import { fetchLocalizaciones } from "../redux/actions/LocalizacionesActions";
+
+
 
 class MyApp extends App {
   static getInitialProps = async ({ Component, ctx }) => {
+
     return {
       pageProps: {
         // Call page-level getInitialProps

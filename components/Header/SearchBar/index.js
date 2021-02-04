@@ -52,14 +52,13 @@ const SearchBarButton = styled.button`
 // markup
 const SearchBar = () => {
   const { images } = useSelector((state) => state.imagen);
-  const lupaIcon = images.filter((e) => e.nombre === "search")[0]
-  console.log("ICON",images)
+  const lupaIcon = images.filter((e) => e.nombre === "search")[0];
 
   return (
     <SearchBarWrapper>
       <SearchBarInput placeholder="Ingresar nombre o CUEANEXO"></SearchBarInput>
       <SearchBarButton>
-        <img src='./images/search.svg' alt="" />
+        <img src={`http://200.10.111.88:1337${lupaIcon.image.url}`} alt="" />
       </SearchBarButton>
     </SearchBarWrapper>
   );
