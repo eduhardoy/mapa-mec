@@ -6,27 +6,34 @@ import SearchBar from "./SearchBar"
 // styles
 
 const HeaderStyle = styled.main`
-  background-color: #7fb850;
+  background-color: #7cb342;
   box-shadow: 0px 1px 5px 3px rgba(53,53,53,0.47);
-  border-bottom: 7px solid #67a534;
-  height: 70px;
+  height: 77px;
   position: sticky;
-  z-index: 5;
+  z-index: 500;
   left: 0;
   padding: 0;
   margin: 0;
   font-family: 'Lato', sans-serif;
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-start;
   align-items: center;
 `;
 
-const LogosContainer = styled.div`
-width: 40%;
+const MenuContainer = styled.div`
+width: 5vw;
 height: 100%;
 display: flex;
 justify-content: center;
 align-items: center;
+`;
+
+const LogosContainer = styled.div`
+width: 40vw;
+height: 100%;
+margin-left: 1vw;
+display: flex;
+justify-content: flex-start;
 `;
 
 const Logos = styled.div`
@@ -34,17 +41,27 @@ const Logos = styled.div`
   height: 100%;
   z-index: 6;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   img{
-    height: 80%;
-    width: auto;
-    min-width: 60%;
+    height: auto;
+    width: 400px;
+    @media (max-width: 768px) {
+      width: 400px;
+  }
   }
 `;
 
 const SearchBarContainer = styled.div`
-width: 60%;
+width: 40vw;
+height: 100%;
+display: flex;
+justify-content: flex-start;
+align-items: center;
+`;
+
+const UserContainer = styled.div`
+width: 8vw;
 height: 100%;
 display: flex;
 justify-content: center;
@@ -57,6 +74,8 @@ const Header = () => {
   return <HeaderStyle>
     <link rel="preconnect" href="https://fonts.gstatic.com"/>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
+    <MenuContainer>
+    </MenuContainer>
     <LogosContainer>
     <Logos>
       <img src="./images/Logos.png" alt=""/>
@@ -65,6 +84,9 @@ const Header = () => {
     <SearchBarContainer>
       <SearchBar/>
     </SearchBarContainer>
+    <UserContainer>
+
+    </UserContainer>
   </HeaderStyle>;
 };
 

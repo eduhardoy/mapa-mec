@@ -10,8 +10,8 @@ const SearchBarWrapper = styled.div`
   width: 80%;
   height: 60%;
   background-color: #fff;
-  border: solid 2px #fff;
-  border-radius: 5px;
+  border: solid 1px #337E3C;
+  border-radius: 4px;
   overflow: hidden;
 `;
 
@@ -20,7 +20,7 @@ const SearchBarInput = styled.input`
   margin: 0;
   width: 85%;
   padding: 15px;
-  background-color: #e9ece9;
+  background-color: #fff;
   outline: none;
   border: none;
   font-family: "Lato", sans-serif;
@@ -41,9 +41,10 @@ const SearchBarButton = styled.button`
   outline: none;
   cursor: pointer;
   color: #e9ecef;
+  border-left: solid 1px #337E3C;
   img {
     width: auto;
-    height: 50%;
+    height: 40%;
     color: #e9ecef;
   }
 `;
