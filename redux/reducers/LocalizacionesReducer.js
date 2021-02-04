@@ -1,4 +1,5 @@
-import { FETCH_LOCALIZACIONES } from "../actions/LocalizacionesActions";
+import { HYDRATE } from "next-redux-wrapper";
+import * as type from "../types";
 
 const initialState = {
   localizaciones: [],
@@ -8,7 +9,9 @@ const initialState = {
 
 const localizacionesReducer = (state = initialState, action) => {
   switch (action.type) {
-    case FETCH_LOCALIZACIONES:
+    case HYDRATE:
+      return {...state, ...action.payload.localizacion}
+    case type.LOAD_LOCALIZACIONES:
       return { ...state, localizaciones: action.payload, loading: false };
     default:
       return state;
