@@ -1,12 +1,14 @@
 import * as React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
+import { updateMarcadores } from "../../redux/actions/MarcadoresActions";
+import Filtros from "../Filtros";
 
 // styles
 
 const LeftSideBarMenuStyle = styled.main`
   background-color: #fff;
-  border-right: solid #D3D3D3 2px;
-  box-shadow: 1px 0px 8px 1px rgba(211,211,211,0.72);
+  border-right: solid #d3d3d3 2px;
   height: calc(100vh - 77px);
   width: 4vw;
   min-width: 50px;
@@ -15,105 +17,111 @@ const LeftSideBarMenuStyle = styled.main`
   bottom: 0;
   margin: 0;
   padding: 0;
+  opacity: 90%;
   font-family: -apple-system, Roboto, sans-serif, serif;
   display: flex;
   justify-content: space-between;
-  flex-direction:column;
+  flex-direction: column;
   @media (max-width: 768px) {
     flex-direction: column;
   }
 `;
 
-
-const BarIconContainer = styled.div `
-width: 100%;
-height: 60%;
-margin: 0;
-display: flex;
-flex-direction: column;
-align-items: center;
-`
-
-const IconButton = styled.button `
-width: 100%;
-height: 10%;
-margin-top: 30%;
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content:center;
-border: none;
-background-color: #fff;
-cursor: pointer;
-:hover{
-  img{
-    width: 85%;
-  }
-}
-:focus{
-  border: none;
-  outline:none;
-  img{
-    width: 85%;
-  }
-}
-img{
-  width: 65%;
-  height: auto;
+const BarIconContainer = styled.div`
+  width: 100%;
+  height: 60%;
   margin: 0;
-}
-`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+`;
 
-const Account = styled.button `
-width: 100%;
-height: 8%;
-margin: 0;
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content:center;
-border: none;
-background-color: #fff;
-:hover{
-  img{
-    width: 85%;
-  }
-}
-:focus{
+const IconButton = styled.button`
+  width: 100%;
+  height: 10%;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   border: none;
-  outline:none;
-  img{
-    width: 85%;
+  background-color: transparent;
+  cursor: pointer;
+  :hover {
+    img {
+      width: 80%;
+    }
   }
-}
-img{
-  width: 80%;
-  height: auto;
-}
-`
+  :focus {
+    border: none;
+    outline: none;
+    img {
+      width: 80%;
+    }
+  }
+  img {
+    width: 50%;
+    min-width: 30px;
+    height: auto;
+    margin: 0;
+  }
+`;
 
+const Account = styled.button`
+  width: 100%;
+  height: 8%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-color: transparent;
+  color: #979897;
+  :hover {
+    img {
+      width: 85%;
+    }
+  }
+  :focus {
+    border: none;
+    outline: none;
+    img {
+      width: 85%;
+    }
+  }
+  img {
+    width: 80%;
+    height: auto;
+  }
+`;
 
 // markup
 const LeftSideBarMenu = () => {
-  return <LeftSideBarMenuStyle>
-    <BarIconContainer>
-      <IconButton>
-      <img src="./images/mapa.png" alt=""/>
-      </IconButton>
-      <IconButton>
-      <img src="./images/info.png" alt=""/>
-      </IconButton>
-      <IconButton>
-      <img src="./images/settings.png" alt=""/>
-      </IconButton>
-      <IconButton>
-      <img src="./images/wifi.png" alt=""/>
-      </IconButton>
-    </BarIconContainer>
-    <Account>
-    <img src="./images/user.png" alt=""/>
-    </Account>
-  </LeftSideBarMenuStyle>;
+
+  return (
+    <LeftSideBarMenuStyle>
+      <BarIconContainer>
+        <IconButton>
+          <img src="./images/mapa.svg" alt="" />
+        </IconButton>
+        <IconButton>
+          <img src="./images/info.svg" alt="" />
+        </IconButton>
+        <IconButton>
+          <img src="./images/settings.svg" alt="" />
+        </IconButton>
+        <IconButton>
+          <img src="./images/wifi.svg" alt="" />
+        </IconButton>
+      </BarIconContainer>
+      <Account>
+        <img src="./images/user.svg" alt="" />
+      </Account>
+      <Filtros />
+    </LeftSideBarMenuStyle>
+  );
 };
 
 export default LeftSideBarMenu;

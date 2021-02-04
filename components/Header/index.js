@@ -17,7 +17,7 @@ const HeaderStyle = styled.main`
   margin: 0;
   font-family: 'Lato', sans-serif;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
 `;
 
@@ -36,18 +36,19 @@ const Logos = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-left: 40px;
   img{
-    height: auto;
-    width: 90%;
+    height: 80%;
+    width: auto;
     min-width: 60%;
   }
 `;
 
 const SearchBarContainer = styled.div`
-width: 50%;
+width: 60%;
 height: 100%;
 display: flex;
-justify-content: center;
+justify-content: flex-start;
 align-items: center;
 `;
 

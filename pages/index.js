@@ -5,17 +5,13 @@ import Header from "../components/Header";
 import LeftSideBarMenu from "../components/LeftSideBarMenu";
 
 import Map from "../components/Map";
-import { useDispatch } from "react-redux";
 import { fetchLocalizaciones } from "../redux/actions/LocalizacionesActions";
+import { fetchImages } from "../redux/actions/ImagesActions";
+import { wrapper } from "../redux/store";
+
 
 // markup
 const IndexPage = () => {
-  const dispatch = useDispatch();
-
-  React.useEffect(() => {
-    dispatch(fetchLocalizaciones());
-  }, []);
-
   return (
     <Layout>
       <div>

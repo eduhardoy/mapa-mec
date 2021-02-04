@@ -1,15 +1,19 @@
-import { applyMiddleware, createStore } from "redux";
+import { createStore, applyMiddleware } from "redux";
+import { createWrapper, HYDRATE } from "next-redux-wrapper";
 import { composeWithDevTools } from "redux-devtools-extension";
-import thunk from "redux-thunk";
 import rootReducer from "../reducers";
+import thunk from "redux-thunk";
 
 const initialState = {};
-const middleware = [thunk];
+const middlewares = [thunk];
 
-const store = createStore(
-  rootReducer,
-  initialState,
-  composeWithDevTools(applyMiddleware(...middleware))
-);
+// create a makeStore function
+const makeStore = (context) =>
+  createStore(
+    rootReducer,
+    initialState,
+    composeWithDevTools(applyMiddleware(...middlewares))
+  );
 
-export default store;
+// export an assembled wrapper
+export const wrapper = createWrapper(makeStore, { debug: true });

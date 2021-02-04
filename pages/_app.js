@@ -1,11 +1,23 @@
-import App from "next/app";
 import React from "react";
+import { wrapper } from "../redux/store";
 import Head from "next/head";
-import { Provider } from "react-redux";
-import store from "../redux/store";
-import { createWrapper } from "next-redux-wrapper";
+import App from "next/app";
+import { fetchLocalizaciones } from "../redux/actions/LocalizacionesActions";
 
 class MyApp extends App {
+  static getInitialProps = async ({ Component, ctx }) => {
+    return {
+      pageProps: {
+        // Call page-level getInitialProps
+        ...(Component.getInitialProps
+          ? await Component.getInitialProps(ctx)
+          : {}),
+        // Some custom thing for all pages
+        pathname: ctx.pathname,
+      },
+    };
+  };
+
   render() {
     const { Component, pageProps } = this.props;
 
@@ -14,15 +26,10 @@ class MyApp extends App {
         <Head>
           <title>Mapa Educativo</title>
         </Head>
-        <Provider store={store}>
-          <Component {...pageProps} />
-        </Provider>
+        <Component {...pageProps} />
       </>
     );
   }
 }
-
-const makeStore = () => store;
-const wrapper = createWrapper(makeStore);
 
 export default wrapper.withRedux(MyApp);

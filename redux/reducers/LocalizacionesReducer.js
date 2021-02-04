@@ -1,6 +1,4 @@
-import {
-  FETCH_LOCALIZACIONES,
-} from "../actions/LocalizacionesActions";
+import { FETCH_LOCALIZACIONES } from "../actions/LocalizacionesActions";
 
 const initialState = {
   localizaciones: [],
@@ -15,7 +13,6 @@ const localizacionesReducer = (state = initialState, action) => {
     default:
       return state;
   }
-  return { ...state };
 };
 
 export default localizacionesReducer;

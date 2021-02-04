@@ -1,12 +1,13 @@
 import * as React from "react";
 import styled from "styled-components";
+import { useSelector } from "react-redux";
 
 // styles
 const SearchBarWrapper = styled.div`
   padding: 0;
   margin: 0;
   display: flex;
-  width: 60%;
+  width: 80%;
   height: 60%;
   background-color: #fff;
   border: solid 2px #fff;
@@ -19,10 +20,10 @@ const SearchBarInput = styled.input`
   margin: 0;
   width: 85%;
   padding: 15px;
-  background-color: #E9ECEF;
+  background-color: #e9ece9;
   outline: none;
   border: none;
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   font-weight: 700;
   font-size: 14px;
   text-transform: uppercase;
@@ -39,25 +40,28 @@ const SearchBarButton = styled.button`
   align-items: center;
   outline: none;
   cursor: pointer;
-  color: #E9ECEF;
+  color: #e9ecef;
   img {
     width: auto;
     height: 50%;
-    color: #E9ECEF;
+    color: #e9ecef;
   }
 `;
 
-
-
 // markup
 const SearchBar = () => {
-  return <SearchBarWrapper>
-        <SearchBarInput>
-        </SearchBarInput>
-        <SearchBarButton>
-          <img src="./images/search.svg" alt=""/>
-        </SearchBarButton>
-      </SearchBarWrapper>
+  const { images } = useSelector((state) => state.imagen);
+  const lupaIcon = images.filter((e) => e.nombre === "search")[0]
+  console.log("ICON",images)
+
+  return (
+    <SearchBarWrapper>
+      <SearchBarInput placeholder="Ingresar nombre o CUEANEXO"></SearchBarInput>
+      <SearchBarButton>
+        <img src='./images/search.svg' alt="" />
+      </SearchBarButton>
+    </SearchBarWrapper>
+  );
 };
 
 export default SearchBar;
