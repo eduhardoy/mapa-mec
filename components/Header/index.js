@@ -29,7 +29,7 @@ align-items: center;
 `;
 
 const LogosContainer = styled.div`
-width: 40vw;
+width: 45vw;
 height: 100%;
 margin-left: 1vw;
 display: flex;
@@ -45,15 +45,16 @@ const Logos = styled.div`
   align-items: center;
   img{
     height: auto;
-    width: 400px;
+    width: 80%;
+    min-width: 350px;
     @media (max-width: 768px) {
-      width: 400px;
   }
   }
 `;
 
 const SearchBarContainer = styled.div`
-width: 40vw;
+width: 45vw;
+margin-left: 2vw;
 height: 100%;
 display: flex;
 justify-content: flex-start;
@@ -61,11 +62,15 @@ align-items: center;
 `;
 
 const UserContainer = styled.div`
-width: 8vw;
+width: 5vw;
 height: 100%;
 display: flex;
 justify-content: center;
 align-items: center;
+img{
+  width: 50%;
+  height: auto;
+}
 `;
 
 
@@ -85,7 +90,7 @@ const Header = () => {
       <SearchBar/>
     </SearchBarContainer>
     <UserContainer>
-
+      <img src="./images/user.svg" alt=""/>
     </UserContainer>
   </HeaderStyle>;
 };
