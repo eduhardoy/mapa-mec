@@ -3,6 +3,8 @@ import styled from "styled-components";
 
 import SearchBar from "./SearchBar" 
 
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import MenuIcon from '@material-ui/icons/Menu';
 // styles
 
 const HeaderStyle = styled.main`
@@ -21,7 +23,9 @@ const HeaderStyle = styled.main`
 `;
 
 const MenuContainer = styled.div`
-width: 5vw;
+width: 4vw;
+min-width: 40px;
+max-width: 55px;
 height: 100%;
 display: flex;
 justify-content: center;
@@ -29,7 +33,7 @@ align-items: center;
 `;
 
 const LogosContainer = styled.div`
-width: 45vw;
+width: 43vw;
 height: 100%;
 margin-left: 1vw;
 display: flex;
@@ -53,7 +57,7 @@ const Logos = styled.div`
 `;
 
 const SearchBarContainer = styled.div`
-width: 45vw;
+width: 43vw;
 margin-left: 2vw;
 height: 100%;
 display: flex;
@@ -67,19 +71,80 @@ height: 100%;
 display: flex;
 justify-content: center;
 align-items: center;
-img{
-  width: 50%;
+position: absolute;
+right: 0;
+svg{
+  width: 70%;
   height: auto;
 }
+`;
+
+const IconButtonMenu = styled.button`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  :hover {
+    svg {
+      width: 90%;
+    }
+  }
+  :focus {
+    border: none;
+    outline: none;
+    svg {
+      width: 90%;
+    }
+  }
+  svg {
+    width: 80%;
+    color: white;
+    height: auto;
+    margin: 0;
+  }
+`;
+
+const IconButtonUser = styled.button`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  :hover {
+    svg {
+      width: 80%;
+    }
+  }
+  :focus {
+    border: none;
+    outline: none;
+    svg {
+      width: 80%;
+    }
+  }
+  svg {
+    width: 70%;
+    color: black;
+    height: auto;
+    margin: 0;
+  }
 `;
 
 
 // markup
 const Header = () => {
   return <HeaderStyle>
-    <link rel="preconnect" href="https://fonts.gstatic.com"/>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
     <MenuContainer>
+      <IconButtonMenu>
+      <MenuIcon/>
+      </IconButtonMenu>
     </MenuContainer>
     <LogosContainer>
     <Logos>
@@ -90,7 +155,9 @@ const Header = () => {
       <SearchBar/>
     </SearchBarContainer>
     <UserContainer>
-      <img src="./images/user.svg" alt=""/>
+      <IconButtonUser>
+      <AccountCircleIcon/>
+      </IconButtonUser>
     </UserContainer>
   </HeaderStyle>;
 };

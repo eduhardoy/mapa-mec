@@ -1,5 +1,12 @@
 import * as React from "react";
 import styled from "styled-components";
+import MapIcon from '@material-ui/icons/Map';
+import InfoIcon from '@material-ui/icons/Info';
+import SettingsIcon from '@material-ui/icons/Settings';
+import WifiIcon from '@material-ui/icons/Wifi';
+import FullscreenIcon from '@material-ui/icons/Fullscreen';
+import LocationCityIcon from '@material-ui/icons/LocationCity';
+import EqualizerIcon from '@material-ui/icons/Equalizer';
 
 
 // styles
@@ -15,8 +22,8 @@ const FirstBarStyle = styled.div `
 
 const IconButton = styled.button`
   width: 100%;
-  height: 10%;
-  margin-top: 30px;
+  height: 15%;
+  margin-top: 20%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -25,20 +32,20 @@ const IconButton = styled.button`
   background-color: transparent;
   cursor: pointer;
   :hover {
-    img {
-      width: 70%;
+    svg {
+      width: 90%;
     }
   }
   :focus {
     border: none;
     outline: none;
-    img {
-      width: 70%;
+    svg {
+      width: 90%;
     }
   }
-  img {
-    width: 50%;
-    min-width: 30px;
+  svg {
+    width: 70%;
+    color: #666666;
     height: auto;
     margin: 0;
   }
@@ -50,16 +57,25 @@ const FirstBar = () => {
   return (
     <FirstBarStyle>
         <IconButton>
-          <img src="./images/mapa.svg" alt="" />
+          <MapIcon/>
         </IconButton>
         <IconButton>
-          <img src="./images/info.svg" alt="" />
+          <InfoIcon/>
         </IconButton>
         <IconButton>
-          <img src="./images/settings.svg" alt="" />
+          <SettingsIcon/>
         </IconButton>
         <IconButton>
-          <img src="./images/wifi.svg" alt="" />
+          <FullscreenIcon/>
+        </IconButton>
+        <IconButton>
+          <WifiIcon/>
+        </IconButton>
+        <IconButton>
+          <LocationCityIcon/>
+        </IconButton>
+        <IconButton>
+          <EqualizerIcon/>
         </IconButton>
     </FirstBarStyle>
   );

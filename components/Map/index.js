@@ -31,7 +31,7 @@ function MyComponent() {
   }, []);
 
   return (
-    <MapContainer ancho={'100vh'}>
+    <MapContainer ancho={'100vw'}>
       <LoadScript googleMapsApiKey="AIzaSyB9T71MrqTWubzHayatyn7RP5lpDMdcrgo">
         <GoogleMap
           mapContainerStyle={containerStyle}
