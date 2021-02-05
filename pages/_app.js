@@ -3,7 +3,10 @@ import { wrapper } from "../redux/store";
 import Head from "next/head";
 import App from "next/app";
 
-
+//Metricas
+export function reportWebVitals(metric){
+  console.log(metric)
+}
 
 class MyApp extends App {
   static getInitialProps = async ({ Component, ctx }) => {
