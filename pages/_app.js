@@ -26,6 +26,13 @@ class MyApp extends App {
     return (
       <>
         <Head>
+          <link rel="preconnect" href="https://fonts.gstatic.com"/>
+          <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" />
+          <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+          <meta 
+          name="viewport"
+          content="minimum-scale=1, initial-scale=1, width=device-width"
+          />
           <title>Mapa Educativo</title>
         </Head>
         <Component {...pageProps} />

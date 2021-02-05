@@ -1,6 +1,7 @@
 import * as React from "react";
 import styled from "styled-components";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
+import SearchIcon from '@material-ui/icons/Search';
 
 // styles
 const SearchBarWrapper = styled.div`
@@ -32,7 +33,7 @@ const SearchBarInput = styled.input`
 const SearchBarButton = styled.button`
   padding: 0;
   margin: 0;
-  width: 15%;
+  width: 20%;
   border: none;
   background-color: white;
   display: flex;
@@ -42,23 +43,23 @@ const SearchBarButton = styled.button`
   cursor: pointer;
   color: #e9ecef;
   border-left: solid 1px #337E3C;
-  img {
+  svg {
     width: auto;
-    height: 40%;
-    color: #e9ecef;
+    height: 50%;
+    color: #33691E;
   }
 `;
 
 // markup
-const SearchBar = () => {
-  const { images } = useSelector((state) => state.imagen);
-  const lupaIcon = images.filter((e) => e.nombre === "search")[0];
+//   const { images } = useSelector((state) => state.imagen);
+//   const lupaIcon = images.filter((e) => e.nombre === "search")[0];
 
+const SearchBar = () => {
   return (
     <SearchBarWrapper>
       <SearchBarInput placeholder="Ingresar nombre o CUEANEXO"></SearchBarInput>
       <SearchBarButton>
-        <img src={`http://200.10.111.88:1337${lupaIcon.image.url}`} alt="" />
+        <SearchIcon/>
       </SearchBarButton>
     </SearchBarWrapper>
   );
