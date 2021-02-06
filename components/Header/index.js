@@ -1,7 +1,7 @@
 import * as React from "react";
 import styled from "styled-components";
 
-import SearchBar from "./SearchBar" 
+import SearchBar from "./SearchBar.js"
 
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -143,20 +143,20 @@ const Header = () => {
   return <HeaderStyle>
     <MenuContainer>
       <IconButtonMenu>
-      <MenuIcon/>
+        <MenuIcon />
       </IconButtonMenu>
     </MenuContainer>
     <LogosContainer>
-    <Logos>
-      <img src="./images/Logos.png" alt=""/>
-    </Logos>
+      <Logos>
+        <img src="./images/Logos.png" alt="" />
+      </Logos>
     </LogosContainer>
     <SearchBarContainer>
-      <SearchBar/>
+      <SearchBar />
     </SearchBarContainer>
     <UserContainer>
       <IconButtonUser>
-      <AccountCircleIcon/>
+        <AccountCircleIcon />
       </IconButtonUser>
     </UserContainer>
   </HeaderStyle>;

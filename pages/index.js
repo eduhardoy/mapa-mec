@@ -2,7 +2,7 @@ import * as React from "react";
 import styled from "styled-components";
 import Layout from "../components/Layout";
 import Header from "../components/Header";
-import LeftSideBarMenu from "../components/LeftSideBarMenu";
+import LeftSideBarMenu from "../components/LeftSideBar";
 import axios from "axios";
 import Map from "../components/Map";
 import { useDispatch } from "react-redux";
