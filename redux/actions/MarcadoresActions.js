@@ -1,12 +1,9 @@
-import axios from "axios";
-
-//Action Types
-export const UPDATE_MARCADORES = "UPDATE_MARCADORES";
+import * as type from "../types";
 
 //Action Creator
 export const updateMarcadores = (marcadoresFiltrados) => async (dispatch) => {
   dispatch({
-    type: UPDATE_MARCADORES,
+    type: type.UPDATE_MARCADORES,
     payload: marcadoresFiltrados,
   });
 };

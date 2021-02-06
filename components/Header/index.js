@@ -1,43 +1,45 @@
 import * as React from "react";
 import styled from "styled-components";
 
-import SearchBar from "./SearchBar.js"
+import SearchBar from "./SearchBar";
 
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-import MenuIcon from '@material-ui/icons/Menu';
+import AccountCircleIcon from "@material-ui/icons/AccountCircle";
+import MenuIcon from "@material-ui/icons/Menu";
+import { connect } from "react-redux";
+import { selectBar, selectFirstBar } from "../../redux/actions/BarActions";
 // styles
 
 const HeaderStyle = styled.main`
   background-color: #7cb342;
-  box-shadow: 0px 1px 5px 3px rgba(53,53,53,0.47);
+  box-shadow: 0px 1px 5px 3px rgba(53, 53, 53, 0.47);
   height: 77px;
   position: sticky;
   z-index: 500;
   left: 0;
   padding: 0;
   margin: 0;
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   display: flex;
   justify-content: flex-start;
   align-items: center;
 `;
 
 const MenuContainer = styled.div`
-width: 4vw;
-min-width: 40px;
-max-width: 55px;
-height: 100%;
-display: flex;
-justify-content: center;
-align-items: center;
+  width: 4vw;
+  min-width: 40px;
+  max-width: 55px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const LogosContainer = styled.div`
-width: 43vw;
-height: 100%;
-margin-left: 1vw;
-display: flex;
-justify-content: flex-start;
+  width: 43vw;
+  height: 100%;
+  margin-left: 1vw;
+  display: flex;
+  justify-content: flex-start;
 `;
 
 const Logos = styled.div`
@@ -47,36 +49,36 @@ const Logos = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  img{
+  img {
     height: auto;
     width: 80%;
     min-width: 350px;
     @media (max-width: 768px) {
-  }
+    }
   }
 `;
 
 const SearchBarContainer = styled.div`
-width: 43vw;
-margin-left: 2vw;
-height: 100%;
-display: flex;
-justify-content: flex-start;
-align-items: center;
+  width: 43vw;
+  margin-left: 2vw;
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 `;
 
 const UserContainer = styled.div`
-width: 5vw;
-height: 100%;
-display: flex;
-justify-content: center;
-align-items: center;
-position: absolute;
-right: 0;
-svg{
-  width: 70%;
-  height: auto;
-}
+  width: 5vw;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 0;
+  svg {
+    width: 70%;
+    height: auto;
+  }
 `;
 
 const IconButtonMenu = styled.button`
@@ -137,29 +139,39 @@ const IconButtonUser = styled.button`
   }
 `;
 
-
 // markup
-const Header = () => {
-  return <HeaderStyle>
-    <MenuContainer>
-      <IconButtonMenu>
-        <MenuIcon />
-      </IconButtonMenu>
-    </MenuContainer>
-    <LogosContainer>
-      <Logos>
-        <img src="./images/Logos.png" alt="" />
-      </Logos>
-    </LogosContainer>
-    <SearchBarContainer>
-      <SearchBar />
-    </SearchBarContainer>
-    <UserContainer>
-      <IconButtonUser>
-        <AccountCircleIcon />
-      </IconButtonUser>
-    </UserContainer>
-  </HeaderStyle>;
+const Header = ({ selectFirstBar, firstBar }) => {
+
+  return (
+    <HeaderStyle>
+      <MenuContainer>
+        <IconButtonMenu onClick={() => selectFirstBar()}>
+          <MenuIcon />
+        </IconButtonMenu>
+      </MenuContainer>
+      <LogosContainer>
+        <Logos>
+          <img src="./images/Logos.png" alt="" />
+        </Logos>
+      </LogosContainer>
+      <SearchBarContainer>
+        <SearchBar />
+      </SearchBarContainer>
+      <UserContainer>
+        <IconButtonUser>
+          <AccountCircleIcon />
+        </IconButtonUser>
+      </UserContainer>
+    </HeaderStyle>
+  );
 };
 
-export default Header;
+const mapStateToProps = (state) => ({
+  firstBar: state.bar.firstBar,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  selectFirstBar: (arg) => dispatch(selectFirstBar(arg)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

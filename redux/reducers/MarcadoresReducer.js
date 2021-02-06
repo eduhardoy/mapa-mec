@@ -1,4 +1,4 @@
-import { UPDATE_MARCADORES } from "../actions/MarcadoresActions";
+import * as type from "../types";
 
 const initialState = {
   marcadores: [],
@@ -6,7 +6,7 @@ const initialState = {
 
 const marcadoresReducer = (state = initialState, action) => {
   switch (action.type) {
-    case UPDATE_MARCADORES:
+    case type.UPDATE_MARCADORES:
       return { ...state, marcadores: action.payload };
     default:
       return state;
