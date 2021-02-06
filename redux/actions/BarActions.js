@@ -8,9 +8,8 @@ export const selectBar = (selectedBar) => async (dispatch) => {
   });
 };
 
-export const selectFirstBar = (select) => async (dispatch) => {
+export const selectFirstBar = () => async (dispatch) => {
     dispatch({
         type:type.HAMBURGUER_MENU,
-        payload: select
     })
 }

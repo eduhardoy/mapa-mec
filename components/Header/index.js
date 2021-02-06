@@ -142,16 +142,10 @@ const IconButtonUser = styled.button`
 // markup
 const Header = ({ selectFirstBar, firstBar }) => {
 
-
-  //MenuHamburguesa
-  const hamburguerMenu = (e) => {
-    selectFirstBar(!firstBar);
-  };
-
   return (
     <HeaderStyle>
       <MenuContainer>
-        <IconButtonMenu onClick={(e) => hamburguerMenu(e)}>
+        <IconButtonMenu onClick={() => selectFirstBar()}>
           <MenuIcon />
         </IconButtonMenu>
       </MenuContainer>

@@ -2,7 +2,7 @@ import * as type from "../types";
 
 const initialState = {
   firstBar: false,
-  secondBar: false,
+  secondBar: { bar: false, selected: "" },
 };
 
 const barReducer = (state = initialState, action) => {
