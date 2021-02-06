@@ -8,7 +8,11 @@ const initialState = {
 const barReducer = (state = initialState, action) => {
   switch (action.type) {
     case type.HAMBURGUER_MENU:
-      return { ...state, firstBar: !state.firstBar, secondBar: false };
+      return {
+        ...state,
+        firstBar: !state.firstBar,
+        secondBar: { bar: false, selected: "" },
+      };
     case type.SELECT_BAR_ITEM:
       return { ...state, secondBar: action.payload };
     default:
