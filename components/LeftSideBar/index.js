@@ -1,7 +1,7 @@
 import * as React from "react";
 import styled from "styled-components";
-import SecondBar from "../SecondBar";
-import FirstBar from "../FirstBar";
+import SecondBar from "./SecondBar.js";
+import FirstBar from "./FirstBar.js";
 import { connect } from "react-redux";
 
 // styles

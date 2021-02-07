@@ -35,11 +35,10 @@ const MenuContainer = styled.div`
 `;
 
 const LogosContainer = styled.div`
-  width: 43vw;
+  width: 50vw;
   height: 100%;
-  margin-left: 1vw;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
 `;
 
 const Logos = styled.div`
@@ -47,23 +46,28 @@ const Logos = styled.div`
   height: 100%;
   z-index: 6;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   img {
-    height: auto;
-    width: 80%;
-    min-width: 350px;
-    @media (max-width: 768px) {
+    height: 70%;
+    width: auto;
+    @media (max-width: 1100px) {
+      height: 65%;
+    }
+    @media (max-width: 1000px) {
+      height: 60%;
+    }
+    @media (max-width: 900px) {
+      height: 55%;
     }
   }
 `;
 
 const SearchBarContainer = styled.div`
-  width: 43vw;
-  margin-left: 2vw;
+  width: 40vw;
   height: 100%;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
 `;
 
@@ -90,22 +94,14 @@ const IconButtonMenu = styled.button`
   border: none;
   background-color: transparent;
   cursor: pointer;
-  :hover {
-    svg {
-      width: 90%;
-    }
-  }
   :focus {
     border: none;
     outline: none;
-    svg {
-      width: 90%;
-    }
   }
   svg {
-    width: 80%;
+    width: auto;
     color: white;
-    height: auto;
+    height: 50%;
     margin: 0;
   }
 `;
@@ -119,22 +115,14 @@ const IconButtonUser = styled.button`
   border: none;
   background-color: transparent;
   cursor: pointer;
-  :hover {
-    svg {
-      width: 80%;
-    }
-  }
   :focus {
     border: none;
     outline: none;
-    svg {
-      width: 80%;
-    }
   }
   svg {
-    width: 70%;
+    width: auto;
     color: black;
-    height: auto;
+    height: 60%;
     margin: 0;
   }
 `;
