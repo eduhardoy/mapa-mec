@@ -1,7 +1,7 @@
 import * as React from "react";
 import styled from "styled-components";
 
-import SearchBar from "./SearchBar";
+import SearchBar from "./SearchBar.js";
 
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import MenuIcon from "@material-ui/icons/Menu";
