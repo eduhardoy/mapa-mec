@@ -8,10 +8,11 @@ import Map from "../components/Map";
 import { useDispatch } from "react-redux";
 import * as type from "../redux/types";
 import { wrapper } from "../redux/store";
+import FilterListener from "../components/FilterListener";
 
 export const getServerSideProps = wrapper.getServerSideProps(
   async ({ store }) => {
-    //LOCALIZACIONES
+    // LOCALIZACIONES
     const localizaciones = await axios.get(
       "http://200.10.111.88:1337/localizaciones"
     );
@@ -50,6 +51,8 @@ export const getServerSideProps = wrapper.getServerSideProps(
 const IndexPage = () => {
   return (
     <Layout>
+      {/* FILTER LISTENER */}
+      <FilterListener/>
       <div>
         <Header />
         <Map />
