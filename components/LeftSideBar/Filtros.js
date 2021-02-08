@@ -7,6 +7,8 @@ import AccordionDetails from '@material-ui/core/AccordionDetails';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
 
 import CheckboxList from './Checkbox';
 
@@ -32,6 +34,9 @@ div{
   }
 }`
 
+
+const CheckboxFilter = styled.div`
+`
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -65,10 +70,23 @@ export default function ControlledAccordions() {
           aria-controls="panel1bh-content"
           id="panel1bh-header"
         >
+          <FormControlLabel
+          value="end"
+          control={<Checkbox color="primary" />}
+          label="End"
+          labelPlacement="end"
+        />
           <Typography className={classes.heading}>Departamentos</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <CheckboxList/>
+          <CheckboxFilter>
+          <FormControlLabel
+          value="end"
+          control={<Checkbox color="primary" />}
+          label="End"
+          labelPlacement="end"
+        />
+          </CheckboxFilter>
         </AccordionDetails>
       </Accordion>
       

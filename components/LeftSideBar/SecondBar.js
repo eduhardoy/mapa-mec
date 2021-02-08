@@ -1,6 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
-import Filtros from "./Filtros.js";
+import FiltrosNew from "./FiltrosNew.js";
 
 // styles
 
@@ -36,7 +36,7 @@ const SecondBarStyle = styled.div`
 const SecondBar = () => {
   return (
     <SecondBarStyle>
-      <Filtros />
+      <FiltrosNew />
     </SecondBarStyle>
   );
 };

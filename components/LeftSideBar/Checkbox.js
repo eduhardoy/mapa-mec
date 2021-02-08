@@ -8,6 +8,10 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import Checkbox from '@material-ui/core/Checkbox';
+import FormGroup from '@material-ui/core/FormGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormControl from '@material-ui/core/FormControl';
+import FormLabel from '@material-ui/core/FormLabel';
 
 
 const CheckboxStyle = styled.div `
@@ -78,13 +82,12 @@ const CheckboxList = ( {departamentos} ) => {
           <ListItem key={value} role={undefined} dense button onClick={handleToggle(value)}>
             <div>
             <ListItemIcon>
-              <Checkbox
-                edge="start"
-                checked={checked.indexOf(value) !== -1}
-                tabIndex={-1}
-                disableRipple
-                inputProps={{ 'aria-labelledby': labelId }}
-              />
+            <FormControlLabel
+          value="start"
+          control={<Checkbox color="primary" />}
+          label="Start"
+          labelPlacement="start"
+        />
             </ListItemIcon>
             </div>
             <ListItemText id={labelId} primary={`Mburucuya`} />
