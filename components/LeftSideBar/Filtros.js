@@ -11,10 +11,11 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import CheckboxList from './Checkbox';
 
 const FiltrosStyle = styled.div `
+margin-top: 5px;
+border-bottom-left-radius: 0;
+border-bottom-right-radius: 0;
 div{
   div{
-       border-bottom-left-radius: 0px;
-       border-bottom-right-radius: 0px;
     div{
       div{
         p{
