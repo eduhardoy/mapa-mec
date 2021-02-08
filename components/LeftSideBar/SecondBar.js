@@ -1,6 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
-import FiltrosNew from "./FiltrosNew.js";
+import FiltrosNew from "../Filters/FiltroDepartamentos.js";
 
 // styles
 
