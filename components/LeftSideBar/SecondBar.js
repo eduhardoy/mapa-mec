@@ -9,12 +9,13 @@ const SecondBarStyle = styled.div`
   background-color: #fff;
   border-right: solid #d3d3d3 2px;
   height: calc(100vh - 77px);
-  width: 20vw;
+  width: 30vw;
   z-index: 9;
   overflow-y: scroll;
 
+
 ::-webkit-scrollbar {
-  width: 20px;
+  width: 0px;
 }
 
 ::-webkit-scrollbar-track {
