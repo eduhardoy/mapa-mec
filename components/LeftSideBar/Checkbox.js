@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from "styled-components";
+import { connect } from 'react-redux';
 
 import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
@@ -50,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function CheckboxList() {
+const CheckboxList = ( {departamentos} ) => {
   const classes = useStyles();
   const [checked, setChecked] = React.useState([0]);
 
@@ -94,3 +95,10 @@ export default function CheckboxList() {
     </CheckboxStyle>
   );
 }
+
+const mapStateToPros = (state) => ({
+  departamentos: state.departamento.departamentos,
+})
+
+
+export default connect (mapStateToPros, null) (CheckboxList);

@@ -2,7 +2,6 @@ import * as React from "react";
 import styled from "styled-components";
 import Filtros from "./Filtros.js";
 
-
 // styles
 
 const SecondBarStyle = styled.div`
@@ -13,31 +12,28 @@ const SecondBarStyle = styled.div`
   z-index: 9;
   overflow-y: scroll;
 
+  ::-webkit-scrollbar {
+    width: 0px;
+  }
 
-::-webkit-scrollbar {
-  width: 0px;
-}
+  ::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
 
-::-webkit-scrollbar-track {
-  background-color: transparent;
-}
+  ::-webkit-scrollbar-thumb {
+    background-color: #d6dee1;
+    border-radius: 20px;
+    border: 6px solid transparent;
+    background-clip: content-box;
+  }
 
-::-webkit-scrollbar-thumb {
-  background-color: #d6dee1;
-  border-radius: 20px;
-  border: 6px solid transparent;
-  background-clip: content-box;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background-color: #666666;
-}
-`
-
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #666666;
+  }
+`;
 
 // markup
 const SecondBar = () => {
-
   return (
     <SecondBarStyle>
       <Filtros />
