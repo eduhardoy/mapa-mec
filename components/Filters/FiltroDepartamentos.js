@@ -9,6 +9,7 @@ import MuiAccordionDetails from "@material-ui/core/AccordionDetails";
 import { Checkbox } from "@material-ui/core";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import useDepartamentosFiltro from '../../hooks/DepartamentosFiltro'
 
 const CheckboxFilter = styled.div`
   label {
@@ -66,7 +67,7 @@ const AccordionDetails = withStyles(theme => ({
 
 const FiltrosNew = ({ departamentos, setDepartamentosFilter }) => {
   const [expanded, setExpanded] = React.useState("panel1");
-  const [checkedId, setCheckedId] = React.useState([])
+  const [checkedId, setCheckedId] = useDepartamentosFiltro()
 
   const handleChange = panel => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
