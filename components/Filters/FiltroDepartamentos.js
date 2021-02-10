@@ -59,12 +59,28 @@ const AccordionDetails = withStyles(theme => ({
   },
 }))(MuiAccordionDetails);
 
-const FiltrosNew = ({ departamentos }) => {
+const FiltrosNew = ({ departamentos, setDepartamentosFilter }) => {
   const [expanded, setExpanded] = React.useState("panel1");
+  const [checkedId, setCheckedId] = React.useState([])
 
   const handleChange = panel => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
   };
+
+  const handleChecked = (ev) => {
+    const { value, checked } = ev.target
+    setCheckedId(checkedId.includes(parseInt(value)) ? checkedId.filter(c => c !== parseInt(value)) : [...checkedId, parseInt(value)])
+    if (value == "all") {
+      let ids = []
+      if (checked)
+        departamentos.forEach(dep => ids.push(dep.id))
+      setCheckedId(ids)
+    }
+  }
+
+  React.useEffect(() => {
+    setDepartamentosFilter(checkedId)
+  }, [checkedId])
 
   return (
     <div>
@@ -81,9 +97,10 @@ const FiltrosNew = ({ departamentos }) => {
         >
           <FormControlLabel
             aria-label='Acknowledge'
+            value="all"
             onClick={event => event.stopPropagation()}
             onFocus={event => event.stopPropagation()}
-            control={<CheckboxNew />}
+            control={<CheckboxNew onChange={handleChecked} />}
             label=''
           />
           <p>DEPARTAMENTOS</p>
@@ -92,8 +109,9 @@ const FiltrosNew = ({ departamentos }) => {
           <CheckboxFilter>
             {departamentos.map(dep => (
               <FormControlLabel
+                key={dep.id}
                 value={dep.id}
-                control={<CheckboxNew />}
+                control={<CheckboxNew onChange={handleChecked} checked={checkedId.includes(dep.id)} />}
                 label={dep.nombre}
                 labelPlacement='end'
               />
@@ -109,4 +127,8 @@ const mapStateToPros = state => ({
   departamentos: state.departamento.departamentos,
 });
 
-export default connect(mapStateToPros, null)(FiltrosNew);
+const mapDispatchToProps = dispatch => ({
+  setDepartamentosFilter: (arg) => dispatch({ type: "SET_DEPARTAMENTOS", payload: arg })
+})
+
+export default connect(mapStateToPros, mapDispatchToProps)(FiltrosNew);
