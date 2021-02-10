@@ -121,7 +121,7 @@ const IconButtonUser = styled.button`
   }
   svg {
     width: auto;
-    color: black;
+    color: #fff;
     height: 60%;
     margin: 0;
   }
@@ -129,7 +129,6 @@ const IconButtonUser = styled.button`
 
 // markup
 const Header = ({ selectFirstBar, firstBar }) => {
-
   return (
     <HeaderStyle>
       <MenuContainer>
@@ -139,7 +138,7 @@ const Header = ({ selectFirstBar, firstBar }) => {
       </MenuContainer>
       <LogosContainer>
         <Logos>
-          <img src="./images/Logos.png" alt="" />
+          <img src='./images/Logos.png' alt='' />
         </Logos>
       </LogosContainer>
       <SearchBarContainer>
@@ -154,12 +153,12 @@ const Header = ({ selectFirstBar, firstBar }) => {
   );
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   firstBar: state.bar.firstBar,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  selectFirstBar: (arg) => dispatch(selectFirstBar(arg)),
+const mapDispatchToProps = dispatch => ({
+  selectFirstBar: arg => dispatch(selectFirstBar(arg)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

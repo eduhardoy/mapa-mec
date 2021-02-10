@@ -1,6 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
-import FiltrosNew from "../Filters/FiltroDepartamentos.js";
+import FiltroDepartamentos from "../Filters/FiltroDepartamentos.js";
 
 // styles
 const ButtonContainer = styled.div`
@@ -69,7 +69,7 @@ const SecondBarStyle = styled.div`
 const SecondBar = () => {
   return (
     <SecondBarStyle>
-      <FiltrosNew />
+      <FiltroDepartamentos />
       <ButtonContainer>
         <FiltrosButton>FILTRAR</FiltrosButton>
       </ButtonContainer>

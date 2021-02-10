@@ -9,6 +9,7 @@ import MuiAccordionDetails from "@material-ui/core/AccordionDetails";
 import { Checkbox } from "@material-ui/core";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import RadioButtonCheckedIcon from "@material-ui/icons/RadioButtonChecked";
 
 const CheckboxFilter = styled.div`
   label {
@@ -64,28 +65,31 @@ const AccordionDetails = withStyles(theme => ({
   },
 }))(MuiAccordionDetails);
 
-const FiltrosNew = ({ departamentos, setDepartamentosFilter }) => {
+const FiltroDepartamentos = ({ departamentos, setDepartamentosFilter }) => {
   const [expanded, setExpanded] = React.useState("panel1");
-  const [checkedId, setCheckedId] = React.useState([])
+  const [checkedId, setCheckedId] = React.useState([]);
 
   const handleChange = panel => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
   };
 
-  const handleChecked = (ev) => {
-    const { value, checked } = ev.target
-    setCheckedId(checkedId.includes(parseInt(value)) ? checkedId.filter(c => c !== parseInt(value)) : [...checkedId, parseInt(value)])
+  const handleChecked = ev => {
+    const { value, checked } = ev.target;
+    setCheckedId(
+      checkedId.includes(parseInt(value))
+        ? checkedId.filter(c => c !== parseInt(value))
+        : [...checkedId, parseInt(value)]
+    );
     if (value == "all") {
-      let ids = []
-      if (checked)
-        departamentos.forEach(dep => ids.push(dep.id))
-      setCheckedId(ids)
+      let ids = [];
+      if (checked) departamentos.forEach(dep => ids.push(dep.id));
+      setCheckedId(ids);
     }
-  }
+  };
 
   React.useEffect(() => {
-    setDepartamentosFilter(checkedId)
-  }, [checkedId])
+    setDepartamentosFilter(checkedId);
+  }, [checkedId]);
 
   return (
     <div>
@@ -102,10 +106,16 @@ const FiltrosNew = ({ departamentos, setDepartamentosFilter }) => {
         >
           <FormControlLabel
             aria-label='Acknowledge'
-            value="all"
+            value='all'
             onClick={event => event.stopPropagation()}
             onFocus={event => event.stopPropagation()}
-            control={<CheckboxNew onChange={handleChecked} />}
+            control={
+              <CheckboxNew
+                onChange={handleChecked}
+                icon={<RadioButtonCheckedIcon />}
+                checkedIcon={<RadioButtonCheckedIcon />}
+              />
+            }
             label=''
           />
           <p>DEPARTAMENTOS</p>
@@ -116,7 +126,12 @@ const FiltrosNew = ({ departamentos, setDepartamentosFilter }) => {
               <FormControlLabel
                 key={dep.id}
                 value={dep.id}
-                control={<CheckboxNew onChange={handleChecked} checked={checkedId.includes(dep.id)} />}
+                control={
+                  <CheckboxNew
+                    onChange={handleChecked}
+                    checked={checkedId.includes(dep.id)}
+                  />
+                }
                 label={dep.nombre}
                 labelPlacement='end'
               />
@@ -133,7 +148,8 @@ const mapStateToPros = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  setDepartamentosFilter: (arg) => dispatch({ type: "SET_DEPARTAMENTOS", payload: arg })
-})
+  setDepartamentosFilter: arg =>
+    dispatch({ type: "SET_DEPARTAMENTOS", payload: arg }),
+});
 
-export default connect(mapStateToPros, mapDispatchToProps)(FiltrosNew);
+export default connect(mapStateToPros, mapDispatchToProps)(FiltroDepartamentos);
