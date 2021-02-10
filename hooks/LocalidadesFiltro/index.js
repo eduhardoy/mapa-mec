@@ -1,15 +1,15 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from "react-redux";
 
 const useLocalidadesFiltro = () => {
-    const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-    const setState = (arg) => {
-        dispatch({ type: "SET_DEPARTAMENTOS", payload: arg })
-    }
+  const setState = arg => {
+    dispatch({ type: "SET_LOCALIDADES", payload: arg });
+  };
 
-    const {localidades} = useSelector(state => state.filtro)
+  const { localidades } = useSelector(state => state.filtro);
 
-    return [localidades, setState]
-}
+  return [localidades, setState];
+};
 
-export default useLocalidadesFiltro
+export default useLocalidadesFiltro;
