@@ -10,7 +10,12 @@ import { Checkbox } from "@material-ui/core";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
-const CheckboxFilter = styled.div``;
+const CheckboxFilter = styled.div`
+  label {
+    width: 50%;
+    margin: 0;
+  }
+`;
 
 const CheckboxNew = styled(Checkbox)`
   span {
