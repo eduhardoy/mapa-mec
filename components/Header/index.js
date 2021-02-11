@@ -10,6 +10,7 @@ import { selectBar, selectFirstBar } from "../../redux/actions/BarActions";
 // styles
 
 const HeaderStyle = styled.main`
+  width: 100vw;
   background-color: #7cb342;
   box-shadow: 0px 1px 5px 3px rgba(53, 53, 53, 0.47);
   height: 77px;
@@ -25,54 +26,48 @@ const HeaderStyle = styled.main`
 `;
 
 const MenuContainer = styled.div`
-  width: 4vw;
-  min-width: 40px;
-  max-width: 55px;
+  width: 5vw;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 `;
 
-const LogosContainer = styled.div`
-  width: 50vw;
+const MiddleContainer = styled.div`
+  width: calc(90% - 5vw);
   height: 100%;
   display: flex;
-  justify-content: center;
-`;
-
-const Logos = styled.div`
-  width: 100%;
-  height: 100%;
-  z-index: 6;
-  display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  img {
-    height: 70%;
-    width: auto;
-    @media (max-width: 1100px) {
-      height: 65%;
-    }
-    @media (max-width: 1000px) {
-      height: 60%;
-    }
-    @media (max-width: 900px) {
-      height: 55%;
-    }
-  }
 `;
 
 const SearchBarContainer = styled.div`
-  width: 40vw;
+  width: 40%;
   height: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 `;
 
+const Logos = styled.div`
+  width: 40%;
+  height: 100%;
+  z-index: 6;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  @media (max-width: 1200px) {
+    width: 50%;
+  }
+  img {
+    height: auto;
+    width: 80%;
+    margin-left: 10px;
+  }
+`;
+
 const UserContainer = styled.div`
-  width: 5vw;
+  width: 5%;
   height: 100%;
   display: flex;
   justify-content: center;
@@ -136,14 +131,14 @@ const Header = ({ selectFirstBar, firstBar }) => {
           <MenuIcon />
         </IconButtonMenu>
       </MenuContainer>
-      <LogosContainer>
+      <MiddleContainer>
         <Logos>
           <img src='./images/Logos.png' alt='' />
         </Logos>
-      </LogosContainer>
-      <SearchBarContainer>
-        <SearchBar />
-      </SearchBarContainer>
+        <SearchBarContainer>
+          <SearchBar></SearchBar>
+        </SearchBarContainer>
+      </MiddleContainer>
       <UserContainer>
         <IconButtonUser>
           <AccountCircleIcon />
