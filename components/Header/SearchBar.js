@@ -1,7 +1,7 @@
 import * as React from "react";
 import styled from "styled-components";
 // import { useSelector } from "react-redux";
-import SearchIcon from '@material-ui/icons/Search';
+import SearchIcon from "@material-ui/icons/Search";
 
 // styles
 const SearchBarWrapper = styled.div`
@@ -11,9 +11,18 @@ const SearchBarWrapper = styled.div`
   width: 70%;
   height: 60%;
   background-color: #fff;
-  border: solid 1px #337E3C;
+  border: solid 1px #337e3c;
   border-radius: 4px;
   overflow: hidden;
+  @media (max-width: 1200px) {
+    width: 80%;
+  }
+  @media (max-width: 1000px) {
+    width: 90%;
+  }
+  @media (max-width: 769px) {
+    width: 95%;
+  }
 `;
 
 const SearchBarInput = styled.input`
@@ -42,11 +51,11 @@ const SearchBarButton = styled.button`
   outline: none;
   cursor: pointer;
   color: #e9ecef;
-  border-left: solid 1px #337E3C;
+  border-left: solid 1px #337e3c;
   svg {
     width: auto;
     height: 50%;
-    color: #33691E;
+    color: #33691e;
   }
 `;
 
@@ -57,9 +66,9 @@ const SearchBarButton = styled.button`
 const SearchBar = () => {
   return (
     <SearchBarWrapper>
-      <SearchBarInput placeholder="Ingresar nombre o CUEANEXO"></SearchBarInput>
+      <SearchBarInput placeholder='Ingresar nombre o CUEANEXO'></SearchBarInput>
       <SearchBarButton>
-        <SearchIcon/>
+        <SearchIcon />
       </SearchBarButton>
     </SearchBarWrapper>
   );

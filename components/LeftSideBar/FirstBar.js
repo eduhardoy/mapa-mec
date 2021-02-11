@@ -1,16 +1,30 @@
 import * as React from "react";
 import styled from "styled-components";
-import MapIcon from "@material-ui/icons/Map";
+import TuneIcon from "@material-ui/icons/Tune";
 import InfoIcon from "@material-ui/icons/Info";
-import SettingsIcon from "@material-ui/icons/Settings";
-import WifiIcon from "@material-ui/icons/Wifi";
-import FullscreenIcon from "@material-ui/icons/Fullscreen";
-import LocationCityIcon from "@material-ui/icons/LocationCity";
-import EqualizerIcon from "@material-ui/icons/Equalizer";
 import { connect } from "react-redux";
 import { selectBar } from "../../redux/actions/BarActions";
 
 // styles
+const FirstBarContainer = styled.div`
+  background-color: #fff;
+  /* border-right: solid #d3d3d3 2px; */
+  height: calc(100vh - 77px);
+  width: 5vw;
+  z-index: 10;
+  margin: 0;
+  padding: 0;
+  box-shadow: 1px 0px 5px 1px rgba(53, 53, 53, 0.25);
+  :hover {
+    width: 15vw;
+    max-width: none;
+  }
+  :focus {
+    width: 15vw;
+    max-width: none;
+  }
+`;
+
 const FirstBarStyle = styled.div`
   width: 100%;
   height: 60%;
@@ -21,6 +35,10 @@ const FirstBarStyle = styled.div`
   justify-content: flex-start;
 `;
 
+const ButtonList = styled.ul``;
+
+const ButtonItem = styled.li``;
+
 const IconButton = styled.button`
   width: 100%;
   height: 15%;
@@ -30,22 +48,11 @@ const IconButton = styled.button`
   align-items: center;
   justify-content: center;
   border: none;
+  outline: none;
   background-color: transparent;
   cursor: pointer;
-  :hover {
-    svg {
-      width: 90%;
-    }
-  }
-  :focus {
-    border: none;
-    outline: none;
-    svg {
-      width: 90%;
-    }
-  }
   svg {
-    width: 70%;
+    width: 30px;
     color: #666666;
     height: auto;
     margin: 0;
@@ -55,41 +62,30 @@ const IconButton = styled.button`
 // markup
 const FirstBar = ({ selectBar, secondBar }) => {
   return (
-    <FirstBarStyle>
-      <IconButton
-        onClick={() => selectBar({ bar: !secondBar.bar, selected: "FILTROS" })}
-      >
-        <MapIcon />
-      </IconButton>
-      <IconButton>
-        <InfoIcon />
-      </IconButton>
-      <IconButton>
-        <SettingsIcon />
-      </IconButton>
-      <IconButton>
-        <FullscreenIcon />
-      </IconButton>
-      <IconButton>
-        <WifiIcon />
-      </IconButton>
-      <IconButton>
-        <LocationCityIcon />
-      </IconButton>
-      <IconButton>
-        <EqualizerIcon />
-      </IconButton>
-    </FirstBarStyle>
+    <FirstBarContainer>
+      <FirstBarStyle>
+        <IconButton
+          onClick={() =>
+            selectBar({ bar: !secondBar.bar, selected: "FILTROS" })
+          }
+        >
+          <TuneIcon />
+        </IconButton>
+        <IconButton>
+          <InfoIcon />
+        </IconButton>
+      </FirstBarStyle>
+    </FirstBarContainer>
   );
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   firstBar: state.bar.firstBar,
   secondBar: state.bar.secondBar,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  selectBar: (arg) => dispatch(selectBar(arg)),
+const mapDispatchToProps = dispatch => ({
+  selectBar: arg => dispatch(selectBar(arg)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(FirstBar);
