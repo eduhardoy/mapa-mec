@@ -84,10 +84,6 @@ const FiltrosNew = ({ departamentos, setDepartamentosFilter }) => {
     }
   }
 
-  React.useEffect(() => {
-    setDepartamentosFilter(checkedId)
-  }, [checkedId])
-
   return (
     <div>
       <Accordion

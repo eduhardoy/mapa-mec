@@ -3,10 +3,10 @@ import { connect } from "react-redux";
 import * as type from "../../redux/types";
 import { updateMarcadores } from "../../redux/actions/MarcadoresActions";
 
-function FilterListener({ localizaciones, filtros, updateMarcadores, localidades, setLocalidadesFiltered }) {
+function FilterListener({ localizaciones, filtros, updateMarcadores, localidadesBase, setLocalidadesFiltered }) {
   const [filtered, setFiltered] = React.useState([]);
   //desctructuring
-  const { departamentos } = filtros;
+  const { departamentos, localidades } = filtros;
 
   //FILTRAR POR DEPARTAMENTO
   React.useEffect(async () => {
@@ -14,7 +14,7 @@ function FilterListener({ localizaciones, filtros, updateMarcadores, localidades
     const filterByDepartamentos = localizaciones.filter((loc) => {
       if (loc.domicilio) {
         if (departamentos.includes(loc.domicilio.departamento.id)) {
-          let locFiltered = localidades.filter(localidad => localidad.departamento.id == loc.domicilio.departamento.id)
+          let locFiltered = localidadesBase.filter(localidad => localidad.departamento.id == loc.domicilio.departamento.id)
           locFiltered.map(locFil => {
             if (localidadesFiltered.indexOf(locFil) === -1)
               localidadesFiltered.push(locFil)
@@ -30,8 +30,14 @@ function FilterListener({ localizaciones, filtros, updateMarcadores, localidades
 
   //FILTAR POR LOCALIDADES (DEPENDE DE DEPARTAMENTOS)
   React.useEffect(async () => {
-    
-  })
+    const filter = filtered.filter(loc => {
+      if (localidades.includes(loc.domicilio.localidad.id)) {
+        return true
+      }
+    })
+
+    setFiltered(filter)
+  },[localidades])
 
   //FINAL
   React.useEffect(() => {
@@ -43,8 +49,8 @@ function FilterListener({ localizaciones, filtros, updateMarcadores, localidades
 const mapStateToProps = (state) => ({
   localizaciones: state.localizacion.localizaciones,
   filtros: state.filtro,
-  departamentos: state.departamento.departamentos,
-  localidades: state.localidad.localidades
+  departamentosBase: state.departamento.departamentos,
+  localidadesBase: state.localidad.localidades
 });
 
 const mapDispatchToProps = (dispatch) => ({
