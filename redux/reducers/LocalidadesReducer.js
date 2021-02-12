@@ -3,7 +3,6 @@ import * as type from "../types";
 
 const initialState = {
   localidades: [],
-  localidadesFiltered: [],
   error: null,
 };
 
@@ -13,8 +12,6 @@ const localidadesReducer = (state = initialState, action) => {
       return { ...state, ...action.payload.localidad };
     case type.LOAD_LOCALIDADES:
       return { ...state, localidades: action.payload };
-    case type.PUT_LOCALIDADES_FILTERED:
-      return { ...state, localidadesFiltered: action.payload }
     default:
       return state;
   }

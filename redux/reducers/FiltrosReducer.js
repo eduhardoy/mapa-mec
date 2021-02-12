@@ -3,6 +3,7 @@ import * as type from "../types";
 const initialState = {
   departamentos: [],
   localidades: [],
+  localidadesFiltered: [],
   dependencia: [],
   estado: [],
   jurisdiccion: [],
@@ -16,7 +17,6 @@ const initialState = {
   aguaPotable: [],
   proveedoresInternet: [],
   agrupaciones: []
-
 };
 
 const filtrosReducer = (state = initialState, action) => {
@@ -25,6 +25,8 @@ const filtrosReducer = (state = initialState, action) => {
       return { ...state, departamentos: action.payload };
     case type.SET_LOCALIDADES:
       return { ...state, localidades: action.payload }
+    case type.PUT_LOCALIDADES_FILTERED:
+      return { ...state, localidadesFiltered: action.payload }
     default:
       return state;
   }
