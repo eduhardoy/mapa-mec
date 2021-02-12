@@ -16,8 +16,21 @@ const FirstBarContainer = styled.div`
   padding: 0;
   box-shadow: 1px 0px 5px 1px rgba(53, 53, 53, 0.25);
   :hover {
-    width: 15vw;
+    width: 18vw;
     max-width: none;
+    div {
+      ul {
+        li {
+          button {
+            width: 100%;
+            p {
+              display: flex;
+              width: 60%;
+            }
+          }
+        }
+      }
+    }
   }
   :focus {
     width: 15vw;
@@ -28,23 +41,44 @@ const FirstBarContainer = styled.div`
 const FirstBarStyle = styled.div`
   width: 100%;
   height: 60%;
-  margin: 0;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
+  align-items: flex-start;
+  justify-content: center;
 `;
 
-const ButtonList = styled.ul``;
+const ButtonList = styled.ul`
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+`;
 
-const ButtonItem = styled.li``;
+const ButtonItem = styled.li`
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 10px;
+  flex-direction: column;
+  :hover {
+    button {
+      background-color: #f6faf1;
+      color: #7cb342;
+      svg {
+        color: #7cb342;
+      }
+    }
+  }
+`;
 
 const IconButton = styled.button`
   width: 100%;
-  height: 15%;
-  margin-top: 20%;
+  padding: 0;
+  height: 100%;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   border: none;
@@ -59,21 +93,36 @@ const IconButton = styled.button`
   }
 `;
 
+const ButtonText = styled.p`
+  display: none;
+  font-size: 18px;
+  font-family: "Lato";
+  padding-left: 30px;
+`;
+
 // markup
 const FirstBar = ({ selectBar, secondBar }) => {
   return (
     <FirstBarContainer>
       <FirstBarStyle>
-        <IconButton
-          onClick={() =>
-            selectBar({ bar: !secondBar.bar, selected: "FILTROS" })
-          }
-        >
-          <TuneIcon />
-        </IconButton>
-        <IconButton>
-          <InfoIcon />
-        </IconButton>
+        <ButtonList>
+          <ButtonItem>
+            <IconButton
+              onClick={() =>
+                selectBar({ bar: !secondBar.bar, selected: "FILTROS" })
+              }
+            >
+              <TuneIcon />
+              <ButtonText>Filtros</ButtonText>
+            </IconButton>
+          </ButtonItem>
+          <ButtonItem>
+            <IconButton>
+              <InfoIcon />
+              <ButtonText>Información</ButtonText>
+            </IconButton>
+          </ButtonItem>
+        </ButtonList>
       </FirstBarStyle>
     </FirstBarContainer>
   );

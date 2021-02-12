@@ -9,8 +9,8 @@ import { Checkbox } from "@material-ui/core";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import RadioButtonCheckedIcon from "@material-ui/icons/RadioButtonChecked";
-import useFiltros from "../../hooks/Filtros";
-import usePrecargado from "../../hooks/Precargado";
+import useLocalidadesFiltro from "../../hooks/LocalidadesFiltro";
+import useLocalidades from "../../hooks/LocalidadesFiltered";
 
 const CheckboxFilter = styled.div`
   label {
@@ -66,10 +66,11 @@ const AccordionDetails = withStyles(theme => ({
   },
 }))(MuiAccordionDetails);
 
-const FiltroDepartamentos = () => {
-  const [expanded, setExpanded] = React.useState("panel1");
-  const { filtros, setDepartamentoFilter } = useFiltros()
-  const { departamentos } = usePrecargado()
+const FiltroInternet = () => {
+  const [expanded, setExpanded] = React.useState();
+  const [checkedId, setCheckedId] = useLocalidadesFiltro();
+
+  const [localidades] = useLocalidades();
 
   const handleChange = panel => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
@@ -77,10 +78,14 @@ const FiltroDepartamentos = () => {
 
   const handleChecked = ev => {
     const { value, checked } = ev.target;
-    setDepartamentoFilter(value)
+    setCheckedId(
+      checkedId.includes(parseInt(value))
+        ? checkedId.filter(c => c !== parseInt(value))
+        : [...checkedId, parseInt(value)]
+    );
     if (value == "all") {
       let ids = [];
-      if (checked) departamentos.forEach(dep => ids.push(dep.id));
+      if (checked) localidades.forEach(dep => ids.push(dep.id));
       setCheckedId(ids);
     }
   };
@@ -88,8 +93,8 @@ const FiltroDepartamentos = () => {
   return (
     <Accordion
       square
-      expanded={expanded === "panel1"}
-      onChange={handleChange("panel1")}
+      expanded={expanded === "panel12"}
+      onChange={handleChange("panel12")}
     >
       <AccordionSummary
         expandIcon={<ExpandMoreIcon />}
@@ -111,18 +116,18 @@ const FiltroDepartamentos = () => {
           }
           label=''
         />
-        <p>DEPARTAMENTOS</p>
+        <p>INTERNET</p>
       </AccordionSummary>
       <AccordionDetails>
         <CheckboxFilter>
-          {departamentos.map(dep => (
+          {localidades.map(dep => (
             <FormControlLabel
               key={dep.id}
               value={dep.id}
               control={
                 <CheckboxNew
                   onChange={handleChecked}
-                  checked={filtros.departamentos.includes(dep.id)}
+                  checked={checkedId.includes(dep.id)}
                 />
               }
               label={dep.nombre}
@@ -135,5 +140,4 @@ const FiltroDepartamentos = () => {
   );
 };
 
-
-export default FiltroDepartamentos;
+export default FiltroInternet;

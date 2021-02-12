@@ -8,7 +8,7 @@ const SearchBarWrapper = styled.div`
   padding: 0;
   margin: 0;
   display: flex;
-  width: 70%;
+  width: 75%;
   height: 60%;
   background-color: #fff;
   border: solid 1px #337e3c;
