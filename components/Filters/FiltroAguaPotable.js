@@ -9,8 +9,6 @@ import { Checkbox } from "@material-ui/core";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import RadioButtonCheckedIcon from "@material-ui/icons/RadioButtonChecked";
-import useLocalidadesFiltro from "../../hooks/LocalidadesFiltro";
-import useLocalidades from "../../hooks/LocalidadesFiltered";
 
 const CheckboxFilter = styled.div`
   label {
@@ -68,9 +66,8 @@ const AccordionDetails = withStyles(theme => ({
 
 const FiltroAguaPotable = () => {
   const [expanded, setExpanded] = React.useState();
-  const [checkedId, setCheckedId] = useLocalidadesFiltro();
-
-  const [localidades] = useLocalidades();
+  const { filtros } = useFiltros()
+  const { localidades } = usePrecargado()
 
   const handleChange = panel => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
@@ -78,16 +75,6 @@ const FiltroAguaPotable = () => {
 
   const handleChecked = ev => {
     const { value, checked } = ev.target;
-    setCheckedId(
-      checkedId.includes(parseInt(value))
-        ? checkedId.filter(c => c !== parseInt(value))
-        : [...checkedId, parseInt(value)]
-    );
-    if (value == "all") {
-      let ids = [];
-      if (checked) localidades.forEach(dep => ids.push(dep.id));
-      setCheckedId(ids);
-    }
   };
 
   return (
@@ -127,7 +114,6 @@ const FiltroAguaPotable = () => {
               control={
                 <CheckboxNew
                   onChange={handleChecked}
-                  checked={checkedId.includes(dep.id)}
                 />
               }
               label={dep.nombre}
