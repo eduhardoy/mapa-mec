@@ -6,7 +6,7 @@ const initialState = {
 
 const marcadoresReducer = (state = initialState, action) => {
   switch (action.type) {
-    case type.UPDATE_MARCADORES:
+    case type.SET_MARCADORES:
       return { ...state, marcadores: action.payload };
     default:
       return state;

@@ -51,8 +51,6 @@ export const getServerSideProps = wrapper.getServerSideProps(
 const IndexPage = () => {
   return (
     <Layout>
-      {/* FILTER LISTENER */}
-      <FilterListener/>
       <div>
         <Header />
         <Map />
