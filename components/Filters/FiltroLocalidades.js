@@ -122,7 +122,7 @@ const FiltroLocalidades = () => {
               control={
                 <CheckboxNew
                   onChange={handleChecked}
-                  checked={filtros.localidades.includes(dep.id).includes(dep.id)}
+                  checked={filtros.localidades.includes(dep.id)}
                 />
               }
               label={dep.nombre}
