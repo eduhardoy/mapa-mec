@@ -19,11 +19,6 @@ const CheckboxFilter = styled.div`
   }
 `;
 
-const Container = styled.div`
-  width: 100%;
-  margin: 0;
-`;
-
 const CheckboxNew = styled(Checkbox)`
   span {
     color: #7cb342;
@@ -72,7 +67,7 @@ const AccordionDetails = withStyles(theme => ({
 }))(MuiAccordionDetails);
 
 const FiltroLocalidades = () => {
-  const [expanded, setExpanded] = React.useState("panel1");
+  const [expanded, setExpanded] = React.useState();
   const [checkedId, setCheckedId] = useLocalidadesFiltro();
 
   const [localidades] = useLocalidades();
@@ -96,54 +91,52 @@ const FiltroLocalidades = () => {
   };
 
   return (
-    <Container>
-      <Accordion
-        square
-        expanded={expanded === "panel2"}
-        onChange={handleChange("panel2")}
+    <Accordion
+      square
+      expanded={expanded === "panel2"}
+      onChange={handleChange("panel2")}
+    >
+      <AccordionSummary
+        expandIcon={<ExpandMoreIcon />}
+        aria-label='Expand'
+        aria-controls='additional-actions1-content'
+        id='additional-actions1-header'
       >
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-label='Expand'
-          aria-controls='additional-actions1-content'
-          id='additional-actions1-header'
-        >
-          <FormControlLabel
-            aria-label='Acknowledge'
-            value='all'
-            onClick={event => event.stopPropagation()}
-            onFocus={event => event.stopPropagation()}
-            control={
-              <CheckboxNew
-                onChange={handleChecked}
-                icon={<RadioButtonCheckedIcon />}
-                checkedIcon={<RadioButtonCheckedIcon />}
-              />
-            }
-            label=''
-          />
-          <p>LOCALIDADES</p>
-        </AccordionSummary>
-        <AccordionDetails>
-          <CheckboxFilter>
-            {localidades.map(dep => (
-              <FormControlLabel
-                key={dep.id}
-                value={dep.id}
-                control={
-                  <CheckboxNew
-                    onChange={handleChecked}
-                    checked={checkedId.includes(dep.id)}
-                  />
-                }
-                label={dep.nombre}
-                labelPlacement='end'
-              />
-            ))}
-          </CheckboxFilter>
-        </AccordionDetails>
-      </Accordion>
-    </Container>
+        <FormControlLabel
+          aria-label='Acknowledge'
+          value='all'
+          onClick={event => event.stopPropagation()}
+          onFocus={event => event.stopPropagation()}
+          control={
+            <CheckboxNew
+              onChange={handleChecked}
+              icon={<RadioButtonCheckedIcon />}
+              checkedIcon={<RadioButtonCheckedIcon />}
+            />
+          }
+          label=''
+        />
+        <p>LOCALIDADES</p>
+      </AccordionSummary>
+      <AccordionDetails>
+        <CheckboxFilter>
+          {localidades.map(dep => (
+            <FormControlLabel
+              key={dep.id}
+              value={dep.id}
+              control={
+                <CheckboxNew
+                  onChange={handleChecked}
+                  checked={checkedId.includes(dep.id)}
+                />
+              }
+              label={dep.nombre}
+              labelPlacement='end'
+            />
+          ))}
+        </CheckboxFilter>
+      </AccordionDetails>
+    </Accordion>
   );
 };
 

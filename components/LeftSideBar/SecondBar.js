@@ -1,7 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
-import FiltroDepartamentos from "../Filters/FiltroDepartamentos.js";
-import FiltroLocalidades from "../Filters/FiltroLocalidades.js";
+import FilterWrapper from "../Filters/FilterWrapper.js";
 
 // styles
 const SecondBarStyle = styled.div`
@@ -23,6 +22,7 @@ const FiltrosContainer = styled.div`
   flex-direction: column;
   align-items: center;
   overflow-y: scroll;
+  font-family: "Lato", sans-serif;
 
   ::-webkit-scrollbar {
     width: 0px;
@@ -77,8 +77,7 @@ const SecondBar = () => {
   return (
     <SecondBarStyle>
       <FiltrosContainer>
-        <FiltroDepartamentos />
-        <FiltroLocalidades />
+        <FilterWrapper />
       </FiltrosContainer>
       <ButtonContainer>
         <FiltrosButton>FILTRAR</FiltrosButton>

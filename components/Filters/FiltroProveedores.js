@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import { withStyles } from "@material-ui/core/styles";
-import { connect } from "react-redux";
 
 import MuiAccordion from "@material-ui/core/Accordion";
 import MuiAccordionSummary from "@material-ui/core/AccordionSummary";
@@ -10,7 +9,8 @@ import { Checkbox } from "@material-ui/core";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import RadioButtonCheckedIcon from "@material-ui/icons/RadioButtonChecked";
-import useDepartamentosFiltro from "../../hooks/DepartamentosFiltro";
+import useLocalidadesFiltro from "../../hooks/LocalidadesFiltro";
+import useLocalidades from "../../hooks/LocalidadesFiltered";
 
 const CheckboxFilter = styled.div`
   label {
@@ -66,9 +66,11 @@ const AccordionDetails = withStyles(theme => ({
   },
 }))(MuiAccordionDetails);
 
-const FiltroDepartamentos = ({ departamentos, setDepartamentosFilter }) => {
+const FiltroProveedores = () => {
   const [expanded, setExpanded] = React.useState();
-  const [checkedId, setCheckedId] = useDepartamentosFiltro();
+  const [checkedId, setCheckedId] = useLocalidadesFiltro();
+
+  const [localidades] = useLocalidades();
 
   const handleChange = panel => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
@@ -83,20 +85,16 @@ const FiltroDepartamentos = ({ departamentos, setDepartamentosFilter }) => {
     );
     if (value == "all") {
       let ids = [];
-      if (checked) departamentos.forEach(dep => ids.push(dep.id));
+      if (checked) localidades.forEach(dep => ids.push(dep.id));
       setCheckedId(ids);
     }
   };
 
-  React.useEffect(() => {
-    setDepartamentosFilter(checkedId);
-  }, [checkedId]);
-
   return (
     <Accordion
       square
-      expanded={expanded === "panel1"}
-      onChange={handleChange("panel1")}
+      expanded={expanded === "panel14"}
+      onChange={handleChange("panel14")}
     >
       <AccordionSummary
         expandIcon={<ExpandMoreIcon />}
@@ -118,11 +116,11 @@ const FiltroDepartamentos = ({ departamentos, setDepartamentosFilter }) => {
           }
           label=''
         />
-        <p>DEPARTAMENTOS</p>
+        <p>PROVEEDORES</p>
       </AccordionSummary>
       <AccordionDetails>
         <CheckboxFilter>
-          {departamentos.map(dep => (
+          {localidades.map(dep => (
             <FormControlLabel
               key={dep.id}
               value={dep.id}
@@ -142,13 +140,4 @@ const FiltroDepartamentos = ({ departamentos, setDepartamentosFilter }) => {
   );
 };
 
-const mapStateToPros = state => ({
-  departamentos: state.departamento.departamentos,
-});
-
-const mapDispatchToProps = dispatch => ({
-  setDepartamentosFilter: arg =>
-    dispatch({ type: "SET_DEPARTAMENTOS", payload: arg }),
-});
-
-export default connect(mapStateToPros, mapDispatchToProps)(FiltroDepartamentos);
+export default FiltroProveedores;

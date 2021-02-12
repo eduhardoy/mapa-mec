@@ -16,7 +16,7 @@ const FirstBarContainer = styled.div`
   padding: 0;
   box-shadow: 1px 0px 5px 1px rgba(53, 53, 53, 0.25);
   :hover {
-    width: 15vw;
+    width: 18vw;
     max-width: none;
     div {
       ul {
@@ -97,7 +97,7 @@ const ButtonText = styled.p`
   display: none;
   font-size: 18px;
   font-family: "Lato";
-  padding-left: 20px;
+  padding-left: 30px;
 `;
 
 // markup
@@ -119,7 +119,7 @@ const FirstBar = ({ selectBar, secondBar }) => {
           <ButtonItem>
             <IconButton>
               <InfoIcon />
-              <ButtonText></ButtonText>
+              <ButtonText>Información</ButtonText>
             </IconButton>
           </ButtonItem>
         </ButtonList>
