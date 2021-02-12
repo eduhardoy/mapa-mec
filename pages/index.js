@@ -8,7 +8,6 @@ import Map from "../components/Map";
 import { useDispatch } from "react-redux";
 import * as type from "../redux/types";
 import { wrapper } from "../redux/store";
-import FilterListener from "../components/FilterListener";
 
 export const getServerSideProps = wrapper.getServerSideProps(
   async ({ store }) => {
@@ -34,7 +33,7 @@ export const getServerSideProps = wrapper.getServerSideProps(
       payload: departamentos.data,
     });
 
-    //LOCALIDADES 
+    //LOCALIDADES
     const localidades = await axios.get(
       "http://200.10.111.88:1337/localidades"
     );
