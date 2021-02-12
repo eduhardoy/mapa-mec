@@ -26,7 +26,7 @@ const FilterWrapper = () => {
     <Wrapper>
       <FiltroDepartamentos />
       <FiltroLocalidades />
-      <FiltroDependencia />
+      {/* <FiltroDependencia />
       <FiltroEstado />
       <FiltroJurisdiccion />
       <FiltroOrganismoDependencia />
@@ -38,7 +38,7 @@ const FilterWrapper = () => {
       <FiltroInternet />
       <FiltroAguaPotable />
       <FiltroProveedores />
-      <FiltroAgrupaciones />
+      <FiltroAgrupaciones /> */}
     </Wrapper>
   );
 };

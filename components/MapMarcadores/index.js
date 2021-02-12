@@ -21,7 +21,7 @@ const MapMarcadores = ({ map, marcadores }) => {
   };
   return (
     <div>
-      {marcadores.map((ele) => {
+      {marcadores.map(ele => {
         if (ele && ele.domicilio) {
           const latlng = {
             lng: ele.domicilio.geo.geometry.coordinates[0],
@@ -31,7 +31,7 @@ const MapMarcadores = ({ map, marcadores }) => {
             <Marker
               key={ele.cueanexo}
               position={latlng}
-              icon="./images/pin-varios.png"
+              icon='./images/pinIni.png'
               onClick={() => clickMarker(ele, latlng)}
             />
           );
@@ -48,10 +48,10 @@ const MapMarcadores = ({ map, marcadores }) => {
   );
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   marcadores: state.marcador.marcadores,
 });
 
-const mapDispatchToProps = (dispatch) => ({});
+const mapDispatchToProps = dispatch => ({});
 
 export default connect(mapStateToProps, mapDispatchToProps)(MapMarcadores);

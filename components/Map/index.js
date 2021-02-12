@@ -5,7 +5,7 @@ import styled from "styled-components";
 
 //TODO Map Container styled component as MapContainer
 const MapContainer = styled.div`
-  width:${props => props.ancho}; //CALCULAR WIDT BASADO EN PROPS
+  width: ${props => props.ancho}; //CALCULAR WIDT BASADO EN PROPS
   height: calc(100vh - 77px);
   right: 0px;
   position: absolute;
@@ -21,8 +21,8 @@ function MyComponent() {
   const [map, setMap] = React.useState(null);
 
   const onLoad = React.useCallback(function callback(map) {
-    const bounds = new window.google.maps.LatLngBounds();
-    map.fitBounds(bounds);
+    // const bounds = new window.google.maps.LatLngBounds();
+    // map.fitBounds(bounds);
     setMap(map);
   }, []);
 
@@ -31,12 +31,12 @@ function MyComponent() {
   }, []);
 
   return (
-    <MapContainer ancho={'100vw'}>
-      <LoadScript googleMapsApiKey="AIzaSyB9T71MrqTWubzHayatyn7RP5lpDMdcrgo">
+    <MapContainer ancho={"100vw"}>
+      <LoadScript googleMapsApiKey='AIzaSyB9T71MrqTWubzHayatyn7RP5lpDMdcrgo'>
         <GoogleMap
           mapContainerStyle={containerStyle}
-          center={{ lat: -27.894283, lng: -58.301018 }}
-          zoom={10}
+          center={{ lat: -28.737328845367706, lng: -57.722286004532684 }}
+          zoom={8}
           onLoad={onLoad}
           onUnmount={onUnmount}
           options={{
