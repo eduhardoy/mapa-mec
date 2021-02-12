@@ -115,7 +115,7 @@ const FiltroLocalidades = () => {
       </AccordionSummary>
       <AccordionDetails>
         <CheckboxFilter>
-          {localidades.map(dep => (
+          {filtros.localidadesFiltered.map(dep => (
             <FormControlLabel
               key={dep.id}
               value={dep.id}

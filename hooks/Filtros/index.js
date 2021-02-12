@@ -15,12 +15,34 @@ const useFiltros = () => {
 
 
     const setDepartamento = (arg) => {
-        dispatch({
-            type:type.PUT_LOCALIDADES_FILTERED,
-             payload:filtro.departamentos.includes(parseInt(arg))
-             ? filtro.localidadesFiltered.filter(c => c.departamento.id !== parseInt(arg))
-             : [...filtro.localidadesFiltered, ...localidades.filter(c => c.departamento.id === parseInt(arg))]
-        })
+        if (filtro.departamentos.includes(parseInt(arg))) { //CUANDO DESELECCIONA DEPARTAMENTO
+
+            dispatch({
+                type: type.PUT_LOCALIDADES_FILTERED,
+                payload: filtro.localidadesFiltered.filter(c => c.departamento.id !== parseInt(arg))
+            })
+            let locIds = [...filtro.localidades]
+            for (const loc of localidades.filter(c => c.departamento.id === parseInt(arg))) {
+                locIds = locIds.filter(e => e !== loc.id)
+            }
+            dispatch({
+                type: type.SET_LOCALIDADES,
+                payload: [...locIds]
+            })
+        } else { //CUANDO SELECCIONA DEPARTAMENTO
+            dispatch({
+                type: type.PUT_LOCALIDADES_FILTERED,
+                payload: [...filtro.localidadesFiltered, ...localidades.filter(c => c.departamento.id === parseInt(arg))]
+            })
+            let locIds = []
+            for (const loc of localidades.filter(c => c.departamento.id === parseInt(arg))) {
+                locIds.push(loc.id)
+            }
+            dispatch({
+                type: type.SET_LOCALIDADES,
+                payload: [...filtro.localidades, ...locIds]
+            })
+        }
         return dispatch({
             type: type.SET_DEPARTAMENTOS,
             payload: filtro.departamentos.includes(parseInt(arg))
