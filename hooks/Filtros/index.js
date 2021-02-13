@@ -1,7 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import * as type from '../../redux/types'
-import useLocalizaciones from '../Localizaciones';
 import useMarcadores from '../Marcadores';
 import usePrecargado from '../Precargado';
 
