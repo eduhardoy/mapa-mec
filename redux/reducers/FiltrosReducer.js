@@ -5,7 +5,7 @@ const initialState = {
   localidades: [],
   localidadesFiltered: [],
   dependencias: ["Provincial"],
-  estados: [],
+  estados: [1],
   jurisdicciones: [],
   organismoDependencias: [],
   niveles: [],
@@ -29,6 +29,8 @@ const filtrosReducer = (state = initialState, action) => {
       return { ...state, localidadesFiltered: action.payload }
     case type.SET_DEPENDENCIA:
       return { ...state, dependencias: action.payload }
+    case type.SET_ESTADO:
+      return { ...state, estados: action.payload }
     default:
       return state;
   }

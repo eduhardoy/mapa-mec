@@ -66,13 +66,22 @@ const useFiltros = () => {
         })
     }
 
+    const setEstado = (arg) => {
+        return dispatch({
+            type: type.SET_ESTADO,
+            payload: filtro.estados.includes(parseInt(arg))
+                ? filtro.estados.filter(c => c !== parseInt(arg))
+                : [...filtro.estados, parseInt(arg)]
+        })
+    }
 
     React.useEffect(() => {
         //Cantidad de filtros
         let filterPassed = {
             departamento: false,
             localidades: false,
-            dependencia: false,
+            dependencias: false,
+            estados: false
         }
         const isTrue = (e => e === true)
         let marcadoresFiltered = localizaciones.filter(l => {
@@ -92,8 +101,15 @@ const useFiltros = () => {
                 : false
 
             //DEPENDENCIA FILTRO ["Provincial", "Municipal", "Nacional"]
-            filterPassed["dependencia"] = l.establecimiento
+            filterPassed["dependencias"] = l.establecimiento
                 ? filtro.dependencias.includes(l.establecimiento.dependencia)
+                    ? true
+                    : false
+                : false
+
+            //ESTADO FILTRO
+            filterPassed["estados"] = l.estado
+                ? filtro.estados.includes(l.estado.id)
                     ? true
                     : false
                 : false
@@ -107,7 +123,8 @@ const useFiltros = () => {
         filtros: filtro,
         setDepartamentoFilter: setDepartamento,
         setLocalidadFilter: setLocalidad,
-        setDependenciaFilter: setDependencia
+        setDependenciaFilter: setDependencia,
+        setEstadoFilter: setEstado
     }
 }
 

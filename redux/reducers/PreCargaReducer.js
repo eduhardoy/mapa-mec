@@ -5,7 +5,8 @@ const initialState = {
     localizaciones: [],
     departamentos: [],
     localidades: [],
-    images: []
+    images: [],
+    estados: []
 };
 
 const preCargaReducer = (state = initialState, action) => {
@@ -20,6 +21,8 @@ const preCargaReducer = (state = initialState, action) => {
             return { ...state, localidades: action.payload };
         case type.LOAD_IMAGES:
             return { ...state, images: action.payload };
+        case type.LOAD_ESTADOS:
+            return { ...state, estados: action.payload }
         default:
             return state;
     }

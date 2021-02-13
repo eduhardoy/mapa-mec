@@ -7,6 +7,7 @@ import Map from "../components/Map";
 import * as type from "../redux/types";
 import { wrapper } from "../redux/store";
 
+
 export const getServerSideProps = wrapper.getServerSideProps(
   async ({ store }) => {
     // LOCALIZACIONES
@@ -38,6 +39,15 @@ export const getServerSideProps = wrapper.getServerSideProps(
     store.dispatch({
       type: type.LOAD_LOCALIDADES,
       payload: localidades.data,
+    });
+
+    // ESTADOS
+    const estados = await axios.get(
+      "http://200.10.111.88:1337/estados"
+    );
+    store.dispatch({
+      type: type.LOAD_ESTADOS,
+      payload: estados.data,
     });
 
     return { props: {} };
