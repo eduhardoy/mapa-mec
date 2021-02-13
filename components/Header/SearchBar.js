@@ -2,6 +2,7 @@ import * as React from "react";
 import styled from "styled-components";
 // import { useSelector } from "react-redux";
 import SearchIcon from "@material-ui/icons/Search";
+import Filter from "./Filter";
 
 // styles
 const SearchBarWrapper = styled.div`
@@ -66,7 +67,7 @@ const SearchBarButton = styled.button`
 const SearchBar = () => {
   return (
     <SearchBarWrapper>
-      <SearchBarInput placeholder='Ingresar nombre o CUEANEXO'></SearchBarInput>
+      <Filter></Filter>
       <SearchBarButton>
         <SearchIcon />
       </SearchBarButton>
