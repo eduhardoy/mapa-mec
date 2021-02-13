@@ -8,15 +8,13 @@ import usePrecargado from '../Precargado';
 
 const useFiltros = () => {
     const dispatch = useDispatch()
+    const { localizaciones, localidades } = usePrecargado()
     const { filtro } = useSelector(state => state)
-    const [localizaciones] = useLocalizaciones()
     const [marcadores, setMarcadores] = useMarcadores()
-    const { localidades } = usePrecargado()
 
 
     const setDepartamento = (arg) => {
         if (filtro.departamentos.includes(parseInt(arg))) { //CUANDO DESELECCIONA DEPARTAMENTO
-
             dispatch({
                 type: type.PUT_LOCALIDADES_FILTERED,
                 payload: filtro.localidadesFiltered.filter(c => c.departamento.id !== parseInt(arg))
@@ -60,11 +58,22 @@ const useFiltros = () => {
         })
     }
 
+    const setDependencia = (arg) => {
+        return dispatch({
+            type: type.SET_DEPENDENCIA,
+            payload: filtro.dependencias.includes(arg)
+                ? filtro.dependencias.filter(c => c !== arg)
+                : [...filtro.dependencias, arg]
+        })
+    }
+
+
     React.useEffect(() => {
         //Cantidad de filtros
         let filterPassed = {
             departamento: false,
             localidades: false,
+            dependencia: false,
         }
         const isTrue = (e => e === true)
         let marcadoresFiltered = localizaciones.filter(l => {
@@ -83,6 +92,12 @@ const useFiltros = () => {
                     : false
                 : false
 
+            //DEPENDENCIA FILTRO ["Provincial", "Municipal", "Nacional"]
+            filterPassed["dependencia"] = l.establecimiento
+                ? filtro.dependencias.includes(l.establecimiento.dependencia)
+                    ? true
+                    : false
+                : false
 
             return Object.values(filterPassed).every(isTrue);
         })
@@ -92,7 +107,8 @@ const useFiltros = () => {
     return {
         filtros: filtro,
         setDepartamentoFilter: setDepartamento,
-        setLocalidadFilter: setLocalidad
+        setLocalidadFilter: setLocalidad,
+        setDependenciaFilter: setDependencia
     }
 }
 
