@@ -75,13 +75,23 @@ const useFiltros = () => {
         })
     }
 
+    const setJurisdiccion = arg => {
+        return dispatch({
+            type: type.SET_JURISDICCION,
+            payload: filtro.jurisdicciones.includes(arg)
+                ? filtro.jurisdicciones.filter(c => c !== arg)
+                : [...filtro.jurisdicciones, arg]
+        })
+    }
+
     React.useEffect(() => {
         //Cantidad de filtros
         let filterPassed = {
             departamento: false,
             localidades: false,
             dependencias: false,
-            estados: false
+            estados: false,
+            jurisdicciones: true
         }
         const isTrue = (e => e === true)
         let marcadoresFiltered = localizaciones.filter(l => {
@@ -114,6 +124,15 @@ const useFiltros = () => {
                     : false
                 : false
 
+            //JURISDICCION FILTRO
+            if (filtro.jurisdicciones.length > 0) {
+                filterPassed['jurisdicciones'] = l.colegio
+                    ? filtro.jurisdicciones.includes(l.colegio.jurisdiccion)
+                        ? true
+                        : false
+                    : false
+            }
+
             return Object.values(filterPassed).every(isTrue);
         })
         setMarcadores(marcadoresFiltered)
@@ -124,7 +143,8 @@ const useFiltros = () => {
         setDepartamentoFilter: setDepartamento,
         setLocalidadFilter: setLocalidad,
         setDependenciaFilter: setDependencia,
-        setEstadoFilter: setEstado
+        setEstadoFilter: setEstado,
+        setJurisdiccionFilter: setJurisdiccion
     }
 }
 
