@@ -5,7 +5,7 @@ import styled from "styled-components";
 import usePrecargado from "../../hooks/Precargado";
 
 const FilterContainer = styled.div`
-  width: 100%;
+  width: 320px;
   height: 100%;
   display: flex;
   flex-direction: center;
@@ -20,7 +20,26 @@ const Item = styled.li`
 `;
 
 const ItemList = styled.ul`
-  width: 100%;
+  width: 320px;
+
+  ::-webkit-scrollbar {
+    width: 0px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #d6dee1;
+    border-radius: 20px;
+    border: 6px solid transparent;
+    background-clip: content-box;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #666666;
+  }
 `;
 
 const useStyles = makeStyles(theme => ({
@@ -34,7 +53,6 @@ const useStyles = makeStyles(theme => ({
     fontSize: 15,
   },
   listbox: {
-    width: 275,
     margin: 0,
     padding: 0,
     zIndex: 1,
@@ -46,12 +64,11 @@ const useStyles = makeStyles(theme => ({
     maxHeight: 200,
     border: "1px solid rgba(0,0,0,.25)",
     '& li[data-focus="true"]': {
-      backgroundColor: "#4a8df6",
-      color: "white",
+      backgroundColor: "#d7f4b4",
       cursor: "pointer",
     },
     "& li:active": {
-      backgroundColor: "#2977f5",
+      backgroundColor: "rgb(124,179,66)",
       color: "white",
     },
   },
