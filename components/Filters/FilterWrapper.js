@@ -30,7 +30,7 @@ const FilterWrapper = () => {
       <FiltroEstado />
       <FiltroJurisdiccion />
       <FiltroOrganismoDependencia />
-      {/* <FiltroNivel /> */}
+      <FiltroNivel />
       {/* <FiltroModalidad /> */}
       {/* <FiltroGestion /> */}
       {/* <FiltroAmbito /> */}

@@ -93,6 +93,17 @@ const useFiltros = () => {
         })
     }
 
+    const setNiveles = arg => {
+        let value = arg.split(",")
+
+        return dispatch({
+            type: type.SET_NIVEL,
+            payload: filtro.niveles.some(c => value.includes(c))
+                ? [...filtro.niveles.filter(c => !value.includes(c))]
+                : [...filtro.niveles, ...value]
+        })
+    }
+
     React.useEffect(() => {
         //Cantidad de filtros
         let filterPassed = {
@@ -101,7 +112,8 @@ const useFiltros = () => {
             dependencias: false,
             estados: false,
             jurisdicciones: true,
-            organismoDependencias: true
+            organismoDependencias: true,
+            niveles: true
         }
         const isTrue = (e => e === true)
         let marcadoresFiltered = localizaciones.filter(l => {
@@ -152,6 +164,15 @@ const useFiltros = () => {
                     : false
             }
 
+            //NIVELES FILTRO
+            if (filtro.niveles.length > 0) {
+                filterPassed['niveles'] = l.ofertas
+                    ? Object.values(l.ofertas).some(o => filtro.niveles.includes(o.idOferta))
+                        ? true
+                        : false
+                    : false
+            }
+
             return Object.values(filterPassed).every(isTrue);
         })
         setMarcadores(marcadoresFiltered)
@@ -164,7 +185,8 @@ const useFiltros = () => {
         setDependenciaFilter: setDependencia,
         setEstadoFilter: setEstado,
         setJurisdiccionFilter: setJurisdiccion,
-        setOrganismoDependenciaFilter: setOrganismoDependencia
+        setOrganismoDependenciaFilter: setOrganismoDependencia,
+        setNivelesFilter: setNiveles
     }
 }
 
