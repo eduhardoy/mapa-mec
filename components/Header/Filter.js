@@ -5,12 +5,41 @@ import styled from "styled-components";
 import usePrecargado from "../../hooks/Precargado";
 
 const FilterContainer = styled.div`
-  width: 100%;
+  width: 320px;
   height: 100%;
   display: flex;
   flex-direction: center;
   align-items: center;
   font-family: "Lato";
+`;
+
+const Item = styled.li`
+  font-family: "Lato";
+  font-size: 15px;
+  padding: 10px;
+`;
+
+const ItemList = styled.ul`
+  width: 320px;
+
+  ::-webkit-scrollbar {
+    width: 0px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #d6dee1;
+    border-radius: 20px;
+    border: 6px solid transparent;
+    background-clip: content-box;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #666666;
+  }
 `;
 
 const useStyles = makeStyles(theme => ({
@@ -20,9 +49,10 @@ const useStyles = makeStyles(theme => ({
     height: "100%",
     outline: "none",
     border: "none",
+    fontFamily: "Lato",
+    fontSize: 15,
   },
   listbox: {
-    width: 275,
     margin: 0,
     padding: 0,
     zIndex: 1,
@@ -34,12 +64,11 @@ const useStyles = makeStyles(theme => ({
     maxHeight: 200,
     border: "1px solid rgba(0,0,0,.25)",
     '& li[data-focus="true"]': {
-      backgroundColor: "#4a8df6",
-      color: "white",
+      backgroundColor: "#d7f4b4",
       cursor: "pointer",
     },
     "& li:active": {
-      backgroundColor: "#2977f5",
+      backgroundColor: "rgb(124,179,66)",
       color: "white",
     },
   },
@@ -56,25 +85,27 @@ export default function Filter() {
     getOptionProps,
     groupedOptions,
   } = useAutocomplete({
-    id: "use-autocomplete-demo",
-    options: localizaciones,
-    getOptionLabel: option => option.nombre,
+    options: localizaciones.filter(e => e.colegio),
+    getOptionLabel: option => option.colegio.nombre,
   });
 
   return (
     <FilterContainer>
       <input
-        placeholder='HOLA'
+        placeholder='INGRESAR COLEGIO'
         className={classes.input}
         {...getInputProps()}
       />
       {groupedOptions.length > 0 ? (
-        <ul className={classes.listbox} {...getListboxProps()}>
+        <ItemList className={classes.listbox} {...getListboxProps()}>
           {groupedOptions.map((option, index) => (
-            <li {...getOptionProps({ option, index })}>{option.title}</li>
+            <Item {...getOptionProps({ option, index })}>
+              {option.colegio.nombre}
+            </Item>
           ))}
-        </ul>
+        </ItemList>
       ) : null}
     </FilterContainer>
   );
 }
+

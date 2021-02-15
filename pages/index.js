@@ -32,7 +32,7 @@ export const getServerSideProps = wrapper.getServerSideProps(
       payload: departamentos.data,
     });
 
-    //LOCALIDADES 
+    //LOCALIDADES
     const localidades = await axios.get(
       "http://200.10.111.88:1337/localidades"
     );
