@@ -26,19 +26,19 @@ const FilterWrapper = () => {
     <Wrapper>
       <FiltroDepartamentos />
       <FiltroLocalidades />
-      {/* <FiltroDependencia />
+      <FiltroDependencia />
       <FiltroEstado />
       <FiltroJurisdiccion />
-      <FiltroOrganismoDependencia />
-      <FiltroNivel />
-      <FiltroModalidad />
-      <FiltroGestion />
-      <FiltroAmbito />
-      <FiltroAulaDigitalMovil />
-      <FiltroInternet />
-      <FiltroAguaPotable />
-      <FiltroProveedores />
-      <FiltroAgrupaciones /> */}
+      {/* <FiltroOrganismoDependencia /> */}
+      {/* <FiltroNivel /> */}
+      {/* <FiltroModalidad /> */}
+      {/* <FiltroGestion /> */}
+      {/* <FiltroAmbito /> */}
+      {/* <FiltroAulaDigitalMovil /> */}
+      {/* <FiltroInternet /> */}
+      {/* <FiltroAguaPotable /> */}
+      {/* <FiltroProveedores /> */}
+      {/* <FiltroAgrupaciones /> */}
     </Wrapper>
   );
 };

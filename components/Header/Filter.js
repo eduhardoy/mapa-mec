@@ -2,7 +2,7 @@ import React from "react";
 import useAutocomplete from "@material-ui/lab/useAutocomplete";
 import { makeStyles } from "@material-ui/core/styles";
 import styled from "styled-components";
-import useLocalizaciones from "../../hooks/Localizaciones";
+import usePrecargado from "../../hooks/Precargado";
 
 const FilterContainer = styled.div`
   width: 100%;
@@ -58,7 +58,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function Filter() {
-  const [localizaciones] = useLocalizaciones();
+  const { localizaciones } = usePrecargado();
   const classes = useStyles();
   const {
     getRootProps,
@@ -91,3 +91,4 @@ export default function Filter() {
     </FilterContainer>
   );
 }
+

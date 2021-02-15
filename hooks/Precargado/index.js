@@ -1,13 +1,14 @@
 import { useDispatch, useSelector } from "react-redux";
 
 const usePrecargado = () => {
-  const dispatch = useDispatch();
 
-  const { departamento, localidad } = useSelector(state => state);
+  const { localizaciones, departamentos, localidades, estados } = useSelector(state => state.precarga);
 
   return {
-    departamentos: departamento.departamentos,
-    localidades: localidad.localidades
+    localizaciones,
+    departamentos,
+    localidades,
+    estados
   }
 };
 

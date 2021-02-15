@@ -1,22 +1,19 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import * as type from '../../redux/types'
-import useLocalizaciones from '../Localizaciones';
 import useMarcadores from '../Marcadores';
 import usePrecargado from '../Precargado';
 
 
 const useFiltros = () => {
     const dispatch = useDispatch()
+    const { localizaciones, localidades } = usePrecargado()
     const { filtro } = useSelector(state => state)
-    const [localizaciones] = useLocalizaciones()
     const [marcadores, setMarcadores] = useMarcadores()
-    const { localidades } = usePrecargado()
 
 
     const setDepartamento = (arg) => {
         if (filtro.departamentos.includes(parseInt(arg))) { //CUANDO DESELECCIONA DEPARTAMENTO
-
             dispatch({
                 type: type.PUT_LOCALIDADES_FILTERED,
                 payload: filtro.localidadesFiltered.filter(c => c.departamento.id !== parseInt(arg))
@@ -60,11 +57,41 @@ const useFiltros = () => {
         })
     }
 
+    const setDependencia = (arg) => {
+        return dispatch({
+            type: type.SET_DEPENDENCIA,
+            payload: filtro.dependencias.includes(arg)
+                ? filtro.dependencias.filter(c => c !== arg)
+                : [...filtro.dependencias, arg]
+        })
+    }
+
+    const setEstado = (arg) => {
+        return dispatch({
+            type: type.SET_ESTADO,
+            payload: filtro.estados.includes(parseInt(arg))
+                ? filtro.estados.filter(c => c !== parseInt(arg))
+                : [...filtro.estados, parseInt(arg)]
+        })
+    }
+
+    const setJurisdiccion = arg => {
+        return dispatch({
+            type: type.SET_JURISDICCION,
+            payload: filtro.jurisdicciones.includes(arg)
+                ? filtro.jurisdicciones.filter(c => c !== arg)
+                : [...filtro.jurisdicciones, arg]
+        })
+    }
+
     React.useEffect(() => {
         //Cantidad de filtros
         let filterPassed = {
             departamento: false,
             localidades: false,
+            dependencias: false,
+            estados: false,
+            jurisdicciones: true
         }
         const isTrue = (e => e === true)
         let marcadoresFiltered = localizaciones.filter(l => {
@@ -83,6 +110,28 @@ const useFiltros = () => {
                     : false
                 : false
 
+            //DEPENDENCIA FILTRO ["Provincial", "Municipal", "Nacional"]
+            filterPassed["dependencias"] = l.establecimiento
+                ? filtro.dependencias.includes(l.establecimiento.dependencia)
+                    ? true
+                    : false
+                : false
+
+            //ESTADO FILTRO
+            filterPassed["estados"] = l.estado
+                ? filtro.estados.includes(l.estado.id)
+                    ? true
+                    : false
+                : false
+
+            //JURISDICCION FILTRO
+            if (filtro.jurisdicciones.length > 0) {
+                filterPassed['jurisdicciones'] = l.colegio
+                    ? filtro.jurisdicciones.includes(l.colegio.jurisdiccion)
+                        ? true
+                        : false
+                    : false
+            }
 
             return Object.values(filterPassed).every(isTrue);
         })
@@ -92,7 +141,10 @@ const useFiltros = () => {
     return {
         filtros: filtro,
         setDepartamentoFilter: setDepartamento,
-        setLocalidadFilter: setLocalidad
+        setLocalidadFilter: setLocalidad,
+        setDependenciaFilter: setDependencia,
+        setEstadoFilter: setEstado,
+        setJurisdiccionFilter: setJurisdiccion
     }
 }
 

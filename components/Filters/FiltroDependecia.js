@@ -10,6 +10,7 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import RadioButtonCheckedIcon from "@material-ui/icons/RadioButtonChecked";
 import usePrecargado from "../../hooks/Precargado";
+import useFiltros from "../../hooks/Filtros";
 
 const CheckboxFilter = styled.div`
   label {
@@ -67,8 +68,7 @@ const AccordionDetails = withStyles(theme => ({
 
 const FiltroDependencia = () => {
   const [expanded, setExpanded] = React.useState();
-  const { filtros } = useFiltros()
-  const { localidades } = usePrecargado()
+  const { filtros, setDependenciaFilter } = useFiltros()
 
   const handleChange = panel => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
@@ -76,6 +76,8 @@ const FiltroDependencia = () => {
 
   const handleChecked = ev => {
     const { value, checked } = ev.target;
+    console.log(value)
+    setDependenciaFilter(value)
   };
 
   return (
@@ -108,17 +110,17 @@ const FiltroDependencia = () => {
       </AccordionSummary>
       <AccordionDetails>
         <CheckboxFilter>
-          {localidades.map(dep => (
+          {["Provincial", "Municipal", "Nacional"].map(dep => (
             <FormControlLabel
-              key={dep.id}
-              value={dep.id}
+              key={dep}
+              value={dep}
               control={
                 <CheckboxNew
                   onChange={handleChecked}
-
+                  checked={filtros.dependencias.includes(dep)}
                 />
               }
-              label={dep.nombre}
+              label={dep}
               labelPlacement='end'
             />
           ))}

@@ -1,13 +1,12 @@
 import * as React from "react";
-import styled from "styled-components";
 import Layout from "../components/Layout";
 import Header from "../components/Header";
 import LeftSideBarMenu from "../components/LeftSideBar";
 import axios from "axios";
 import Map from "../components/Map";
-import { useDispatch } from "react-redux";
 import * as type from "../redux/types";
 import { wrapper } from "../redux/store";
+
 
 export const getServerSideProps = wrapper.getServerSideProps(
   async ({ store }) => {
@@ -40,6 +39,15 @@ export const getServerSideProps = wrapper.getServerSideProps(
     store.dispatch({
       type: type.LOAD_LOCALIDADES,
       payload: localidades.data,
+    });
+
+    // ESTADOS
+    const estados = await axios.get(
+      "http://200.10.111.88:1337/estados"
+    );
+    store.dispatch({
+      type: type.LOAD_ESTADOS,
+      payload: estados.data,
     });
 
     return { props: {} };
