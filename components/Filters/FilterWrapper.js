@@ -29,7 +29,7 @@ const FilterWrapper = () => {
       <FiltroDependencia />
       <FiltroEstado />
       <FiltroJurisdiccion />
-      {/* <FiltroOrganismoDependencia /> */}
+      <FiltroOrganismoDependencia />
       {/* <FiltroNivel /> */}
       {/* <FiltroModalidad /> */}
       {/* <FiltroGestion /> */}

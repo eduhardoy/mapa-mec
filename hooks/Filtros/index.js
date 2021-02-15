@@ -84,6 +84,15 @@ const useFiltros = () => {
         })
     }
 
+    const setOrganismoDependencia = arg => {
+        return dispatch({
+            type: type.SET_ORGANISMO_DEPENDENIA,
+            payload: filtro.organismoDependencias.includes(arg)
+                ? filtro.organismoDependencias.filter(c => c !== arg)
+                : [...filtro.organismoDependencias, arg]
+        })
+    }
+
     React.useEffect(() => {
         //Cantidad de filtros
         let filterPassed = {
@@ -91,7 +100,8 @@ const useFiltros = () => {
             localidades: false,
             dependencias: false,
             estados: false,
-            jurisdicciones: true
+            jurisdicciones: true,
+            organismoDependencias: true
         }
         const isTrue = (e => e === true)
         let marcadoresFiltered = localizaciones.filter(l => {
@@ -133,6 +143,15 @@ const useFiltros = () => {
                     : false
             }
 
+            //ORGANISMOS DEPENDENCIAS FILTRO
+            if (filtro.organismoDependencias.length > 0) {
+                filterPassed['organismoDependencias'] = l.colegio
+                    ? filtro.organismoDependencias.includes(l.colegio.nivelJur)
+                        ? true
+                        : false
+                    : false
+            }
+
             return Object.values(filterPassed).every(isTrue);
         })
         setMarcadores(marcadoresFiltered)
@@ -144,7 +163,8 @@ const useFiltros = () => {
         setLocalidadFilter: setLocalidad,
         setDependenciaFilter: setDependencia,
         setEstadoFilter: setEstado,
-        setJurisdiccionFilter: setJurisdiccion
+        setJurisdiccionFilter: setJurisdiccion,
+        setOrganismoDependenciaFilter: setOrganismoDependencia
     }
 }
 
