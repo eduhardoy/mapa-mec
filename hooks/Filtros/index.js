@@ -131,6 +131,24 @@ const useFiltros = () => {
         })
     }
 
+    const setInternet = arg => {
+        return dispatch({
+            type: type.SET_INTENET,
+            payload: filtro.internet.includes(arg == 'true' ? true : false)
+                ? filtro.internet.filter(c => c !== (arg == 'true' ? true : false))
+                : [...filtro.internet, arg == 'true' ? true : false]
+        })
+    }
+
+    const setInternetProveedores = arg => {
+        return dispatch({
+            type: type.SET_PROVEEDORES_INTERNET,
+            payload: filtro.proveedoresInternet.includes(parseInt(arg))
+                ? filtro.proveedoresInternet.filter(c => c !== parseInt(arg))
+                : [...filtro.proveedoresInternet, parseInt(arg)]
+        })
+    }
+
     React.useEffect(() => {
         //Cantidad de filtros
         let filterPassed = {
@@ -144,6 +162,8 @@ const useFiltros = () => {
             modalidades: true,
             gestiones: true,
             ambitos: true,
+            internet: true,
+            internetProveedores: true
         }
         const isTrue = (e => e === true)
         let marcadoresFiltered = localizaciones.filter(l => {
@@ -230,6 +250,24 @@ const useFiltros = () => {
                     : false
             }
 
+            //INTERNET FILTRO
+            if (filtro.internet.length > 0) {
+                filterPassed['internet'] = l.colegio
+                    ? filtro.internet.includes(l.colegio.internet)
+                        ? true
+                        : false
+                    : false
+            }
+
+            //INTERNET PROVEEDORES FILTRO
+            if (filtro.proveedoresInternet.length > 0) {
+                filterPassed['internetProveedores'] = l.conexiones
+                    ? Object.values(l.conexiones).some(o => filtro.proveedoresInternet.includes(o.conexionProveedor.id))
+                        ? true
+                        : false
+                    : false
+            }
+
             return Object.values(filterPassed).every(isTrue);
         })
 
@@ -248,6 +286,8 @@ const useFiltros = () => {
         setModalidadesFilter: setModalidades,
         setGestionesFilter: setGestiones,
         setAmbitosFilter: setAmbitos,
+        setInternetFilter: setInternet,
+        setInternetProveedoresFilter: setInternetProveedores
     }
 }
 

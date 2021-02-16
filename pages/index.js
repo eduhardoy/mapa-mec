@@ -58,7 +58,13 @@ export const getServerSideProps = wrapper.getServerSideProps(
       type: type.LOAD_AMBITOS,
       payload: ambitos.data
     })
-    
+
+    //INTERNET PROVEEDORES
+    const internetProveedores = await axios.get("http://200.10.111.88:1337/conexion-proveedors")
+    store.dispatch({
+      type: type.LOAD_INTERNET_PROVEEDORES,
+      payload: internetProveedores.data
+    })
     return { props: {} };
   }
 );

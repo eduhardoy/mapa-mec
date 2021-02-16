@@ -66,10 +66,9 @@ const AccordionDetails = withStyles(theme => ({
   },
 }))(MuiAccordionDetails);
 
-const FiltroProveedores = () => {
+const FiltroProveedores = ({ filtros, setInternetProveedoresFilter }) => {
   const [expanded, setExpanded] = React.useState();
-  const { filtros } = useFiltros()
-  const { localidades } = usePrecargado()
+  const { internetProveedores } = usePrecargado()
 
   const handleChange = panel => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
@@ -77,6 +76,7 @@ const FiltroProveedores = () => {
 
   const handleChecked = ev => {
     const { value, checked } = ev.target;
+    setInternetProveedoresFilter(value)
   };
 
   return (
@@ -109,13 +109,14 @@ const FiltroProveedores = () => {
       </AccordionSummary>
       <AccordionDetails>
         <CheckboxFilter>
-          {localidades.map(dep => (
+          {internetProveedores.map(dep => (
             <FormControlLabel
               key={dep.id}
               value={dep.id}
               control={
                 <CheckboxNew
                   onChange={handleChecked}
+                  checked={filtros.proveedoresInternet.includes(dep.id)}
                 />
               }
               label={dep.nombre}

@@ -34,7 +34,9 @@ const FilterWrapper = () => {
     setNivelesFilter,
     setModalidadesFilter,
     setGestionesFilter,
-    setAmbitosFilter
+    setAmbitosFilter,
+    setInternetFilter,
+    setInternetProveedoresFilter
   } = useFiltros()
   return (
     <Wrapper>
@@ -49,9 +51,9 @@ const FilterWrapper = () => {
       <FiltroGestion filtros={filtros} setGestionesFilter={setGestionesFilter} />
       <FiltroAmbito filtros={filtros} setAmbitosFilter={setAmbitosFilter} />
       {/* <FiltroAulaDigitalMovil /> */}
-      {/* <FiltroInternet /> */}
+      <FiltroInternet filtros={filtros} setInternetFilter={setInternetFilter} />
       {/* <FiltroAguaPotable /> */}
-      {/* <FiltroProveedores /> */}
+      <FiltroProveedores filtros={filtros} setInternetProveedoresFilter={setInternetProveedoresFilter} />
       {/* <FiltroAgrupaciones /> */}
     </Wrapper>
   );

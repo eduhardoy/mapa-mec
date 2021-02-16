@@ -43,6 +43,10 @@ const filtrosReducer = (state = initialState, action) => {
       return { ...state, gestiones: action.payload }
     case type.SET_AMBITO:
       return { ...state, ambitos: action.payload }
+    case type.SET_INTENET:
+      return { ...state, internet: action.payload }
+    case type.SET_PROVEEDORES_INTERNET:
+      return { ...state, proveedoresInternet: action.payload }
     default:
       return state;
   }
