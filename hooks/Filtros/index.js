@@ -113,6 +113,15 @@ const useFiltros = () => {
         })
     }
 
+    const setGestiones = arg => {
+        return dispatch({
+            type: type.SET_GESTION,
+            payload: filtro.gestiones.includes(arg)
+                ? filtro.gestiones.filter(c => c !== arg)
+                : [...filtro.gestiones, arg]
+        })
+    }
+
     React.useEffect(() => {
         //Cantidad de filtros
         let filterPassed = {
@@ -123,7 +132,8 @@ const useFiltros = () => {
             jurisdicciones: true,
             organismoDependencias: true,
             niveles: true,
-            modalidades: true
+            modalidades: true,
+            gestiones: true,
         }
         const isTrue = (e => e === true)
         let marcadoresFiltered = localizaciones.filter(l => {
@@ -192,6 +202,15 @@ const useFiltros = () => {
                     : false
             }
 
+            //GESTIONES FILTRO
+            if (filtro.gestiones.length > 0) {
+                filterPassed['gestiones'] = l.establecimiento
+                    ? filtro.gestiones.includes(l.establecimiento.sector)
+                        ? true
+                        : false
+                    : false
+            }
+
             return Object.values(filterPassed).every(isTrue);
         })
         setMarcadores(marcadoresFiltered)
@@ -206,7 +225,8 @@ const useFiltros = () => {
         setJurisdiccionFilter: setJurisdiccion,
         setOrganismoDependenciaFilter: setOrganismoDependencia,
         setNivelesFilter: setNiveles,
-        setModalidadesFilter: setModalidades
+        setModalidadesFilter: setModalidades,
+        setGestionesFilter: setGestiones,
     }
 }
 

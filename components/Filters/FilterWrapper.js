@@ -32,7 +32,7 @@ const FilterWrapper = () => {
       <FiltroOrganismoDependencia />
       <FiltroNivel />
       <FiltroModalidad />
-      {/* <FiltroGestion /> */}
+      <FiltroGestion />
       {/* <FiltroAmbito /> */}
       {/* <FiltroAulaDigitalMovil /> */}
       {/* <FiltroInternet /> */}
