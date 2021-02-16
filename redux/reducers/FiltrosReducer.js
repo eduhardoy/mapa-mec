@@ -37,6 +37,8 @@ const filtrosReducer = (state = initialState, action) => {
       return { ...state, organismoDependencias: action.payload }
     case type.SET_NIVEL:
       return { ...state, niveles: action.payload }
+    case type.SET_MODALIDAD:
+      return { ...state, modalidades: action.payload }
     default:
       return state;
   }

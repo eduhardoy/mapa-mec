@@ -104,6 +104,15 @@ const useFiltros = () => {
         })
     }
 
+    const setModalidades = arg => {
+        return dispatch({
+            type: type.SET_MODALIDAD,
+            payload: filtro.modalidades.includes(arg)
+                ? filtro.modalidades.filter(c => c !== arg)
+                : [...filtro.modalidades, arg]
+        })
+    }
+
     React.useEffect(() => {
         //Cantidad de filtros
         let filterPassed = {
@@ -113,7 +122,8 @@ const useFiltros = () => {
             estados: false,
             jurisdicciones: true,
             organismoDependencias: true,
-            niveles: true
+            niveles: true,
+            modalidades: true
         }
         const isTrue = (e => e === true)
         let marcadoresFiltered = localizaciones.filter(l => {
@@ -173,6 +183,15 @@ const useFiltros = () => {
                     : false
             }
 
+            //MODALIDADES FILTRO
+            if (filtro.modalidades.length > 0) {
+                filterPassed['modalidades'] = l.ofertas
+                    ? Object.values(l.ofertas).some(o => filtro.modalidades.includes(o.modalidad))
+                        ? true
+                        : false
+                    : false
+            }
+
             return Object.values(filterPassed).every(isTrue);
         })
         setMarcadores(marcadoresFiltered)
@@ -186,7 +205,8 @@ const useFiltros = () => {
         setEstadoFilter: setEstado,
         setJurisdiccionFilter: setJurisdiccion,
         setOrganismoDependenciaFilter: setOrganismoDependencia,
-        setNivelesFilter: setNiveles
+        setNivelesFilter: setNiveles,
+        setModalidadesFilter: setModalidades
     }
 }
 

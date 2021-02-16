@@ -31,7 +31,7 @@ const FilterWrapper = () => {
       <FiltroJurisdiccion />
       <FiltroOrganismoDependencia />
       <FiltroNivel />
-      {/* <FiltroModalidad /> */}
+      <FiltroModalidad />
       {/* <FiltroGestion /> */}
       {/* <FiltroAmbito /> */}
       {/* <FiltroAulaDigitalMovil /> */}
