@@ -15,6 +15,7 @@ import FiltroInternet from "./FiltroInternet.js";
 import FiltroAguaPotable from "./FiltroAguaPotable.js";
 import FiltroProveedores from "./FiltroProveedores.js";
 import FiltroAgrupaciones from "./FiltroAgrupaciones.js";
+import useFiltros from "../../hooks/Filtros/index.js";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -22,18 +23,31 @@ const Wrapper = styled.div`
 `;
 
 const FilterWrapper = () => {
+  const {
+    filtros,
+    setDepartamentoFilter,
+    setLocalidadFilter,
+    setDependenciaFilter,
+    setEstadoFilter,
+    setJurisdiccionFilter,
+    setOrganismoDependenciaFilter,
+    setNivelesFilter,
+    setModalidadesFilter,
+    setGestionesFilter,
+    setAmbitosFilter
+  } = useFiltros()
   return (
     <Wrapper>
-      <FiltroDepartamentos />
-      <FiltroLocalidades />
-      <FiltroDependencia />
-      <FiltroEstado />
-      <FiltroJurisdiccion />
-      <FiltroOrganismoDependencia />
-      <FiltroNivel />
-      <FiltroModalidad />
-      <FiltroGestion />
-      <FiltroAmbito />
+      <FiltroDepartamentos filtros={filtros} setDepartamentoFilter={setDepartamentoFilter} />
+      <FiltroLocalidades filtros={filtros} setLocalidadFilter={setLocalidadFilter} />
+      <FiltroDependencia filtros={filtros} setDependenciaFilter={setDependenciaFilter} />
+      <FiltroEstado filtros={filtros} setEstadoFilter={setEstadoFilter} />
+      <FiltroJurisdiccion filtros={filtros} setJurisdiccionFilter={setJurisdiccionFilter} />
+      <FiltroOrganismoDependencia filtros={filtros} setOrganismoDependenciaFilter={setOrganismoDependenciaFilter} />
+      <FiltroNivel filtros={filtros} setNivelesFilter={setNivelesFilter} />
+      <FiltroModalidad filtros={filtros} setModalidadesFilter={setModalidadesFilter} />
+      <FiltroGestion filtros={filtros} setGestionesFilter={setGestionesFilter} />
+      <FiltroAmbito filtros={filtros} setAmbitosFilter={setAmbitosFilter} />
       {/* <FiltroAulaDigitalMovil /> */}
       {/* <FiltroInternet /> */}
       {/* <FiltroAguaPotable /> */}

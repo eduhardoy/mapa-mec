@@ -66,9 +66,8 @@ const AccordionDetails = withStyles(theme => ({
   },
 }))(MuiAccordionDetails);
 
-const FiltroAmbito = () => {
+const FiltroAmbito = ({ filtros, setAmbitosFilter }) => {
   const [expanded, setExpanded] = React.useState();
-  const { filtros, setAmbitosFilter } = useFiltros()
   const { ambitos } = usePrecargado()
 
   const handleChange = panel => (event, newExpanded) => {

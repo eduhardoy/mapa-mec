@@ -66,9 +66,8 @@ const AccordionDetails = withStyles(theme => ({
   },
 }))(MuiAccordionDetails);
 
-const FiltroOrganismoDependencia = () => {
+const FiltroOrganismoDependencia = ({ filtros, setOrganismoDependenciaFilter }) => {
   const [expanded, setExpanded] = React.useState();
-  const { filtros, setOrganismoDependenciaFilter } = useFiltros()
 
   const handleChange = panel => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);

@@ -66,9 +66,8 @@ const AccordionDetails = withStyles(theme => ({
   },
 }))(MuiAccordionDetails);
 
-const FiltroJurisdiccion = () => {
+const FiltroJurisdiccion = ({ filtros, setJurisdiccionFilter }) => {
   const [expanded, setExpanded] = React.useState();
-  const { filtros, setJurisdiccionFilter } = useFiltros()
 
   const handleChange = panel => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);

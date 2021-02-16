@@ -66,9 +66,8 @@ const AccordionDetails = withStyles(theme => ({
   },
 }))(MuiAccordionDetails);
 
-const FiltroNivel = () => {
+const FiltroNivel = ({ filtros, setNivelesFilter }) => {
   const [expanded, setExpanded] = React.useState();
-  const { filtros, setNivelesFilter } = useFiltros()
 
   const handleChange = panel => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
