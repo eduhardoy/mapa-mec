@@ -33,7 +33,7 @@ const FilterWrapper = () => {
       <FiltroNivel />
       <FiltroModalidad />
       <FiltroGestion />
-      {/* <FiltroAmbito /> */}
+      <FiltroAmbito />
       {/* <FiltroAulaDigitalMovil /> */}
       {/* <FiltroInternet /> */}
       {/* <FiltroAguaPotable /> */}

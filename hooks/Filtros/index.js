@@ -122,6 +122,15 @@ const useFiltros = () => {
         })
     }
 
+    const setAmbitos = arg => {
+        return dispatch({
+            type: type.SET_AMBITO,
+            payload: filtro.ambitos.includes(parseInt(arg))
+                ? filtro.ambitos.filter(c => c !== parseInt(arg))
+                : [...filtro.ambitos, parseInt(arg)]
+        })
+    }
+
     React.useEffect(() => {
         //Cantidad de filtros
         let filterPassed = {
@@ -134,6 +143,7 @@ const useFiltros = () => {
             niveles: true,
             modalidades: true,
             gestiones: true,
+            ambitos: true,
         }
         const isTrue = (e => e === true)
         let marcadoresFiltered = localizaciones.filter(l => {
@@ -211,8 +221,18 @@ const useFiltros = () => {
                     : false
             }
 
+            //AMBITOS FILTRO
+            if (filtro.ambitos.length > 0) {
+                filterPassed['ambitos'] = l.ambito
+                    ? filtro.ambitos.includes(l.ambito.id)
+                        ? true
+                        : false
+                    : false
+            }
+
             return Object.values(filterPassed).every(isTrue);
         })
+
         setMarcadores(marcadoresFiltered)
     }, [filtro])
 
@@ -227,6 +247,7 @@ const useFiltros = () => {
         setNivelesFilter: setNiveles,
         setModalidadesFilter: setModalidades,
         setGestionesFilter: setGestiones,
+        setAmbitosFilter: setAmbitos,
     }
 }
 

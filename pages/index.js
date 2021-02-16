@@ -50,6 +50,15 @@ export const getServerSideProps = wrapper.getServerSideProps(
       payload: estados.data,
     });
 
+    //AMIBTOS
+    const ambitos = await axios.get(
+      "http://200.10.111.88:1337/ambitos"
+    );
+    store.dispatch({
+      type: type.LOAD_AMBITOS,
+      payload: ambitos.data
+    })
+    
     return { props: {} };
   }
 );
