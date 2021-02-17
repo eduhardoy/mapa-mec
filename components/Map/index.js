@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { GoogleMap, LoadScript } from "@react-google-maps/api";
+import { GoogleMap, LoadScript, useJsApiLoader } from "@react-google-maps/api";
 import MapMarcadores from "../MapMarcadores";
 import styled from "styled-components";
 
@@ -18,36 +18,47 @@ const containerStyle = {
 };
 
 function MyComponent() {
+  const { isLoaded, loadError } = useJsApiLoader({
+    googleMapsApiKey: "AIzaSyB9T71MrqTWubzHayatyn7RP5lpDMdcrgo"
+  })
   const [map, setMap] = React.useState(null);
 
   const onLoad = React.useCallback(function callback(map) {
-    // const bounds = new window.google.maps.LatLngBounds();
-    // map.fitBounds(bounds);
-    setMap(map);
-  }, []);
+    setMap(map)
+  }, [])
 
   const onUnmount = React.useCallback(function callback(map) {
-    setMap(null);
-  }, []);
+    setMap(null)
+  }, [])
 
   return (
-    <MapContainer ancho={"100vw"}>
-      <LoadScript googleMapsApiKey='AIzaSyB9T71MrqTWubzHayatyn7RP5lpDMdcrgo'>
-        <GoogleMap
-          mapContainerStyle={containerStyle}
-          center={{ lat: -28.737328845367706, lng: -57.722286004532684 }}
-          zoom={8}
-          onLoad={onLoad}
-          onUnmount={onUnmount}
-          options={{
-            region: "005",
-          }}
-        >
-          <MapMarcadores map={map} />
-        </GoogleMap>
-      </LoadScript>
+    <MapContainer>
+      {isLoaded
+        ? <MapContainer ancho={"100vw"}>
+          <GoogleMap
+            mapContainerStyle={containerStyle}
+            center={{ lat: -28.737328845367706, lng: -57.722286004532684 }}
+            zoom={8}
+            options={{
+              mapTypeControl: true,
+              mapTypeControlOptions: {
+                style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
+                // mapTypeIds: ["roadmap", "terrain"],
+                position: google.maps.ControlPosition.TOP_RIGHT
+              },
+              streetViewControl: false,
+              fullscreenControl: false,
+            }}
+            onLoad={onLoad}
+            onUnmount={onUnmount}
+          >
+            <MapMarcadores map={map} />
+          </GoogleMap>
+        </MapContainer>
+        : <>Loading...</>
+      }
     </MapContainer>
-  );
+  )
 }
 
 export default React.memo(MyComponent);
