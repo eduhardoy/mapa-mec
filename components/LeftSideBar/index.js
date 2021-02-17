@@ -16,8 +16,8 @@ const LeftSideBarMenu = ({ firstBar, secondBar }) => {
   return (
     <LeftSideBarMenuStyle>
       {firstBar && <FirstBar />}
-      {secondBar.bar && <SecondBar />}
-      <InfoBar></InfoBar>
+      {secondBar.selected == "FILTROS" && <SecondBar />}
+      {secondBar.selected == "INFO" && <InfoBar />}
     </LeftSideBarMenuStyle>
   );
 };

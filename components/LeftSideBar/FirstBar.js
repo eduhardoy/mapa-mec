@@ -107,17 +107,13 @@ const FirstBar = ({ selectBar, secondBar }) => {
       <FirstBarStyle>
         <ButtonList>
           <ButtonItem>
-            <IconButton
-              onClick={() =>
-                selectBar({ bar: !secondBar.bar, selected: "FILTROS" })
-              }
-            >
+            <IconButton onClick={() => selectBar({ selected: "FILTROS" })}>
               <TuneIcon />
               <ButtonText>Filtros</ButtonText>
             </IconButton>
           </ButtonItem>
           <ButtonItem>
-            <IconButton>
+            <IconButton onClick={() => selectBar({ selected: "INFO" })}>
               <InfoIcon />
               <ButtonText>Información</ButtonText>
             </IconButton>
