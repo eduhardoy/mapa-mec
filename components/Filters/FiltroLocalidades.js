@@ -77,11 +77,6 @@ const FiltroLocalidades = ({ filtros, setLocalidadFilter }) => {
   const handleChecked = ev => {
     const { value, checked } = ev.target;
     setLocalidadFilter(value)
-    if (value == "all") {
-      let ids = [];
-      if (checked) localidades.forEach(dep => ids.push(dep.id));
-      setCheckedId(ids);
-    }
   };
 
   return (
@@ -110,7 +105,7 @@ const FiltroLocalidades = ({ filtros, setLocalidadFilter }) => {
           }
           label=''
         />
-        <p>LOCALIDADES</p>
+        <p>LOCALIDADES*</p>
       </AccordionSummary>
       <AccordionDetails>
         <CheckboxFilter>

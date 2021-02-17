@@ -74,14 +74,9 @@ const FiltroDepartamentos = ({ filtros, setDepartamentoFilter }) => {
     setExpanded(newExpanded ? panel : false);
   };
 
-  const handleChecked = ev => {
+  const handleChecked = (ev) => {
     const { value, checked } = ev.target;
     setDepartamentoFilter(value)
-    if (value == "all") {
-      let ids = [];
-      if (checked) departamentos.forEach(dep => ids.push(dep.id));
-      setCheckedId(ids);
-    }
   };
 
   return (
@@ -110,7 +105,7 @@ const FiltroDepartamentos = ({ filtros, setDepartamentoFilter }) => {
           }
           label=''
         />
-        <p>DEPARTAMENTOS</p>
+        <p>DEPARTAMENTOS*</p>
       </AccordionSummary>
       <AccordionDetails>
         <CheckboxFilter>
