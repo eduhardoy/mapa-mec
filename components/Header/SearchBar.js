@@ -9,7 +9,7 @@ const SearchBarWrapper = styled.div`
   padding: 0;
   margin: 0;
   display: flex;
-  width: 400px;
+  width: 80%;
   height: 60%;
   background-color: #fff;
   border: solid 1px #337e3c;
@@ -26,24 +26,10 @@ const SearchBarWrapper = styled.div`
   }
 `;
 
-const SearchBarInput = styled.input`
-  padding: 0;
-  margin: 0;
-  width: 85%;
-  padding: 15px;
-  background-color: #fff;
-  outline: none;
-  border: none;
-  font-family: "Lato", sans-serif;
-  font-weight: 700;
-  font-size: 14px;
-  text-transform: uppercase;
-`;
-
 const SearchBarButton = styled.button`
   padding: 0;
   margin: 0;
-  width: 20%;
+  width: 15%;
   border: none;
   background-color: white;
   display: flex;

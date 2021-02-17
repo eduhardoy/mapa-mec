@@ -9,6 +9,9 @@ const MapContainer = styled.div`
   height: calc(100vh - 77px);
   right: 0px;
   position: absolute;
+  @media (max-width: 426px) {
+    height: calc(100vh - 127px);
+  }
 `;
 const containerStyle = {
   width: "100%",
@@ -19,22 +22,22 @@ const containerStyle = {
 
 function MyComponent() {
   const { isLoaded, loadError } = useJsApiLoader({
-    googleMapsApiKey: "AIzaSyB9T71MrqTWubzHayatyn7RP5lpDMdcrgo"
-  })
+    googleMapsApiKey: "AIzaSyB9T71MrqTWubzHayatyn7RP5lpDMdcrgo",
+  });
   const [map, setMap] = React.useState(null);
 
   const onLoad = React.useCallback(function callback(map) {
-    setMap(map)
-  }, [])
+    setMap(map);
+  }, []);
 
   const onUnmount = React.useCallback(function callback(map) {
-    setMap(null)
-  }, [])
+    setMap(null);
+  }, []);
 
   return (
     <MapContainer>
-      {isLoaded
-        ? <MapContainer ancho={"100vw"}>
+      {isLoaded ? (
+        <MapContainer ancho={"100vw"}>
           <GoogleMap
             mapContainerStyle={containerStyle}
             center={{ lat: -28.737328845367706, lng: -57.722286004532684 }}
@@ -44,7 +47,7 @@ function MyComponent() {
               mapTypeControlOptions: {
                 style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
                 // mapTypeIds: ["roadmap", "terrain"],
-                position: google.maps.ControlPosition.TOP_RIGHT
+                position: google.maps.ControlPosition.TOP_RIGHT,
               },
               streetViewControl: false,
               fullscreenControl: false,
@@ -55,10 +58,11 @@ function MyComponent() {
             <MapMarcadores map={map} />
           </GoogleMap>
         </MapContainer>
-        : <>Loading...</>
-      }
+      ) : (
+        <>Loading...</>
+      )}
     </MapContainer>
-  )
+  );
 }
 
 export default React.memo(MyComponent);

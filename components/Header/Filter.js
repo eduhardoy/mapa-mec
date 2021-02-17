@@ -5,7 +5,7 @@ import styled from "styled-components";
 import usePrecargado from "../../hooks/Precargado";
 
 const FilterContainer = styled.div`
-  width: 320px;
+  width: 85%;
   height: 100%;
   display: flex;
   flex-direction: center;
@@ -30,18 +30,16 @@ const Item = styled.li`
 `;
 
 const ItemList = styled.ul`
-  width: 321px;
+  width: 300px;
   margin: 0;
   padding: 0;
   z-index: 1;
   position: absolute;
-  top: 80%;
+  top: 71px;
   list-style: none;
   background-color: white;
   overflow: auto;
   max-height: 200px;
-  box-sizing: border-box;
-  border: solid 1px #337e3c;
 
   ::-webkit-scrollbar {
     width: 0px;
