@@ -13,6 +13,16 @@ const FilterContainer = styled.div`
   font-family: "Lato";
 `;
 
+const FilterInput = styled.input`
+  width: 100%;
+  height: 100%;
+  outline: none;
+  border: none;
+  font-family: "Lato";
+  padding: 15px;
+  font-size: 15px;
+`;
+
 const Item = styled.li`
   font-family: "Lato";
   font-size: 15px;
@@ -20,7 +30,18 @@ const Item = styled.li`
 `;
 
 const ItemList = styled.ul`
-  width: 320px;
+  width: 321px;
+  margin: 0;
+  padding: 0;
+  z-index: 1;
+  position: absolute;
+  top: 80%;
+  list-style: none;
+  background-color: white;
+  overflow: auto;
+  max-height: 200px;
+  box-sizing: border-box;
+  border: solid 1px #337e3c;
 
   ::-webkit-scrollbar {
     width: 0px;
@@ -43,26 +64,7 @@ const ItemList = styled.ul`
 `;
 
 const useStyles = makeStyles(theme => ({
-  input: {
-    padding: 15,
-    width: "100%",
-    height: "100%",
-    outline: "none",
-    border: "none",
-    fontFamily: "Lato",
-    fontSize: 15,
-  },
   listbox: {
-    margin: 0,
-    padding: 0,
-    zIndex: 1,
-    position: "absolute",
-    top: "80%",
-    listStyle: "none",
-    backgroundColor: theme.palette.background.paper,
-    overflow: "auto",
-    maxHeight: 200,
-    border: "1px solid rgba(0,0,0,.25)",
     '& li[data-focus="true"]': {
       backgroundColor: "#d7f4b4",
       cursor: "pointer",
@@ -91,7 +93,7 @@ export default function Filter() {
 
   return (
     <FilterContainer>
-      <input
+      <FilterInput
         placeholder='INGRESAR COLEGIO'
         className={classes.input}
         {...getInputProps()}
@@ -108,4 +110,3 @@ export default function Filter() {
     </FilterContainer>
   );
 }
-
