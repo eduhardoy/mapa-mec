@@ -1,5 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
+import useBars from "../../hooks/Bars";
 import InfoWrapper from "../Filters/InfoWrapper";
 
 // styles
@@ -10,7 +11,7 @@ const InfoBarStyle = styled.div`
   height: calc(100vh - 77px);
   width: 25vw;
   z-index: 9;
-  display: flex;
+  display: ${props => props.display};
   flex-direction: column;
   align-items: center;
 `;
@@ -46,8 +47,9 @@ const InfoContainer = styled.div`
 
 // markup
 const InfoBar = () => {
+  const {secondBar} = useBars()
   return (
-    <InfoBarStyle>
+    <InfoBarStyle display={secondBar == "INFO" ? "flex" : "none"}>
       <InfoContainer>
         <InfoWrapper />
       </InfoContainer>
