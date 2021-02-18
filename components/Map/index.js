@@ -13,9 +13,17 @@ const MapContainer = styled.div`
     height: calc(100vh - 127px);
   }
 `;
+
+const containerStyle2 = {
+  width: "100vw",
+  height: "calc(100vh - 127px)",
+  position: "absolute",
+  right: "0",
+};
+
 const containerStyle = {
-  width: "100%",
-  height: "100%",
+  width: "100vw",
+  height: "calc(100vh - 77px)",
   position: "absolute",
   right: "0",
 };
@@ -39,7 +47,9 @@ function MyComponent() {
       {isLoaded ? (
         <MapContainer ancho={"100vw"}>
           <GoogleMap
-            mapContainerStyle={containerStyle}
+            mapContainerStyle={
+              window.innerWidth > 425 ? containerStyle : containerStyle2
+            }
             center={{ lat: -28.737328845367706, lng: -57.722286004532684 }}
             zoom={8}
             options={{
