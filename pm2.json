@@ -1,0 +1,9 @@
+{
+    "apps": [
+        {
+            "name": "Mapa-Nextjs",
+            "script": "npm",
+            "args" : "run start"
+        }
+    ]
+}
