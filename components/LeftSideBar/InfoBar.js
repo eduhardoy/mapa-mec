@@ -9,16 +9,22 @@ const InfoBarStyle = styled.div`
   box-shadow: 1px 0px 5px 1px rgba(53, 53, 53, 0.25);
   border-right: solid #d3d3d3 2px;
   height: calc(100vh - 77px);
-  width: 25vw;
+  width: 30vw;
   z-index: 9;
   display: ${props => props.display};
   flex-direction: column;
   align-items: center;
+  @media (max-width: 426px) {
+    height: calc(100vh - 177px);
+    width: 100vw;
+    position: absolute;
+    bottom: 50px;
+  }
 `;
 
 const InfoContainer = styled.div`
   width: 100%;
-  height: 90%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;

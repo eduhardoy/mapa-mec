@@ -54,7 +54,7 @@ const PhoneLogo = styled.div`
 `;
 
 const MenuContainer = styled.div`
-  width: 5vw;
+  width: 70px;
   height: 100%;
   display: flex;
   justify-content: center;
@@ -106,7 +106,7 @@ const Logos = styled.div`
 `;
 
 const UserContainer = styled.div`
-  width: 5%;
+  width: 70px;
   height: 100%;
   display: flex;
   justify-content: center;
@@ -139,8 +139,11 @@ const IconButtonMenu = styled.button`
   svg {
     width: auto;
     color: white;
-    height: 50%;
+    height: 40px;
     margin: 0;
+    @media (max-width: 426px) {
+    height: 30px;
+  }
   }
 `;
 
@@ -160,8 +163,11 @@ const IconButtonUser = styled.button`
   svg {
     width: auto;
     color: #fff;
-    height: 50%;
+    height: 40px;
     margin: 0;
+    @media (max-width: 426px) {
+    height: 30px;
+  }
   }
 `;
 

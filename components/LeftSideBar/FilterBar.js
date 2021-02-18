@@ -15,6 +15,12 @@ const SecondBarStyle = styled.div`
   flex-direction: column;
   align-items: center;
   display: ${props => props.display};
+  @media (max-width: 426px) {
+    height: calc(100vh - 177px);
+    width: 100vw;
+    position: absolute;
+    bottom: 50px;
+  }
 `;
 
 const FiltrosContainer = styled.div`
