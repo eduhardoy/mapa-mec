@@ -23,6 +23,7 @@ const SecondBarStyle = styled.div`
     width: 100%;
     position: absolute;
     bottom: 50px;
+    left: 0;
   }
 `;
 

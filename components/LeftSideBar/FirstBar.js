@@ -2,6 +2,8 @@ import * as React from "react";
 import styled from "styled-components";
 import TuneIcon from "@material-ui/icons/Tune";
 import InfoIcon from "@material-ui/icons/Info";
+import SettingsIcon from "@material-ui/icons/Settings";
+import BarChartIcon from "@material-ui/icons/BarChart";
 import useBars from "../../hooks/Bars";
 
 // styles
@@ -171,6 +173,18 @@ const FirstBar = () => {
             <IconButton>
               <InfoIcon />
               <ButtonText>Información</ButtonText>
+            </IconButton>
+          </ButtonItem>
+          <ButtonItem>
+            <IconButton>
+              <SettingsIcon />
+              <ButtonText>Herramientas</ButtonText>
+            </IconButton>
+          </ButtonItem>
+          <ButtonItem>
+            <IconButton>
+              <BarChartIcon />
+              <ButtonText>Estadísticas</ButtonText>
             </IconButton>
           </ButtonItem>
         </ButtonList>
