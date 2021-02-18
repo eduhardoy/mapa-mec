@@ -107,6 +107,12 @@ const ButtonItem = styled.li`
         }
       }
     }
+    :focus {
+      background-color: red;
+      button {
+        background-color: red;
+      }
+    }
   }
 `;
 

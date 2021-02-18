@@ -16,8 +16,8 @@ const SecondBarStyle = styled.div`
   align-items: center;
   display: ${props => props.display};
   @media (max-width: 426px) {
-    height: calc(100vh - 177px);
-    width: 100vw;
+    height: calc(100% - 177px);
+    width: 100%;
     position: absolute;
     bottom: 50px;
   }
@@ -82,7 +82,7 @@ const FiltrosButton = styled.button`
 
 // markup
 const FilterBar = () => {
-  const { secondBar } = useBars()
+  const { secondBar } = useBars();
   return (
     <SecondBarStyle display={secondBar == "FILTROS" ? "flex" : "none"}>
       <FiltrosContainer>

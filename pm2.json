@@ -3,7 +3,7 @@
         {
             "name": "Mapa-Nextjs",
             "script": "npm",
-            "args" : "run start"
+            "args" : "run dev"
         }
     ]
 }

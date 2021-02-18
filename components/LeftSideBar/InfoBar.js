@@ -15,8 +15,8 @@ const InfoBarStyle = styled.div`
   flex-direction: column;
   align-items: center;
   @media (max-width: 426px) {
-    height: calc(100vh - 177px);
-    width: 100vw;
+    height: calc(100% - 177px);
+    width: 100%;
     position: absolute;
     bottom: 50px;
   }
@@ -53,7 +53,7 @@ const InfoContainer = styled.div`
 
 // markup
 const InfoBar = () => {
-  const {secondBar} = useBars()
+  const { secondBar } = useBars();
   return (
     <InfoBarStyle display={secondBar == "INFO" ? "flex" : "none"}>
       <InfoContainer>
