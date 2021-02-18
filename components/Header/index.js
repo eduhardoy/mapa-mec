@@ -14,7 +14,8 @@ const HeaderStyle = styled.div`
   background-color: #7cb342;
   box-shadow: 0px 1px 5px 3px rgba(53, 53, 53, 0.47);
   height: 77px;
-  position: sticky;
+  position: absolute;
+  top: 0;
   z-index: 500;
   top: 0;
   padding: 0;
