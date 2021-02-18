@@ -14,16 +14,9 @@ const MapContainer = styled.div`
   }
 `;
 
-const containerStyle2 = {
-  width: "100vw",
-  height: "calc(100vh - 127px)",
-  position: "absolute",
-  right: "0",
-};
-
 const containerStyle = {
-  width: "100vw",
-  height: "calc(100vh - 77px)",
+  width: "100%",
+  height: "100%",
   position: "absolute",
   right: "0",
 };
