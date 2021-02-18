@@ -7,7 +7,6 @@ import Map from "../components/Map";
 import * as type from "../redux/types";
 import { wrapper } from "../redux/store";
 
-
 export const getServerSideProps = wrapper.getServerSideProps(
   async ({ store }) => {
     // LOCALIZACIONES
@@ -42,29 +41,27 @@ export const getServerSideProps = wrapper.getServerSideProps(
     });
 
     // ESTADOS
-    const estados = await axios.get(
-      "http://200.10.111.88:1337/estados"
-    );
+    const estados = await axios.get("http://200.10.111.88:1337/estados");
     store.dispatch({
       type: type.LOAD_ESTADOS,
       payload: estados.data,
     });
 
     //AMIBTOS
-    const ambitos = await axios.get(
-      "http://200.10.111.88:1337/ambitos"
-    );
+    const ambitos = await axios.get("http://200.10.111.88:1337/ambitos");
     store.dispatch({
       type: type.LOAD_AMBITOS,
-      payload: ambitos.data
-    })
+      payload: ambitos.data,
+    });
 
     //INTERNET PROVEEDORES
-    const internetProveedores = await axios.get("http://200.10.111.88:1337/conexion-proveedors")
+    const internetProveedores = await axios.get(
+      "http://200.10.111.88:1337/conexion-proveedors"
+    );
     store.dispatch({
       type: type.LOAD_INTERNET_PROVEEDORES,
-      payload: internetProveedores.data
-    })
+      payload: internetProveedores.data,
+    });
     return { props: {} };
   }
 );

@@ -11,6 +11,9 @@ const SecondBarStyle = styled.div`
   height: calc(100vh - 77px);
   width: 30vw;
   z-index: 9;
+  position: absolute;
+  left: 70px;
+  bottom: 0;
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -11,6 +11,9 @@ const FirstBarContainer = styled.div`
   height: calc(100vh - 77px);
   width: 70px;
   z-index: 10;
+  position: absolute;
+  left: 0;
+  bottom: 0;
   margin: 0;
   padding: 0;
   box-shadow: 1px 0px 5px 1px rgba(53, 53, 53, 0.25);
@@ -107,10 +110,14 @@ const ButtonItem = styled.li`
         }
       }
     }
-    :focus {
-      background-color: red;
+    :active {
       button {
-        background-color: red;
+        color: red;
+      }
+    }
+    :focus {
+      button {
+        color: red;
       }
     }
   }
