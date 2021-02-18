@@ -2,8 +2,7 @@ import * as React from "react";
 import styled from "styled-components";
 import TuneIcon from "@material-ui/icons/Tune";
 import InfoIcon from "@material-ui/icons/Info";
-import { connect } from "react-redux";
-import { selectBar } from "../../redux/actions/BarActions";
+import useBars from "../../hooks/Bars";
 
 // styles
 const FirstBarContainer = styled.div`
@@ -101,23 +100,27 @@ const ButtonText = styled.p`
 `;
 
 // markup
-const FirstBar = ({ selectBar, secondBar }) => {
+const FirstBar = () => {
+  const { setSecondBar, secondBar } = useBars()
+
+  const selectBar = (arg) => {
+    secondBar == arg
+      ? setSecondBar("")
+      : setSecondBar(arg)
+  }
+
   return (
     <FirstBarContainer>
       <FirstBarStyle>
         <ButtonList>
-          <ButtonItem>
-            <IconButton
-              onClick={() =>
-                selectBar({ bar: !secondBar.bar, selected: "FILTROS" })
-              }
-            >
+          <ButtonItem onClick={(e) => selectBar("FILTROS")}>
+            <IconButton >
               <TuneIcon />
               <ButtonText>Filtros</ButtonText>
             </IconButton>
           </ButtonItem>
-          <ButtonItem>
-            <IconButton>
+          <ButtonItem onClick={(e) => selectBar("INFO")}>
+            <IconButton >
               <InfoIcon />
               <ButtonText>Información</ButtonText>
             </IconButton>
@@ -128,13 +131,4 @@ const FirstBar = ({ selectBar, secondBar }) => {
   );
 };
 
-const mapStateToProps = state => ({
-  firstBar: state.bar.firstBar,
-  secondBar: state.bar.secondBar,
-});
-
-const mapDispatchToProps = dispatch => ({
-  selectBar: arg => dispatch(selectBar(arg)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(FirstBar);
+export default FirstBar;

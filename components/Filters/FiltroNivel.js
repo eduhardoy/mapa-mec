@@ -66,10 +66,8 @@ const AccordionDetails = withStyles(theme => ({
   },
 }))(MuiAccordionDetails);
 
-const FiltroNivel = () => {
+const FiltroNivel = ({ filtros, setNivelesFilter }) => {
   const [expanded, setExpanded] = React.useState();
-  const { filtros } = useFiltros()
-  const { localidades } = usePrecargado()
 
   const handleChange = panel => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
@@ -77,6 +75,7 @@ const FiltroNivel = () => {
 
   const handleChecked = ev => {
     const { value, checked } = ev.target;
+    setNivelesFilter(value)
   };
 
   return (
@@ -109,16 +108,22 @@ const FiltroNivel = () => {
       </AccordionSummary>
       <AccordionDetails>
         <CheckboxFilter>
-          {localidades.map(dep => (
+          {[
+            { value: "152,155,121,122,100,101", id: "inicial", title: "INCIAL" },
+            { value: "136,123,126,140,102,105,153,156,158", id: "primaria", title: "PRIMARIA" },
+            { value: "143,144,108,109,110,111,129,130,147,148,151,154,157,159,131,132,149,150,138", id: "secundaria", title: "SECUNDARIA" },
+            { value: "117,115", id: "superior", title: "SUPERIOR" }
+          ].map(dep => (
             <FormControlLabel
               key={dep.id}
-              value={dep.id}
+              value={dep.value}
               control={
                 <CheckboxNew
                   onChange={handleChecked}
+                  checked={filtros.niveles.some(n => dep.value.split(",").includes(n))}
                 />
               }
-              label={dep.nombre}
+              label={dep.title}
               labelPlacement='end'
             />
           ))}

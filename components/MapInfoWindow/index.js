@@ -22,6 +22,12 @@ export const MapInfoWindow = ({ position, closeInfoWindow, info }) => {
       <InfoStyled>
         <h1>{info.colegio ? info.colegio.nombre : ""}</h1>
         <h3>CUE: {info.cueanexo}</h3>
+        {/* {info.ofertas
+          ? info.ofertas.map(ofe => (
+            <h5>{ofe.idOferta}</h5>
+          ))
+          : null
+        } */}
       </InfoStyled>
     </InfoWindow>
   );

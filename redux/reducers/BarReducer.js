@@ -2,7 +2,7 @@ import * as type from "../types";
 
 const initialState = {
   firstBar: false,
-  secondBar: { bar: false, selected: "" },
+  secondBar: "",
 };
 
 const barReducer = (state = initialState, action) => {
@@ -11,7 +11,7 @@ const barReducer = (state = initialState, action) => {
       return {
         ...state,
         firstBar: !state.firstBar,
-        secondBar: { bar: false, selected: "" },
+        secondBar: "",
       };
     case type.SELECT_BAR_ITEM:
       return { ...state, secondBar: action.payload };

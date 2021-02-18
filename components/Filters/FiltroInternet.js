@@ -66,10 +66,8 @@ const AccordionDetails = withStyles(theme => ({
   },
 }))(MuiAccordionDetails);
 
-const FiltroInternet = () => {
+const FiltroInternet = ({ filtros, setInternetFilter }) => {
   const [expanded, setExpanded] = React.useState();
-  const { filtros } = useFiltros()
-  const { localidades } = usePrecargado()
 
   const handleChange = panel => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
@@ -77,6 +75,7 @@ const FiltroInternet = () => {
 
   const handleChecked = ev => {
     const { value, checked } = ev.target;
+    setInternetFilter(value)
   };
 
   return (
@@ -109,16 +108,20 @@ const FiltroInternet = () => {
       </AccordionSummary>
       <AccordionDetails>
         <CheckboxFilter>
-          {localidades.map(dep => (
+          {[
+            { value: true, title: "TIENE" },
+            { value: false, title: "NO TIENE" }
+          ].map(dep => (
             <FormControlLabel
-              key={dep.id}
-              value={dep.id}
+              key={dep.value}
+              value={dep.value}
               control={
                 <CheckboxNew
                   onChange={handleChecked}
+                  checked={filtros.internet.includes(dep.value)}
                 />
               }
-              label={dep.nombre}
+              label={dep.title}
               labelPlacement='end'
             />
           ))}

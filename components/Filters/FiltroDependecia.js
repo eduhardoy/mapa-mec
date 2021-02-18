@@ -66,9 +66,8 @@ const AccordionDetails = withStyles(theme => ({
   },
 }))(MuiAccordionDetails);
 
-const FiltroDependencia = () => {
+const FiltroDependencia = ({ filtros, setDependenciaFilter }) => {
   const [expanded, setExpanded] = React.useState();
-  const { filtros, setDependenciaFilter } = useFiltros()
 
   const handleChange = panel => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
@@ -106,7 +105,7 @@ const FiltroDependencia = () => {
           }
           label=''
         />
-        <p>DEPENDENCIA</p>
+        <p>DEPENDENCIA*</p>
       </AccordionSummary>
       <AccordionDetails>
         <CheckboxFilter>

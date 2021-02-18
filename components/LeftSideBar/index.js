@@ -1,7 +1,8 @@
 import * as React from "react";
 import styled from "styled-components";
-import SecondBar from "./SecondBar.js";
+import FilterBar from "./FilterBar";
 import FirstBar from "./FirstBar.js";
+import InfoBar from "./InfoBar.js";
 import { connect } from "react-redux";
 
 // styles
@@ -15,7 +16,8 @@ const LeftSideBarMenu = ({ firstBar, secondBar }) => {
   return (
     <LeftSideBarMenuStyle>
       {firstBar && <FirstBar />}
-      {secondBar.bar && <SecondBar />}
+      <FilterBar />
+      <InfoBar />
     </LeftSideBarMenuStyle>
   );
 };

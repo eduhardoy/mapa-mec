@@ -66,10 +66,8 @@ const AccordionDetails = withStyles(theme => ({
   },
 }))(MuiAccordionDetails);
 
-const FiltroOrganismoDependencia = () => {
+const FiltroOrganismoDependencia = ({ filtros, setOrganismoDependenciaFilter }) => {
   const [expanded, setExpanded] = React.useState();
-  const { filtros } = useFiltros()
-  const { localidades } = usePrecargado()
 
   const handleChange = panel => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
@@ -77,6 +75,7 @@ const FiltroOrganismoDependencia = () => {
 
   const handleChecked = ev => {
     const { value, checked } = ev.target;
+    setOrganismoDependenciaFilter(value)
   };
 
   return (
@@ -109,16 +108,26 @@ const FiltroOrganismoDependencia = () => {
       </AccordionSummary>
       <AccordionDetails>
         <CheckboxFilter>
-          {localidades.map(dep => (
+          {[
+            { value: "NOASIG *No asignado*", title: "NO ASIGNADO" },
+            { value: "CGE    Consejo General de Educacion", title: "CONSEJO GENERAL DE EDUCACION" },
+            { value: "DNS Direccion de Nivel Secundario", title: "DIRECCION DE NIVEL SECUNDARIO" },
+            { value: "DEP   Direccion de Enseñanza Privada", title: "DIRECCION DE ENSEÑANZA PRIVADA" },
+            { value: "DETP Direccion de Educación Tecnico Profesional", title: "DIRECCION DE EDUCACIÓN TECNICO PROFESIONAL" },
+            { value: "DNSU Direccion de Nivel Superior", title: "DIRECCION DE NIVEL SUPERIOR" },
+            { value: "DEF Direccion de Educación Fisica", title: "DIRECCION DE EDUCACIÓN FISICA" },
+            { value: "NC Nivel Central", title: "NIVEL CENTRAL" },
+          ].map(dep => (
             <FormControlLabel
-              key={dep.id}
-              value={dep.id}
+              key={dep.value}
+              value={dep.value}
               control={
                 <CheckboxNew
                   onChange={handleChecked}
+                  checked={filtros.organismoDependencias.includes(dep.value)}
                 />
               }
-              label={dep.nombre}
+              label={dep.title}
               labelPlacement='end'
             />
           ))}

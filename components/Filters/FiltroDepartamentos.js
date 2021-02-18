@@ -66,23 +66,17 @@ const AccordionDetails = withStyles(theme => ({
   },
 }))(MuiAccordionDetails);
 
-const FiltroDepartamentos = () => {
+const FiltroDepartamentos = ({ filtros, setDepartamentoFilter }) => {
   const [expanded, setExpanded] = React.useState("panel1");
-  const { filtros, setDepartamentoFilter } = useFiltros()
   const { departamentos } = usePrecargado()
 
   const handleChange = panel => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
   };
 
-  const handleChecked = ev => {
+  const handleChecked = (ev) => {
     const { value, checked } = ev.target;
     setDepartamentoFilter(value)
-    if (value == "all") {
-      let ids = [];
-      if (checked) departamentos.forEach(dep => ids.push(dep.id));
-      setCheckedId(ids);
-    }
   };
 
   return (
@@ -111,7 +105,7 @@ const FiltroDepartamentos = () => {
           }
           label=''
         />
-        <p>DEPARTAMENTOS</p>
+        <p>DEPARTAMENTOS*</p>
       </AccordionSummary>
       <AccordionDetails>
         <CheckboxFilter>

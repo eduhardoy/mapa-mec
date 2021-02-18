@@ -9,20 +9,48 @@ import { connect } from "react-redux";
 import { selectBar, selectFirstBar } from "../../redux/actions/BarActions";
 // styles
 
-const HeaderStyle = styled.main`
+const HeaderStyle = styled.div`
   width: 100vw;
   background-color: #7cb342;
   box-shadow: 0px 1px 5px 3px rgba(53, 53, 53, 0.47);
   height: 77px;
   position: sticky;
   z-index: 500;
-  left: 0;
+  top: 0;
   padding: 0;
   margin: 0;
   font-family: "Lato", sans-serif;
   display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  @media (max-width: 426px) {
+    height: 127px;
+  }
+`;
+
+const NormalHeader = styled.div`
+  height: 100%;
+  display: flex;
   justify-content: flex-start;
   align-items: center;
+  width: 100%;
+  @media (max-width: 426px) {
+    height: 50%;
+  }
+`;
+
+const PhoneLogo = styled.div`
+  display: none;
+  @media (max-width: 426px) {
+    display: flex;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+    img {
+      width: 80%;
+    }
+  }
 `;
 
 const MenuContainer = styled.div`
@@ -31,6 +59,9 @@ const MenuContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  @media (max-width: 426px) {
+    width: 50px;
+  }
 `;
 
 const MiddleContainer = styled.div`
@@ -39,13 +70,17 @@ const MiddleContainer = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  @media (max-width: 426px) {
+    width: calc(100% - 100px);
+    justify-content: center !important;
+  }
 `;
 
 const SearchBarContainer = styled.div`
-  width: 40%;
+  width: 80%;
   height: 100%;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
 `;
 
@@ -56,13 +91,17 @@ const Logos = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  @media (max-width: 1200px) {
-    width: 50%;
-  }
   img {
     height: auto;
     width: 80%;
     margin-left: 10px;
+  }
+  @media (max-width: 1200px) {
+    width: 50%;
+  }
+  @media (max-width: 426px) {
+    display: none;
+    width: 0;
   }
 `;
 
@@ -77,6 +116,10 @@ const UserContainer = styled.div`
   svg {
     width: 70%;
     height: auto;
+  }
+  @media (max-width: 426px) {
+    height: 50%;
+    width: 50px;
   }
 `;
 
@@ -117,7 +160,7 @@ const IconButtonUser = styled.button`
   svg {
     width: auto;
     color: #fff;
-    height: 60%;
+    height: 50%;
     margin: 0;
   }
 `;
@@ -126,24 +169,29 @@ const IconButtonUser = styled.button`
 const Header = ({ selectFirstBar, firstBar }) => {
   return (
     <HeaderStyle>
-      <MenuContainer>
-        <IconButtonMenu onClick={() => selectFirstBar()}>
-          <MenuIcon />
-        </IconButtonMenu>
-      </MenuContainer>
-      <MiddleContainer>
-        <Logos>
-          <img src='./images/Logos.png' alt='' />
-        </Logos>
-        <SearchBarContainer>
-          <SearchBar></SearchBar>
-        </SearchBarContainer>
-      </MiddleContainer>
-      <UserContainer>
-        <IconButtonUser>
-          <AccountCircleIcon />
-        </IconButtonUser>
-      </UserContainer>
+      <PhoneLogo>
+        <img src='./images/Logos.png' alt='' />
+      </PhoneLogo>
+      <NormalHeader>
+        <MenuContainer>
+          <IconButtonMenu onClick={() => selectFirstBar()}>
+            <MenuIcon />
+          </IconButtonMenu>
+        </MenuContainer>
+        <MiddleContainer>
+          <Logos>
+            <img src='./images/Logos.png' alt='' />
+          </Logos>
+          <SearchBarContainer>
+            <SearchBar />
+          </SearchBarContainer>
+        </MiddleContainer>
+        <UserContainer>
+          <IconButtonUser>
+            <AccountCircleIcon />
+          </IconButtonUser>
+        </UserContainer>
+      </NormalHeader>
     </HeaderStyle>
   );
 };

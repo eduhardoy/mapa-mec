@@ -6,7 +6,9 @@ const initialState = {
     departamentos: [],
     localidades: [],
     images: [],
-    estados: []
+    estados: [],
+    ambitos: [],
+    internetProveedores: []
 };
 
 const preCargaReducer = (state = initialState, action) => {
@@ -23,6 +25,10 @@ const preCargaReducer = (state = initialState, action) => {
             return { ...state, images: action.payload };
         case type.LOAD_ESTADOS:
             return { ...state, estados: action.payload }
+        case type.LOAD_AMBITOS:
+            return { ...state, ambitos: action.payload }
+        case type.LOAD_INTERNET_PROVEEDORES:
+            return { ...state, internetProveedores: action.payload }
         default:
             return state;
     }

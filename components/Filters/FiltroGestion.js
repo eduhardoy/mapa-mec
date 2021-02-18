@@ -66,10 +66,8 @@ const AccordionDetails = withStyles(theme => ({
   },
 }))(MuiAccordionDetails);
 
-const FiltroGestion = () => {
+const FiltroGestion = ({ filtros, setGestionesFilter }) => {
   const [expanded, setExpanded] = React.useState();
-  const { filtros } = useFiltros()
-  const { localidades } = usePrecargado()
 
   const handleChange = panel => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
@@ -77,6 +75,7 @@ const FiltroGestion = () => {
 
   const handleChecked = ev => {
     const { value, checked } = ev.target;
+    setGestionesFilter(value)
   };
 
   return (
@@ -109,16 +108,21 @@ const FiltroGestion = () => {
       </AccordionSummary>
       <AccordionDetails>
         <CheckboxFilter>
-          {localidades.map(dep => (
+          {[
+            { value: "Estatal", title: "ESTATAL" },
+            { value: "Privado", title: "PRIVADO" },
+            // { value: "Publico", title: "PUBLICO" },
+          ].map(dep => (
             <FormControlLabel
-              key={dep.id}
-              value={dep.id}
+              key={dep.value}
+              value={dep.value}
               control={
                 <CheckboxNew
                   onChange={handleChecked}
+                  checked={filtros.gestiones.includes(dep.value)}
                 />
               }
-              label={dep.nombre}
+              label={dep.title}
               labelPlacement='end'
             />
           ))}
