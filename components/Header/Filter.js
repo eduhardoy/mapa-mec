@@ -4,6 +4,10 @@ import { makeStyles } from "@material-ui/core/styles";
 import styled from "styled-components";
 import usePrecargado from "../../hooks/Precargado";
 
+//ICONS
+import CheckIcon from '@material-ui/icons/Check';
+import CloseIcon from '@material-ui/icons/Close';
+
 const FilterContainer = styled.div`
   width: 85%;
   height: 100%;
@@ -80,19 +84,58 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
+const Tag = styled(({ label, onDelete, ...props }) => (
+  <div {...props}>
+    <span>{label}</span>
+    <CloseIcon onClick={onDelete} />
+  </div>
+))`
+display: flex;
+align-items: center;
+height: 24px;
+margin: 2px;
+line-height: 22px;
+background-color: #fafafa;
+border: 1px solid #e8e8e8;
+border-radius: 2px;
+box-sizing: content-box;
+padding: 0 4px 0 10px;
+outline: 0;
+
+&:focus {
+  border-color: #40a9ff;
+  background-color: #e6f7ff;
+}
+
+& span {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+& svg {
+  font-size: 12px;
+  cursor: pointer;
+  padding: 4px;
+}
+`;
+
 export default function Filter() {
   const { localizaciones } = usePrecargado();
   const classes = useStyles();
   const {
     getRootProps,
     getInputLabelProps,
+    getTagProps,
     getInputProps,
     getListboxProps,
     getOptionProps,
+    value,
     groupedOptions,
   } = useAutocomplete({
     options: localizaciones.filter(e => e.colegio),
     getOptionLabel: option => option.colegio.nombre,
+    multiple: true
   });
 
   return (
@@ -102,6 +145,9 @@ export default function Filter() {
         className={classes.input}
         {...getInputProps()}
       />
+      {value.map((option, index) => (
+        <Tag label={option.colegio.nombre} {...getTagProps({ index })} />
+      ))}
       {groupedOptions.length > 0 ? (
         <ItemList className={classes.listbox} {...getListboxProps()}>
           {groupedOptions.map((option, index) => (
