@@ -40,9 +40,7 @@ function MyComponent() {
       {isLoaded ? (
         <MapContainer ancho={"100vw"}>
           <GoogleMap
-            mapContainerStyle={
-              window.innerWidth > 425 ? containerStyle : containerStyle2
-            }
+            mapContainerStyle={containerStyle}
             center={{ lat: -28.737328845367706, lng: -57.722286004532684 }}
             zoom={8}
             options={{
