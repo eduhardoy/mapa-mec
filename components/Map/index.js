@@ -7,7 +7,7 @@ import styled from "styled-components";
 const MapContainer = styled.div`
   width: ${props => props.ancho}; //CALCULAR WIDT BASADO EN PROPS
   height: calc(100vh - 77px);
-  right: 0px;
+  bottom: 0;
   position: absolute;
   @media (max-width: 426px) {
     height: calc(100vh - 127px);
@@ -18,7 +18,7 @@ const containerStyle = {
   width: "100%",
   height: "100%",
   position: "absolute",
-  right: "0",
+  bottom: "0",
 };
 
 function MyComponent() {
