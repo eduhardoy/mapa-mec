@@ -37,21 +37,21 @@ const FirstBarContainer = styled.div`
     position: absolute;
     bottom: 0;
     :hover {
-    width: 100%;
-    div {
-      ul {
-        li {
-          button {
-            width: 25%;
-            p {
-              display: none;
-              width: 0%;
+      width: 100%;
+      div {
+        ul {
+          li {
+            button {
+              width: 25%;
+              p {
+                display: none;
+                width: 0%;
+              }
             }
           }
         }
       }
     }
-  }
   }
 `;
 
@@ -98,6 +98,15 @@ const ButtonItem = styled.li`
   }
   @media (max-width: 426px) {
     padding-top: 0px;
+    :hover {
+      button {
+        background-color: #fff;
+        color: #666;
+        svg {
+          color: #666;
+        }
+      }
+    }
   }
 `;
 
@@ -129,26 +138,24 @@ const ButtonText = styled.p`
 
 // markup
 const FirstBar = () => {
-  const { setSecondBar, secondBar } = useBars()
+  const { setSecondBar, secondBar } = useBars();
 
-  const selectBar = (arg) => {
-    secondBar == arg
-      ? setSecondBar("")
-      : setSecondBar(arg)
-  }
+  const selectBar = arg => {
+    secondBar == arg ? setSecondBar("") : setSecondBar(arg);
+  };
 
   return (
     <FirstBarContainer>
       <FirstBarStyle>
         <ButtonList>
-          <ButtonItem onClick={(e) => selectBar("FILTROS")}>
-            <IconButton >
+          <ButtonItem onClick={e => selectBar("FILTROS")}>
+            <IconButton>
               <TuneIcon />
               <ButtonText>Filtros</ButtonText>
             </IconButton>
           </ButtonItem>
-          <ButtonItem onClick={(e) => selectBar("INFO")}>
-            <IconButton >
+          <ButtonItem onClick={e => selectBar("INFO")}>
+            <IconButton>
               <InfoIcon />
               <ButtonText>Información</ButtonText>
             </IconButton>

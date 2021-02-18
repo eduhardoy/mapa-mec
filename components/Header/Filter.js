@@ -33,7 +33,7 @@ const ItemList = styled.ul`
   width: 300px;
   margin: 0;
   padding: 0;
-  z-index: 1;
+  z-index: 999;
   position: absolute;
   top: 71px;
   list-style: none;
@@ -58,6 +58,12 @@ const ItemList = styled.ul`
 
   ::-webkit-scrollbar-thumb:hover {
     background-color: #666666;
+  }
+
+  @media (max-width: 426px) {
+    width: 100%;
+    left: 0;
+    top: 120px;
   }
 `;
 

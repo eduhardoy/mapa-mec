@@ -65,7 +65,7 @@ const MenuContainer = styled.div`
 `;
 
 const MiddleContainer = styled.div`
-  width: calc(90% - 5vw);
+  width: calc(100% - 140px);
   height: 100%;
   display: flex;
   justify-content: flex-start;
@@ -142,8 +142,8 @@ const IconButtonMenu = styled.button`
     height: 40px;
     margin: 0;
     @media (max-width: 426px) {
-    height: 30px;
-  }
+      height: 30px;
+    }
   }
 `;
 
@@ -166,8 +166,8 @@ const IconButtonUser = styled.button`
     height: 40px;
     margin: 0;
     @media (max-width: 426px) {
-    height: 30px;
-  }
+      height: 30px;
+    }
   }
 `;
 
