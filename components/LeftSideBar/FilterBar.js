@@ -1,5 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
+import useBars from "../../hooks/Bars/index.js";
 import FilterWrapper from "../Filters/FilterWrapper.js";
 
 // styles
@@ -13,6 +14,13 @@ const SecondBarStyle = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  display: ${props => props.display};
+  @media (max-width: 426px) {
+    height: calc(100vh - 177px);
+    width: 100vw;
+    position: absolute;
+    bottom: 50px;
+  }
 `;
 
 const FiltrosContainer = styled.div`
@@ -73,9 +81,10 @@ const FiltrosButton = styled.button`
 `;
 
 // markup
-const SecondBar = () => {
+const FilterBar = () => {
+  const { secondBar } = useBars()
   return (
-    <SecondBarStyle>
+    <SecondBarStyle display={secondBar == "FILTROS" ? "flex" : "none"}>
       <FiltrosContainer>
         <FilterWrapper />
       </FiltrosContainer>
@@ -86,4 +95,4 @@ const SecondBar = () => {
   );
 };
 
-export default SecondBar;
+export default FilterBar;

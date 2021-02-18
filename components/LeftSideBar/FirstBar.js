@@ -2,21 +2,20 @@ import * as React from "react";
 import styled from "styled-components";
 import TuneIcon from "@material-ui/icons/Tune";
 import InfoIcon from "@material-ui/icons/Info";
-import { connect } from "react-redux";
-import { selectBar } from "../../redux/actions/BarActions";
+import useBars from "../../hooks/Bars";
 
 // styles
 const FirstBarContainer = styled.div`
   background-color: #fff;
   /* border-right: solid #d3d3d3 2px; */
   height: calc(100vh - 77px);
-  width: 5vw;
+  width: 70px;
   z-index: 10;
   margin: 0;
   padding: 0;
   box-shadow: 1px 0px 5px 1px rgba(53, 53, 53, 0.25);
   :hover {
-    width: 18vw;
+    width: 200px;
     max-width: none;
     div {
       ul {
@@ -32,9 +31,27 @@ const FirstBarContainer = styled.div`
       }
     }
   }
-  :focus {
-    width: 15vw;
-    max-width: none;
+  @media (max-width: 426px) {
+    width: 100%;
+    height: 50px;
+    position: absolute;
+    bottom: 0;
+    :hover {
+      width: 100%;
+      div {
+        ul {
+          li {
+            button {
+              width: 25%;
+              p {
+                display: none;
+                width: 0%;
+              }
+            }
+          }
+        }
+      }
+    }
   }
 `;
 
@@ -44,6 +61,9 @@ const FirstBarStyle = styled.div`
   display: flex;
   align-items: flex-start;
   justify-content: center;
+  @media (max-width: 426px) {
+    height: 100%;
+  }
 `;
 
 const ButtonList = styled.ul`
@@ -53,6 +73,10 @@ const ButtonList = styled.ul`
   list-style-type: none;
   display: flex;
   flex-direction: column;
+  @media (max-width: 426px) {
+    height: 100%;
+    flex-direction: row;
+  }
 `;
 
 const ButtonItem = styled.li`
@@ -69,6 +93,18 @@ const ButtonItem = styled.li`
       color: #7cb342;
       svg {
         color: #7cb342;
+      }
+    }
+  }
+  @media (max-width: 426px) {
+    padding-top: 0px;
+    :hover {
+      button {
+        background-color: #fff;
+        color: #666;
+        svg {
+          color: #666;
+        }
       }
     }
   }
@@ -101,22 +137,24 @@ const ButtonText = styled.p`
 `;
 
 // markup
-const FirstBar = ({ selectBar, secondBar }) => {
+const FirstBar = () => {
+  const { setSecondBar, secondBar } = useBars();
+
+  const selectBar = arg => {
+    secondBar == arg ? setSecondBar("") : setSecondBar(arg);
+  };
+
   return (
     <FirstBarContainer>
       <FirstBarStyle>
         <ButtonList>
-          <ButtonItem>
-            <IconButton
-              onClick={() =>
-                selectBar({ bar: !secondBar.bar, selected: "FILTROS" })
-              }
-            >
+          <ButtonItem onClick={e => selectBar("FILTROS")}>
+            <IconButton>
               <TuneIcon />
               <ButtonText>Filtros</ButtonText>
             </IconButton>
           </ButtonItem>
-          <ButtonItem>
+          <ButtonItem onClick={e => selectBar("INFO")}>
             <IconButton>
               <InfoIcon />
               <ButtonText>Información</ButtonText>
@@ -128,13 +166,4 @@ const FirstBar = ({ selectBar, secondBar }) => {
   );
 };
 
-const mapStateToProps = state => ({
-  firstBar: state.bar.firstBar,
-  secondBar: state.bar.secondBar,
-});
-
-const mapDispatchToProps = dispatch => ({
-  selectBar: arg => dispatch(selectBar(arg)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(FirstBar);
+export default FirstBar;

@@ -105,7 +105,7 @@ const FiltroDependencia = ({ filtros, setDependenciaFilter }) => {
           }
           label=''
         />
-        <p>DEPENDENCIA</p>
+        <p>DEPENDENCIA*</p>
       </AccordionSummary>
       <AccordionDetails>
         <CheckboxFilter>

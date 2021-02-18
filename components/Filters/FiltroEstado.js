@@ -105,7 +105,7 @@ const FiltroEstado = ({ filtros, setEstadoFilter }) => {
           }
           label=''
         />
-        <p>ESTADO</p>
+        <p>ESTADO*</p>
       </AccordionSummary>
       <AccordionDetails>
         <CheckboxFilter>

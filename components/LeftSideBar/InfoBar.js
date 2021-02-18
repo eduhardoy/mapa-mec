@@ -1,5 +1,7 @@
 import * as React from "react";
 import styled from "styled-components";
+import useBars from "../../hooks/Bars";
+import InfoWrapper from "../Filters/InfoWrapper";
 
 // styles
 const InfoBarStyle = styled.div`
@@ -9,11 +11,25 @@ const InfoBarStyle = styled.div`
   height: calc(100vh - 77px);
   width: 30vw;
   z-index: 9;
+  display: ${props => props.display};
+  flex-direction: column;
+  align-items: center;
+  @media (max-width: 426px) {
+    height: calc(100vh - 177px);
+    width: 100vw;
+    position: absolute;
+    bottom: 50px;
+  }
+`;
+
+const InfoContainer = styled.div`
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   overflow-y: scroll;
-  position: relative;
+  font-family: "Lato", sans-serif;
 
   ::-webkit-scrollbar {
     width: 0px;
@@ -37,7 +53,14 @@ const InfoBarStyle = styled.div`
 
 // markup
 const InfoBar = () => {
-  return <InfoBarStyle></InfoBarStyle>;
+  const {secondBar} = useBars()
+  return (
+    <InfoBarStyle display={secondBar == "INFO" ? "flex" : "none"}>
+      <InfoContainer>
+        <InfoWrapper />
+      </InfoContainer>
+    </InfoBarStyle>
+  );
 };
 
 export default InfoBar;

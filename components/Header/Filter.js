@@ -5,12 +5,22 @@ import styled from "styled-components";
 import usePrecargado from "../../hooks/Precargado";
 
 const FilterContainer = styled.div`
-  width: 320px;
+  width: 85%;
   height: 100%;
   display: flex;
   flex-direction: center;
   align-items: center;
   font-family: "Lato";
+`;
+
+const FilterInput = styled.input`
+  width: 100%;
+  height: 100%;
+  outline: none;
+  border: none;
+  font-family: "Lato";
+  padding: 15px;
+  font-size: 15px;
 `;
 
 const Item = styled.li`
@@ -20,7 +30,16 @@ const Item = styled.li`
 `;
 
 const ItemList = styled.ul`
-  width: 320px;
+  width: 300px;
+  margin: 0;
+  padding: 0;
+  z-index: 999;
+  position: absolute;
+  top: 71px;
+  list-style: none;
+  background-color: white;
+  overflow: auto;
+  max-height: 200px;
 
   ::-webkit-scrollbar {
     width: 0px;
@@ -40,29 +59,16 @@ const ItemList = styled.ul`
   ::-webkit-scrollbar-thumb:hover {
     background-color: #666666;
   }
+
+  @media (max-width: 426px) {
+    width: 100%;
+    left: 0;
+    top: 120px;
+  }
 `;
 
 const useStyles = makeStyles(theme => ({
-  input: {
-    padding: 15,
-    width: "100%",
-    height: "100%",
-    outline: "none",
-    border: "none",
-    fontFamily: "Lato",
-    fontSize: 15,
-  },
   listbox: {
-    margin: 0,
-    padding: 0,
-    zIndex: 1,
-    position: "absolute",
-    top: "80%",
-    listStyle: "none",
-    backgroundColor: theme.palette.background.paper,
-    overflow: "auto",
-    maxHeight: 200,
-    border: "1px solid rgba(0,0,0,.25)",
     '& li[data-focus="true"]': {
       backgroundColor: "#d7f4b4",
       cursor: "pointer",
@@ -91,7 +97,7 @@ export default function Filter() {
 
   return (
     <FilterContainer>
-      <input
+      <FilterInput
         placeholder='INGRESAR COLEGIO'
         className={classes.input}
         {...getInputProps()}
@@ -108,4 +114,3 @@ export default function Filter() {
     </FilterContainer>
   );
 }
-
