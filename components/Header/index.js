@@ -84,6 +84,10 @@ const SearchBarContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  @media (max-width: 769px) {
+    width: 100%;
+    max-width: 90%;
+  }
 `;
 
 const Logos = styled.div`
