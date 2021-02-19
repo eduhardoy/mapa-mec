@@ -78,7 +78,8 @@ const MiddleContainer = styled.div`
 `;
 
 const SearchBarContainer = styled.div`
-  width: 80%;
+  width: 60%;
+  max-width: 60%;
   height: 100%;
   display: flex;
   justify-content: center;

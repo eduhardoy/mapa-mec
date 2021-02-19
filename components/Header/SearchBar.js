@@ -3,6 +3,7 @@ import styled from "styled-components";
 // import { useSelector } from "react-redux";
 import SearchIcon from "@material-ui/icons/Search";
 import Filter from "./Filter";
+import Filter2 from "./Filter2";
 
 // styles
 const SearchBarWrapper = styled.div`
@@ -30,6 +31,7 @@ const SearchBarButton = styled.button`
   padding: 0;
   margin: 0;
   width: 15%;
+  max-width: 15%;
   border: none;
   background-color: white;
   display: flex;
@@ -41,8 +43,11 @@ const SearchBarButton = styled.button`
   border-left: solid 1px #337e3c;
   svg {
     width: auto;
-    height: 50%;
+    height: 30px;
     color: #33691e;
+    @media (max-width: 769px) {
+      height: 20px;
+    }
   }
 `;
 
@@ -53,7 +58,7 @@ const SearchBarButton = styled.button`
 const SearchBar = () => {
   return (
     <SearchBarWrapper>
-      <Filter></Filter>
+      <Filter2></Filter2>
       <SearchBarButton>
         <SearchIcon />
       </SearchBarButton>
