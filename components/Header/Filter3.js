@@ -104,19 +104,23 @@ const StyledTag = styled.div`
 
   .tooltip {
     position: fixed;
-    top: 7%;
+    top: 68px;
     left: 50%;
     z-index:9999;
     visibility: hidden;
     background-color: black;
     color: #fff;
     text-align: center;
-    border-radius: 6px;
-    padding: 5px 0;
+    border-radius: 15px;
+    padding: 5px 15px;
+    @media (max-width: 426px) {
+      top: 120px;
+      left: 5%;
+  }
   }
 
   &:hover {
-    background-color: rgba(255, 50, 20, 0.4);
+    background-color: #f6faf1;
   }
 
   &:hover .tooltip {
@@ -232,6 +236,7 @@ const ComboBox = styled.div`
         padding: 0;
         height: 100%;
         width: 100%;
+        color: white;
       }
     }
   }
