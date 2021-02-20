@@ -1,18 +1,18 @@
-import React from 'react';
-import useAutocomplete from '@material-ui/lab/useAutocomplete';
-import NoSsr from '@material-ui/core/NoSsr';
-import CheckIcon from '@material-ui/icons/Check';
-import CloseIcon from '@material-ui/icons/Close';
-import styled from 'styled-components';
-import usePrecargado from '../../hooks/Precargado';
+import React from "react";
+import useAutocomplete from "@material-ui/lab/useAutocomplete";
+import NoSsr from "@material-ui/core/NoSsr";
+import CheckIcon from "@material-ui/icons/Check";
+import CloseIcon from "@material-ui/icons/Close";
+import styled from "styled-components";
+import usePrecargado from "../../hooks/Precargado";
 
-const Label = styled('label')`
+const Label = styled("label")`
   padding: 0 0 4px;
   line-height: 1.5;
   display: block;
 `;
 
-const InputWrapper = styled('div')`
+const InputWrapper = styled("div")`
   width: 300px;
   background-color: #fff;
   border-radius: 4px;
@@ -43,7 +43,7 @@ const InputWrapper = styled('div')`
   }
 `;
 
-const Listbox = styled('ul')`
+const Listbox = styled("ul")`
   width: 300px;
   margin: 2px 0 0;
   padding: 0;
@@ -69,7 +69,7 @@ const Listbox = styled('ul')`
     }
   }
 
-  & li[aria-selected='true'] {
+  & li[aria-selected="true"] {
     background-color: #fafafa;
     font-weight: 600;
 
@@ -78,7 +78,7 @@ const Listbox = styled('ul')`
     }
   }
 
-  & li[data-focus='true'] {
+  & li[data-focus="true"] {
     background-color: #e6f7ff;
     cursor: pointer;
 
@@ -88,68 +88,66 @@ const Listbox = styled('ul')`
   }
 `;
 
-
 const StyledTag = styled.div`
-display: flex;
-align-items: center;
-height: 24px;
-margin: 2px;
-line-height: 22px;
-background-color: #fafafa;
-border: 1px solid #e8e8e8;
-border-radius: 2px;
-box-sizing: content-box;
-padding: 0 4px 0 10px;
-outline: 0;
-overflow: hidden;
-
-.tooltip{
-  position:absolute;
-  left:0;
-  bottom:30px;
-  visibility:hidden;
-  background-color: black;
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px 0;
-}
-      
-&:hover{
-  background-color: rgba(255,50,20,.4);
-}
-
-&:hover .tooltip{
-  visibility:visible;
-  z-index: 9999999;
-}
-
-&:focus {
-  border-color: #40a9ff;
-  background-color: #e6f7ff;
-}
-
-& span {
+  display: flex;
+  align-items: center;
+  height: 24px;
+  margin: 2px;
+  line-height: 22px;
+  background-color: #fafafa;
+  border: 1px solid #e8e8e8;
+  border-radius: 2px;
+  box-sizing: content-box;
+  padding: 0 4px 0 10px;
+  outline: 0;
   overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
 
-& svg {
-  font-size: 12px;
-  cursor: pointer;
-  padding: 4px;
-}
-`
+  .tooltip {
+    position: fixed;
+    top: 7%;
+    left: 50%;
+    z-index:9999;
+    visibility: hidden;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+  }
+
+  &:hover {
+    background-color: rgba(255, 50, 20, 0.4);
+  }
+
+  &:hover .tooltip {
+    visibility: visible;
+    z-index: 9999999;
+  }
+
+  &:focus {
+    border-color: #40a9ff;
+    background-color: #e6f7ff;
+  }
+
+  & span {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  & svg {
+    font-size: 12px;
+    cursor: pointer;
+    padding: 4px;
+  }
+`;
 
 const Tag = ({ label, onDelete }) => (
   <StyledTag onClick={onDelete}>
-    <span>
-      {label}
-      <span className="tooltip">{label}</span>
-    </span>
+    <span>{label}</span>
+    <span className="tooltip">{label}</span>
   </StyledTag>
-)
+);
 
 export default function Filter3() {
   const { localizaciones } = usePrecargado();
@@ -166,17 +164,17 @@ export default function Filter3() {
     focused,
     setAnchorEl,
   } = useAutocomplete({
-    id: 'customized-hook-demo',
+    id: "customized-hook-demo",
     multiple: true,
-    options: localizaciones.filter(e => e.colegio),
+    options: localizaciones.filter((e) => e.colegio),
     getOptionLabel: (option) => option.colegio.nombre,
-    disableCloseOnSelect: true
+    disableCloseOnSelect: true,
   });
 
   return (
     <ComboBox>
       <div {...getRootProps()}>
-        <InputWrapper ref={setAnchorEl} className={focused ? 'focused' : ''}>
+        <InputWrapper ref={setAnchorEl} className={focused ? "focused" : ""}>
           {value.map((option, index) => (
             <Tag label={option.colegio.nombre} {...getTagProps({ index })} />
           ))}
@@ -199,43 +197,42 @@ export default function Filter3() {
 }
 
 const ComboBox = styled.div`
-height:100%;
+  height: 100%;
 
-& div{
-  height:100%;
-  display:flex;
-  align-items:center;
-  justify-content:color-interpolation-filters;
+  & div {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: color-interpolation-filters;
 
-  & div{//InputWrapper
-    height:100%;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    display:flex;
-    flex-wrap:nowrap;
-    position:relative;
-
-    & div{
-      width: 80%;
-      height:90%;
-      /* min-width:60%; */
-      margin-left:4px;
-      margin-right: 4px;
-      border-radius: 8px;
-      z-index:1;
-    }
-    
-    & input{
-      position:absolute;
-      z-index:0;
-      margin:0;
-      padding:0;
-      height:100%;
+    & div {
+      //InputWrapper
+      height: 100%;
       width: 100%;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: nowrap;
+      position: relative;
+
+      & div {
+        width: 80%;
+        height: 90%;
+        /* min-width:60%; */
+        margin-left: 4px;
+        margin-right: 4px;
+        border-radius: 8px;
+        z-index: 1;
+      }
+
+      & input {
+        position: absolute;
+        z-index: 0;
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        width: 100%;
+      }
     }
   }
-
-}
-
-`
+`;

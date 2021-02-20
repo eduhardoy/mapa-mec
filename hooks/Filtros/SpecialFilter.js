@@ -8,17 +8,37 @@ import useMarcadores from "../Marcadores";
 const useSpecialFilter = () => {
   const dispatch = useDispatch();
   const { localizaciones } = usePrecargado();
-  const { cabeceras } = useSelector((state) => state.special);
+  const { special } = useSelector((state) => state);
   const [marcadores, setMarcadores] = useMarcadores();
 
   const setCabeceras = (arg) => {
     if (arg == "all") {
       dispatch({
         type: type.SET_CABECERAS,
-        payload: cabeceras.filter((e) => Boolean(e)) ? [true] : [],
+        payload: special.cabeceras.includes(true) ? [] : [true],
       });
     }
   };
+
+  React.useEffect(() => {
+    //Cantidad de filtros
+    let filterPassed = {
+      cabeceras: false,
+    };
+    const isTrue = (e) => e === true;
+    let marcadoresFiltered = localizaciones.filter((l) => {
+      //DEPARTAMENTOS CABECERAS
+      filterPassed["cabeceras"] = special.cabeceras[0]
+        ? cabecerasJson.filter((e) => e["CUA-ANEXO"] == l.cueanexo).length > 0
+          ? true
+          : false
+        : false;
+
+      return Object.values(filterPassed).every(isTrue);
+    });
+
+    setMarcadores(marcadoresFiltered);
+  }, [special]);
 
   return {
     localizaciones,

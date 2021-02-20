@@ -172,7 +172,7 @@ const FirstBar = () => {
           <ButtonItem onClick={e => selectBar("SPECIAL")}>
             <IconButton>
               <TuneIcon />
-              <ButtonText>Filtros</ButtonText>
+              <ButtonText>FiltrosEspeciales</ButtonText>
             </IconButton>
           </ButtonItem>
           <ButtonItem onClick={e => selectBar("INFO")}>

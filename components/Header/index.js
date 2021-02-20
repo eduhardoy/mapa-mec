@@ -84,6 +84,7 @@ const SearchBarContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
   @media (max-width: 769px) {
     width: 100%;
     max-width: 90%;
@@ -182,7 +183,7 @@ const Header = ({ selectFirstBar, firstBar }) => {
   return (
     <HeaderStyle>
       <PhoneLogo>
-        <img src='./images/Logos.png' alt='' />
+        <img src="./images/Logos.png" alt="" />
       </PhoneLogo>
       <NormalHeader>
         <MenuContainer>
@@ -192,7 +193,7 @@ const Header = ({ selectFirstBar, firstBar }) => {
         </MenuContainer>
         <MiddleContainer>
           <Logos>
-            <img src='./images/Logos.png' alt='' />
+            <img src="./images/Logos.png" alt="" />
           </Logos>
           <SearchBarContainer>
             <SearchBar />
@@ -208,12 +209,12 @@ const Header = ({ selectFirstBar, firstBar }) => {
   );
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   firstBar: state.bar.firstBar,
 });
 
-const mapDispatchToProps = dispatch => ({
-  selectFirstBar: arg => dispatch(selectFirstBar(arg)),
+const mapDispatchToProps = (dispatch) => ({
+  selectFirstBar: (arg) => dispatch(selectFirstBar(arg)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
