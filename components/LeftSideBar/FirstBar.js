@@ -3,6 +3,7 @@ import styled from "styled-components";
 import TuneIcon from "@material-ui/icons/Tune";
 import InfoIcon from "@material-ui/icons/Info";
 import SettingsIcon from "@material-ui/icons/Settings";
+import SchoolIcon from '@material-ui/icons/School';
 import BarChartIcon from "@material-ui/icons/BarChart";
 import useBars from "../../hooks/Bars";
 
@@ -20,7 +21,7 @@ const FirstBarContainer = styled.div`
   padding: 0;
   box-shadow: 1px 0px 5px 1px rgba(53, 53, 53, 0.25);
   :hover {
-    width: 200px;
+    width: 230px;
     max-width: none;
     div {
       ul {
@@ -171,8 +172,8 @@ const FirstBar = () => {
           </ButtonItem>
           <ButtonItem onClick={e => selectBar("SPECIAL")}>
             <IconButton>
-              <TuneIcon />
-              <ButtonText>FiltrosEspeciales</ButtonText>
+              <SchoolIcon />
+              <ButtonText>Filtros Especiales</ButtonText>
             </IconButton>
           </ButtonItem>
           <ButtonItem onClick={e => selectBar("INFO")}>
