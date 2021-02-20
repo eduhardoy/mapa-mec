@@ -169,6 +169,12 @@ const FirstBar = () => {
               <ButtonText>Filtros</ButtonText>
             </IconButton>
           </ButtonItem>
+          <ButtonItem onClick={e => selectBar("SPECIAL")}>
+            <IconButton>
+              <TuneIcon />
+              <ButtonText>Filtros</ButtonText>
+            </IconButton>
+          </ButtonItem>
           <ButtonItem onClick={e => selectBar("INFO")}>
             <IconButton>
               <InfoIcon />

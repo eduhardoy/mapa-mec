@@ -188,7 +188,7 @@ export default function Filter3() {
         <Listbox {...getListboxProps()}>
           {groupedOptions.map((option, index) => (
             <li {...getOptionProps({ option, index })}>
-              <span>{option.colegio.nombres}</span>
+              <span>{option.colegio.nombre}</span>
               <CheckIcon fontSize="small" />
             </li>
           ))}
