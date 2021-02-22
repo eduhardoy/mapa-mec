@@ -12,6 +12,13 @@ const useFiltros = () => {
     const [marcadores, setMarcadores] = useMarcadores()
 
 
+    const setHeader = arg => {
+        dispatch({
+            type: type.SET_HEADER,
+            payload: arg
+        })
+    }
+
     const setDepartamento = (arg) => {
         if (arg == "all") {
             if (filtro.departamentos.length > 0) {
@@ -404,6 +411,11 @@ const useFiltros = () => {
         const isTrue = (e => e === true)
         let marcadoresFiltered = localizaciones.filter(l => {
 
+            //HEADER FILTER
+            if (filtro.header.length > 0) {
+                return filtro.header.includes(l) ? true : false
+            }
+
             //DEPARTAMENTOS FILTRO
             filterPassed["departamento"] = l.domicilio
                 ? filtro.departamentos.includes(l.domicilio.departamento.id)
@@ -512,6 +524,7 @@ const useFiltros = () => {
 
     return {
         filtros: filtro,
+        setHeaderFilter: setHeader,
         setDepartamentoFilter: setDepartamento,
         setLocalidadFilter: setLocalidad,
         setDependenciaFilter: setDependencia,

@@ -1,6 +1,7 @@
 import * as type from "../types";
 
 const initialState = {
+  header: [],
   departamentos: [],
   localidades: [],
   localidadesFiltered: [],
@@ -21,6 +22,8 @@ const initialState = {
 
 const filtrosReducer = (state = initialState, action) => {
   switch (action.type) {
+    case type.SET_HEADER:
+      return { ...state, header: action.payload }
     case type.SET_DEPARTAMENTOS:
       return { ...state, departamentos: action.payload };
     case type.SET_LOCALIDADES:
