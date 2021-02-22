@@ -61,10 +61,16 @@ const FilterContainer = styled.div`
 `;
 
 const TextTag = styled.p`
-  position: relative;
+  position: absolute;
   display: none;
-  left: 10px;
-  background-color: red;
+  bottom: 39%;
+  font-size: 15px;
+  border-radius: 15px;
+  padding: 2px;
+  padding-left: 20px;
+  padding-right: 20px;
+  color: white;
+  background-color: #1e1e1e;
 `;
 
 const InputWrapper = styled("div")`
