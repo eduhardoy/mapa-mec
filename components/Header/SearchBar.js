@@ -36,7 +36,7 @@ const SearchBarLeftDiv = styled.div`
     height: 100%;
   }
   @media (max-width: 426px) {
-    width: 60%;
+    width: 70%;
     height: 100%;
   }
 `;
@@ -45,12 +45,13 @@ const SearchBarRightDiv = styled.div`
   height: 100%;
   padding: 0;
   margin: 0;
+  margin-left: 10px;
   @media (max-width: 769px) {
     width: 25%;
     height: 100%;
   }
   @media (max-width: 426px) {
-    width: 40%;
+    width: 30%;
     height: 100%;
   }
 `;
