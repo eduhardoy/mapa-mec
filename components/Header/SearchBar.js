@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 // import { useSelector } from "react-redux";
 import Filter3 from "./Filter3";
-import * as type from "../../redux/types"
+import * as type from "../../redux/types";
 
 // styles
 const SearchBarWrapper = styled.div`
@@ -35,6 +35,10 @@ const SearchBarLeftDiv = styled.div`
     width: 85%;
     height: 100%;
   }
+  @media (max-width: 426px) {
+    width: 60%;
+    height: 100%;
+  }
 `;
 const SearchBarRightDiv = styled.div`
   width: 20%;
@@ -45,8 +49,8 @@ const SearchBarRightDiv = styled.div`
     width: 25%;
     height: 100%;
   }
-  @media (max-width: 769px) {
-    width: 30%;
+  @media (max-width: 426px) {
+    width: 40%;
     height: 100%;
   }
 `;
@@ -71,15 +75,15 @@ const SearchBarButton = styled.button`
 //   const lupaIcon = images.filter((e) => e.nombre === "search")[0];
 
 const SearchBar = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const { buscador } = useSelector(state => state.header);
 
-  const setBuscadorState = (arg) => {
+  const setBuscadorState = arg => {
     dispatch({
       type: type.SET_HEADER_STATE,
-      payload: arg
-    })
-  }
+      payload: arg,
+    });
+  };
 
   return (
     <SearchBarWrapper>
