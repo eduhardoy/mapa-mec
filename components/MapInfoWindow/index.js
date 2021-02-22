@@ -18,7 +18,7 @@ const InfoStyled = styled.div`
 
 export const MapInfoWindow = ({ position, closeInfoWindow, info }) => {
   return (
-    <InfoWindow position={position} onCloseClick={closeInfoWindow}>
+    <InfoWindow position={position} onCloseClick={closeInfoWindow} options={{ pixelOffset: new google.maps.Size(0, -48) }}>
       <InfoStyled>
         <h1>{info.colegio ? info.colegio.nombre : ""}</h1>
         <h3>CUE: {info.cueanexo}</h3>
