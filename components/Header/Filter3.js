@@ -1,10 +1,11 @@
 import React from "react";
 import useAutocomplete from "@material-ui/lab/useAutocomplete";
-import NoSsr from "@material-ui/core/NoSsr";
 import CheckIcon from "@material-ui/icons/Check";
 import CloseIcon from "@material-ui/icons/Close";
 import styled from "styled-components";
 import usePrecargado from "../../hooks/Precargado";
+import { useDispatch } from "react-redux";
+import * as type from "../../redux/types"
 
 const Label = styled("label")`
   padding: 0 0 4px;
@@ -147,18 +148,19 @@ const StyledTag = styled.div`
 `;
 
 const Tag = ({ label, onDelete }) => (
-  <StyledTag onClick={onDelete}>
+  <StyledTag >
     <span>{label}</span>
     <span className="tooltip">{label}</span>
+    <CloseIcon onClick={onDelete} />
   </StyledTag>
 );
 
 export default function Filter3() {
   const { localizaciones } = usePrecargado();
+  const dispatch = useDispatch()
 
   const {
     getRootProps,
-    getInputLabelProps,
     getInputProps,
     getTagProps,
     getListboxProps,
@@ -174,6 +176,10 @@ export default function Filter3() {
     getOptionLabel: (option) => option.colegio.nombre,
     disableCloseOnSelect: true,
   });
+
+  React.useEffect(() => {
+    dispatch({ type: type.SET_MARCADORES, payload: value })
+  }, [value])
 
   return (
     <ComboBox>
@@ -215,12 +221,13 @@ const ComboBox = styled.div`
       width: 100%;
       margin: 0;
       padding: 0;
+      padding-left:3px;
+      padding-right:3px;
       display: flex;
       flex-wrap: nowrap;
       position: relative;
 
       & div {
-        width: 80%;
         height: 90%;
         /* min-width:60%; */
         margin-left: 4px;
