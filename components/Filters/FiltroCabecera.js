@@ -77,27 +77,31 @@ const FiltroCabeceras = () => {
   };
 
   return (
-    <AccordionSummary
-      aria-label="Expand"
-      aria-controls="additional-actions1-content"
-      id="additional-actions1-header"
+    <Accordion
+      square
     >
-      <FormControlLabel
-        aria-label="Acknowledge"
-        value="all"
-        onClick={(event) => event.stopPropagation()}
-        onFocus={(event) => event.stopPropagation()}
-        control={
-          <CheckboxNew
-            onChange={handleChecked}
-            icon={<RadioButtonCheckedIcon />}
-            checkedIcon={<RadioButtonCheckedIcon />}
-          />
-        }
-        label=""
-      />
-      <p>CABECERAS PRIMARIAS</p>
-    </AccordionSummary>
+      <AccordionSummary
+        aria-label="Expand"
+        aria-controls="additional-actions1-content"
+        id="additional-actions1-header"
+      >
+        <FormControlLabel
+          aria-label="Acknowledge"
+          value="all"
+          onClick={(event) => event.stopPropagation()}
+          onFocus={(event) => event.stopPropagation()}
+          control={
+            <CheckboxNew
+              onChange={handleChecked}
+              icon={<RadioButtonCheckedIcon />}
+              checkedIcon={<RadioButtonCheckedIcon />}
+            />
+          }
+          label=""
+        />
+        <p>CABECERAS PRIMARIAS</p>
+      </AccordionSummary>
+    </Accordion>
   );
 };
 
