@@ -4,8 +4,9 @@ import CheckIcon from "@material-ui/icons/Check";
 import CloseIcon from "@material-ui/icons/Close";
 import styled from "styled-components";
 import usePrecargado from "../../hooks/Precargado";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import * as type from "../../redux/types"
+import useFiltros from "../../hooks/Filtros";
 
 const Label = styled("label")`
   padding: 0 0 4px;
@@ -157,7 +158,7 @@ const Tag = ({ label, onDelete }) => (
 
 export default function Filter3() {
   const { localizaciones } = usePrecargado();
-  const dispatch = useDispatch()
+  const { setHeaderFilter } = useFiltros()
 
   const {
     getRootProps,
@@ -175,11 +176,8 @@ export default function Filter3() {
     options: localizaciones.filter((e) => e.colegio),
     getOptionLabel: (option) => option.colegio.nombre,
     disableCloseOnSelect: true,
+    onChange: (ev, values) => setHeaderFilter(values)
   });
-
-  React.useEffect(() => {
-    dispatch({ type: type.SET_MARCADORES, payload: value })
-  }, [value])
 
   return (
     <ComboBox>
