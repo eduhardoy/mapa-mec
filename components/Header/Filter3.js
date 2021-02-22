@@ -158,7 +158,7 @@ const Tag = ({ label, onDelete }) => (
 export default function Filter3() {
   const { localizaciones } = usePrecargado();
   const { setHeaderFilter } = useFiltros();
-  const { buscador } = useSelector(state => state.header)
+  const { buscador } = useSelector(state => state.header);
 
   const {
     getRootProps,
