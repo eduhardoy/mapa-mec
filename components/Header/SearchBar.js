@@ -1,7 +1,8 @@
 import * as React from "react";
 import styled from "styled-components";
+import useHeaderState from "../../hooks/HeaderState";
 // import { useSelector } from "react-redux";
-import Filter from "./Filter";
+import Filter3 from "./Filter3";
 
 // styles
 const SearchBarWrapper = styled.div`
@@ -37,8 +38,14 @@ const SearchBarLeftDiv = styled.div`
 const SearchBarRightDiv = styled.div`
   width: 20%;
   height: 100%;
+  padding: 0;
+  margin: 0;
   @media (max-width: 769px) {
-    width: 15%;
+    width: 25%;
+    height: 100%;
+  }
+  @media (max-width: 769px) {
+    width: 30%;
     height: 100%;
   }
 `;
@@ -49,22 +56,13 @@ const SearchBarButton = styled.button`
   width: 100%;
   height: 100%;
   border: none;
-  background-color: white;
+  background-color: #1e1e1e;
   display: flex;
   justify-content: center;
   align-items: center;
   outline: none;
   cursor: pointer;
   color: #e9ecef;
-  border-left: solid 1px #337e3c;
-  svg {
-    width: auto;
-    height: 30px;
-    color: #33691e;
-    @media (max-width: 769px) {
-      height: 20px;
-    }
-  }
 `;
 
 // markup
@@ -72,14 +70,24 @@ const SearchBarButton = styled.button`
 //   const lupaIcon = images.filter((e) => e.nombre === "search")[0];
 
 const SearchBar = () => {
+  const { buscador, setBuscador } = useHeaderState();
+
   return (
     <SearchBarWrapper>
       <SearchBarLeftDiv>
-        <Filter />
+        <Filter3 />
       </SearchBarLeftDiv>
 
       <SearchBarRightDiv>
-        <SearchBarButton>Nombre</SearchBarButton>
+        <SearchBarButton
+          onClick={() =>
+            buscador == "NOMBRE"
+              ? setBuscador("CUEANEXO")
+              : setBuscador("NOMBRE")
+          }
+        >
+          <p>{buscador == "NOMBRE" ? "NOMBRE" : "CUEANEXO"}</p>
+        </SearchBarButton>
       </SearchBarRightDiv>
     </SearchBarWrapper>
   );

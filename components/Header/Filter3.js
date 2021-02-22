@@ -5,8 +5,9 @@ import CloseIcon from "@material-ui/icons/Close";
 import styled from "styled-components";
 import usePrecargado from "../../hooks/Precargado";
 import { useDispatch, useSelector } from "react-redux";
-import * as type from "../../redux/types"
+import * as type from "../../redux/types";
 import useFiltros from "../../hooks/Filtros";
+import useHeaderState from "../../hooks/HeaderState";
 
 const Label = styled("label")`
   padding: 0 0 4px;
@@ -108,7 +109,7 @@ const StyledTag = styled.div`
     position: fixed;
     top: 68px;
     left: 50%;
-    z-index:9999;
+    z-index: 9999;
     visibility: hidden;
     background-color: black;
     color: #fff;
@@ -118,7 +119,7 @@ const StyledTag = styled.div`
     @media (max-width: 426px) {
       top: 120px;
       left: 5%;
-  }
+    }
   }
 
   &:hover {
@@ -149,17 +150,17 @@ const StyledTag = styled.div`
 `;
 
 const Tag = ({ label, onDelete }) => (
-  <StyledTag >
+  <StyledTag>
     <span>{label}</span>
-    <span className="tooltip">{label}</span>
+    <span className='tooltip'>{label}</span>
     <CloseIcon onClick={onDelete} />
   </StyledTag>
 );
 
 export default function Filter3() {
   const { localizaciones } = usePrecargado();
-  const { setHeaderFilter } = useFiltros()
-  const [buscador, setBuscador] = React.useState("NOMBRE")
+  const { setHeaderFilter } = useFiltros();
+  const { buscador } = useHeaderState();
 
   const {
     getRootProps,
@@ -174,10 +175,11 @@ export default function Filter3() {
   } = useAutocomplete({
     id: "customized-hook-demo",
     multiple: true,
-    options: localizaciones.filter((e) => e.colegio),
-    getOptionLabel: (option) => buscador == "NOMBRE" ? option.colegio.nombre : option.cueanexo,
+    options: localizaciones.filter(e => e.colegio),
+    getOptionLabel: option =>
+      buscador == "NOMBRE" ? option.colegio.nombre : option.cueanexo,
     disableCloseOnSelect: true,
-    onChange: (ev, values) => setHeaderFilter(values)
+    onChange: (ev, values) => setHeaderFilter(values),
   });
 
   return (
@@ -185,7 +187,12 @@ export default function Filter3() {
       <div {...getRootProps()}>
         <InputWrapper ref={setAnchorEl} className={focused ? "focused" : ""}>
           {value.map((option, index) => (
-            <Tag label={buscador == "NOMBRE" ? option.colegio.nombre : option.cueanexo} {...getTagProps({ index })} />
+            <Tag
+              label={
+                buscador == "NOMBRE" ? option.colegio.nombre : option.cueanexo
+              }
+              {...getTagProps({ index })}
+            />
           ))}
 
           <input {...getInputProps()} />
@@ -195,8 +202,10 @@ export default function Filter3() {
         <Listbox {...getListboxProps()}>
           {groupedOptions.map((option, index) => (
             <li {...getOptionProps({ option, index })}>
-              <span>{buscador == "NOMBRE" ? option.colegio.nombre : option.cueanexo}</span>
-              <CheckIcon fontSize="small" />
+              <span>
+                {buscador == "NOMBRE" ? option.colegio.nombre : option.cueanexo}
+              </span>
+              <CheckIcon fontSize='small' />
             </li>
           ))}
         </Listbox>
@@ -220,8 +229,8 @@ const ComboBox = styled.div`
       width: 100%;
       margin: 0;
       padding: 0;
-      padding-left:3px;
-      padding-right:3px;
+      padding-left: 3px;
+      padding-right: 3px;
       display: flex;
       flex-wrap: nowrap;
       position: relative;
