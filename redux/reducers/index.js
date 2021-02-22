@@ -4,6 +4,7 @@ import marcadoresReducer from "./MarcadoresReducer";
 import filtrosReducer from "./FiltrosReducer";
 import preCargaReducer from "./PreCargaReducer";
 import specialFiltrosReducer from "./SpecialFiltrosReducer";
+import headerStateReducer from "./HeaderReducer";
 
 const rootReducer = combineReducers({
   precarga: preCargaReducer,
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
   bar: barReducer,
   filtro: filtrosReducer,
   special: specialFiltrosReducer,
+  header: headerStateReducer
 });
 
 export default rootReducer;

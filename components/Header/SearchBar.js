@@ -1,8 +1,9 @@
 import * as React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import useHeaderState from "../../hooks/HeaderState";
 // import { useSelector } from "react-redux";
 import Filter3 from "./Filter3";
+import * as type from "../../redux/types"
 
 // styles
 const SearchBarWrapper = styled.div`
@@ -70,7 +71,15 @@ const SearchBarButton = styled.button`
 //   const lupaIcon = images.filter((e) => e.nombre === "search")[0];
 
 const SearchBar = () => {
-  const { buscador, setBuscador } = useHeaderState();
+  const dispatch = useDispatch()
+  const { buscador } = useSelector(state => state.header);
+
+  const setBuscadorState = (arg) => {
+    dispatch({
+      type: type.SET_HEADER_STATE,
+      payload: arg
+    })
+  }
 
   return (
     <SearchBarWrapper>
@@ -82,8 +91,8 @@ const SearchBar = () => {
         <SearchBarButton
           onClick={() =>
             buscador == "NOMBRE"
-              ? setBuscador("CUEANEXO")
-              : setBuscador("NOMBRE")
+              ? setBuscadorState("CUEANEXO")
+              : setBuscadorState("NOMBRE")
           }
         >
           <p>{buscador == "NOMBRE" ? "NOMBRE" : "CUEANEXO"}</p>

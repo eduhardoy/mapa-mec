@@ -5,9 +5,7 @@ import CloseIcon from "@material-ui/icons/Close";
 import styled from "styled-components";
 import usePrecargado from "../../hooks/Precargado";
 import { useDispatch, useSelector } from "react-redux";
-import * as type from "../../redux/types";
 import useFiltros from "../../hooks/Filtros";
-import useHeaderState from "../../hooks/HeaderState";
 
 const Label = styled("label")`
   padding: 0 0 4px;
@@ -160,7 +158,7 @@ const Tag = ({ label, onDelete }) => (
 export default function Filter3() {
   const { localizaciones } = usePrecargado();
   const { setHeaderFilter } = useFiltros();
-  const { buscador } = useHeaderState();
+  const { buscador } = useSelector(state => state.header)
 
   const {
     getRootProps,
