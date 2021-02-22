@@ -1,18 +1,15 @@
 import * as React from "react";
 import styled from "styled-components";
 // import { useSelector } from "react-redux";
-import SearchIcon from "@material-ui/icons/Search";
 import Filter from "./Filter";
-import Filter2 from "./Filter2";
-import Filter3 from "./Filter3";
 
 // styles
 const SearchBarWrapper = styled.div`
   padding: 0;
   margin: 0;
   display: flex;
-  justify-content:center;
-  align-items:center;
+  justify-content: center;
+  align-items: center;
   width: 60%;
   height: 60%;
   background-color: #fff;
@@ -30,28 +27,27 @@ const SearchBarWrapper = styled.div`
 `;
 
 const SearchBarLeftDiv = styled.div`
-
-  width:90%;
-  height:100%;
+  width: 80%;
+  height: 100%;
   @media (max-width: 769px) {
-    width:85%;
-    height:100%;
+    width: 85%;
+    height: 100%;
   }
-`
+`;
 const SearchBarRightDiv = styled.div`
-  width:10%;
-  height:100%;
+  width: 20%;
+  height: 100%;
   @media (max-width: 769px) {
-    width:15%;
-    height:100%;
+    width: 15%;
+    height: 100%;
   }
-`
+`;
 
 const SearchBarButton = styled.button`
   padding: 0;
   margin: 0;
   width: 100%;
-  height:100%;
+  height: 100%;
   border: none;
   background-color: white;
   display: flex;
@@ -78,15 +74,12 @@ const SearchBarButton = styled.button`
 const SearchBar = () => {
   return (
     <SearchBarWrapper>
-      {/* <Filter2></Filter2> */}
       <SearchBarLeftDiv>
-        <Filter3 />
+        <Filter />
       </SearchBarLeftDiv>
 
       <SearchBarRightDiv>
-        <SearchBarButton>
-          <SearchIcon />
-        </SearchBarButton>
+        <SearchBarButton>Nombre</SearchBarButton>
       </SearchBarRightDiv>
     </SearchBarWrapper>
   );
