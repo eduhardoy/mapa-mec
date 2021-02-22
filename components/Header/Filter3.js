@@ -159,6 +159,7 @@ const Tag = ({ label, onDelete }) => (
 export default function Filter3() {
   const { localizaciones } = usePrecargado();
   const { setHeaderFilter } = useFiltros()
+  const [buscador, setBuscador] = React.useState("NOMBRE")
 
   const {
     getRootProps,
@@ -174,7 +175,7 @@ export default function Filter3() {
     id: "customized-hook-demo",
     multiple: true,
     options: localizaciones.filter((e) => e.colegio),
-    getOptionLabel: (option) => option.colegio.nombre,
+    getOptionLabel: (option) => buscador == "NOMBRE" ? option.colegio.nombre : option.cueanexo,
     disableCloseOnSelect: true,
     onChange: (ev, values) => setHeaderFilter(values)
   });
@@ -184,7 +185,7 @@ export default function Filter3() {
       <div {...getRootProps()}>
         <InputWrapper ref={setAnchorEl} className={focused ? "focused" : ""}>
           {value.map((option, index) => (
-            <Tag label={option.colegio.nombre} {...getTagProps({ index })} />
+            <Tag label={buscador == "NOMBRE" ? option.colegio.nombre : option.cueanexo} {...getTagProps({ index })} />
           ))}
 
           <input {...getInputProps()} />
@@ -194,7 +195,7 @@ export default function Filter3() {
         <Listbox {...getListboxProps()}>
           {groupedOptions.map((option, index) => (
             <li {...getOptionProps({ option, index })}>
-              <span>{option.colegio.nombre}</span>
+              <span>{buscador == "NOMBRE" ? option.colegio.nombre : option.cueanexo}</span>
               <CheckIcon fontSize="small" />
             </li>
           ))}
