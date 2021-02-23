@@ -6,7 +6,7 @@ const useMarcadores = () => {
     const { marcadores } = useSelector(state => state.marcador)
     const setMarcadores = (arg) => dispatch({ type: type.SET_MARCADORES, payload: arg })
 
-    return [marcadores, setMarcadores]
+    return { marcadores, setMarcadores }
 }
 
 export default useMarcadores

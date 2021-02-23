@@ -5,6 +5,7 @@ import filtrosReducer from "./FiltrosReducer";
 import preCargaReducer from "./PreCargaReducer";
 import specialFiltrosReducer from "./SpecialFiltrosReducer";
 import headerStateReducer from "./HeaderReducer";
+import mapReducer from "./MapReducer"
 
 const rootReducer = combineReducers({
   precarga: preCargaReducer,
@@ -12,7 +13,8 @@ const rootReducer = combineReducers({
   bar: barReducer,
   filtro: filtrosReducer,
   special: specialFiltrosReducer,
-  header: headerStateReducer
+  header: headerStateReducer,
+  map: mapReducer
 });
 
 export default rootReducer;

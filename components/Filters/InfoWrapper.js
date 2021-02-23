@@ -90,7 +90,7 @@ const Elemento = styled.div`
 
 export default function ControlledAccordions() {
   const [expanded, setExpanded] = React.useState(false);
-  const [marcadores] = useMarcadores();
+  const { marcadores } = useMarcadores();
 
   const handleChange = panel => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);

@@ -9,7 +9,7 @@ const useSpecialFilter = () => {
   const dispatch = useDispatch();
   const { localizaciones } = usePrecargado();
   const { special } = useSelector((state) => state);
-  const [marcadores, setMarcadores] = useMarcadores();
+  const { marcadores, setMarcadores } = useMarcadores();
 
   const setCabeceras = (arg) => {
     if (arg == "all") {

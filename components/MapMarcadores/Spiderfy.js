@@ -1,31 +1,43 @@
-// import React from "react";
-// import { GoogleMap } from "@react-google-maps/api";
+import React from "react";
+import { MapContext } from "@react-google-maps/api";
+import useConstructor from "../../hooks/Utilities/Constructor";
+import useMap from "../../hooks/Map"
 
-// const Spiderfy = (props) => {
+const Spiderfy = (props) => {
+    const [oms, setOms] = React.useState(null)
+    const { setInfoWindow } = useMap()
 
-//     const [oms, setOms] = React.useState(null)
+    useConstructor(() => {
+        const oms = require(`npm-overlapping-marker-spiderfier/lib/oms.min`);
+        setOms(new oms.OverlappingMarkerSpiderfier(
+            MapContext._currentValue,
+            {}
+        ))
+    })
 
-//     React.useEffect(() => {
-//         const oms = require(`npm-overlapping-marker-spiderfier/lib/oms.min`);
+    const markerNodeMounted = async ref => {
+        if (ref) {
+            oms.addMarker(ref.marker);
+            //CHILDREN REF DATA
+            const childrenEl = ref.props
 
-//         setOms(new oms.OverlappingMarkerSpiderfier(
-//             props.map, // 1*
-//             {}
-//         ))
-//     }, [])
+            console.log(childrenEl)
 
-//     const markerNodeMounted = async (ref) => {
-//         setTimeout(() => { //3*
-//             oms.addMarker(ref.marker); // 2*
-//             window.google.maps.event.addListener(ref.marker, "spider_click", e => {
-//                 if (props.onSpiderClick) props.onSpiderClick(e);
-//             });
-//         }, 2000);
-//     }
+            //SPIDER CLICK
+            window.google.maps.event.addListener(ref.marker, "spider_click", e => {
+                if (props.onSpiderClick) props.onSpiderClick(e);
+            });
 
-//     return React.Children.map(props.children, child =>
-//         React.cloneElement(child, { ref: (ref) => markerNodeMounted(ref) })
-//     );
-// }
+            //PRIMARY CLICK
+            // google.maps.event.addListener(ref.marker, 'click', function () {
+            //     setInfoWindow(true, childrenEl.data)
+            // });
+        }
+    };
 
-// export default Spiderfy;
+    return React.Children.map(props.children, child =>
+        React.cloneElement(child, { ref: markerNodeMounted })
+    );
+};
+
+export default Spiderfy;

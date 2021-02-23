@@ -9,7 +9,7 @@ const useFiltros = () => {
     const dispatch = useDispatch()
     const { localizaciones, localidades, departamentos, estados, ambitos, internetProveedores } = usePrecargado()
     const { filtro } = useSelector(state => state)
-    const [marcadores, setMarcadores] = useMarcadores()
+    const { marcadores, setMarcadores } = useMarcadores()
 
 
     const setHeader = arg => {
