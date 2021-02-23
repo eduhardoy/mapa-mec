@@ -42,7 +42,7 @@ class MyApp extends App {
             name='viewport'
             content='minimum-scale=1, maximum-scale=1, initial-scale=1, width=device-width'
           />
-          <meta charset='UTF-8' />
+          <meta charSet='UTF-8' />
           <title>Mapa Educativo</title>
         </Head>
         <Component {...pageProps} />
