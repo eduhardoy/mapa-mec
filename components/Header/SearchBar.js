@@ -31,8 +31,8 @@ const SearchBarWrapper = styled.div`
 const SearchBarLeftDiv = styled.div`
   width: 80%;
   height: 100%;
-  @media (max-width: 769px) {
-    width: 85%;
+  @media (max-width: 850px) {
+    width: 70%;
     height: 100%;
   }
   @media (max-width: 426px) {
@@ -45,9 +45,8 @@ const SearchBarRightDiv = styled.div`
   height: 100%;
   padding: 0;
   margin: 0;
-  margin-left: 10px;
-  @media (max-width: 769px) {
-    width: 25%;
+  @media (max-width: 850px) {
+    width: 30%;
     height: 100%;
   }
   @media (max-width: 426px) {
@@ -62,13 +61,19 @@ const SearchBarButton = styled.button`
   width: 100%;
   height: 100%;
   border: none;
-  background-color: #1e1e1e;
   display: flex;
   justify-content: center;
   align-items: center;
   outline: none;
   cursor: pointer;
-  color: #e9ecef;
+  color: black;
+  p {
+    margin: 0;
+    font-size: 12px;
+    @media (max-width: 850px) {
+      font-size: 10px;
+    }
+  }
 `;
 
 // markup

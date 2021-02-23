@@ -182,7 +182,7 @@ const FirstBar = () => {
               <ButtonText>Información</ButtonText>
             </IconButton>
           </ButtonItem>
-          <ButtonItem>
+          <ButtonItem onClick={e => selectBar("TOOLS")}>
             <IconButton>
               <SettingsIcon />
               <ButtonText>Herramientas</ButtonText>

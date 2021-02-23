@@ -13,7 +13,8 @@ const HeaderStyle = styled.div`
   width: 100vw;
   background-color: #7cb342;
   box-shadow: 0px 1px 5px 3px rgba(53, 53, 53, 0.47);
-  height: 77px;
+  height: 70px;
+  border-bottom: solid 7px #67a534;
   position: absolute;
   top: 0;
   z-index: 500;
