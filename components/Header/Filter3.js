@@ -57,6 +57,25 @@ const Listbox = styled("ul")`
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   z-index: 1;
 
+  ::-webkit-scrollbar {
+    width: 25px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #d6dee1;
+    border-radius: 20px;
+    border: 6px solid transparent;
+    background-clip: content-box;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #666666;
+  }
+
   & li {
     padding: 5px 12px;
     display: flex;
@@ -80,7 +99,7 @@ const Listbox = styled("ul")`
   }
 
   & li[data-focus="true"] {
-    background-color: #e6f7ff;
+    background-color: #f6faf1;
     cursor: pointer;
 
     & svg {

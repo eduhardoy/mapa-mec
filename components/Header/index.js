@@ -86,10 +86,7 @@ const SearchBarContainer = styled.div`
   align-items: center;
   position: relative;
   @media (max-width: 426px) {
-    height: 80%;
-  }
-  @media (max-width: 426px) {
-    width: 100%;
+    width: 90%;
     max-width: 90%;
   }
 `;
