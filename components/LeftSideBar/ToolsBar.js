@@ -1,16 +1,15 @@
 import * as React from "react";
 import styled from "styled-components";
 import useBars from "../../hooks/Bars";
-import InfoWrapper from "../Filters/InfoWrapper";
 
 // styles
-const InfoBarStyle = styled.div`
+const ToolsBarStyle = styled.div`
   background-color: #fff;
   box-shadow: 1px 0px 5px 1px rgba(53, 53, 53, 0.25);
   border-right: solid #d3d3d3 2px;
   height: calc(100vh - 77px);
-  width: 30vw;
-  min-width: 350px;
+  width: 20vw;
+  min-width: 200px;
   z-index: 9;
   position: absolute;
   left: 70px;
@@ -27,7 +26,7 @@ const InfoBarStyle = styled.div`
   }
 `;
 
-const InfoContainer = styled.div`
+const ToolsContainer = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
@@ -57,15 +56,13 @@ const InfoContainer = styled.div`
 `;
 
 // markup
-const InfoBar = () => {
+const ToolsBar = () => {
   const { secondBar } = useBars();
   return (
-    <InfoBarStyle display={secondBar == "INFO" ? "flex" : "none"}>
-      <InfoContainer>
-        <InfoWrapper />
-      </InfoContainer>
-    </InfoBarStyle>
+    <ToolsBarStyle display={secondBar == "TOOLS" ? "flex" : "none"}>
+      <ToolsContainer></ToolsContainer>
+    </ToolsBarStyle>
   );
 };
 
-export default InfoBar;
+export default ToolsBar;

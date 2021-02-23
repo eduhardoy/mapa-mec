@@ -28,6 +28,7 @@ const FirstBarContainer = styled.div`
           button {
             width: 100%;
             p {
+              font-size: 15px;
               display: flex;
               width: 60%;
             }
@@ -172,7 +173,7 @@ const FirstBar = () => {
           <ButtonItem onClick={e => selectBar("SPECIAL")}>
             <IconButton>
               <TuneIcon />
-              <ButtonText>FiltrosEspeciales</ButtonText>
+              <ButtonText>Filtros Especiales</ButtonText>
             </IconButton>
           </ButtonItem>
           <ButtonItem onClick={e => selectBar("INFO")}>
@@ -181,7 +182,7 @@ const FirstBar = () => {
               <ButtonText>Información</ButtonText>
             </IconButton>
           </ButtonItem>
-          <ButtonItem>
+          <ButtonItem onClick={e => selectBar("TOOLS")}>
             <IconButton>
               <SettingsIcon />
               <ButtonText>Herramientas</ButtonText>

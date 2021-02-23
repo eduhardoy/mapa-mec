@@ -31,12 +31,12 @@ const SearchBarWrapper = styled.div`
 const SearchBarLeftDiv = styled.div`
   width: 80%;
   height: 100%;
-  @media (max-width: 769px) {
-    width: 85%;
+  @media (max-width: 850px) {
+    width: 70%;
     height: 100%;
   }
   @media (max-width: 426px) {
-    width: 60%;
+    width: 70%;
     height: 100%;
   }
 `;
@@ -45,12 +45,15 @@ const SearchBarRightDiv = styled.div`
   height: 100%;
   padding: 0;
   margin: 0;
-  @media (max-width: 769px) {
-    width: 25%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @media (max-width: 850px) {
+    width: 30%;
     height: 100%;
   }
   @media (max-width: 426px) {
-    width: 40%;
+    width: 30%;
     height: 100%;
   }
 `;
@@ -58,16 +61,23 @@ const SearchBarRightDiv = styled.div`
 const SearchBarButton = styled.button`
   padding: 0;
   margin: 0;
-  width: 100%;
-  height: 100%;
+  width: 95%;
+  height: 90%;
   border: none;
-  background-color: #1e1e1e;
   display: flex;
   justify-content: center;
   align-items: center;
   outline: none;
   cursor: pointer;
-  color: #e9ecef;
+  background-color: #1e1e1e;
+  color: white;
+  p {
+    margin: 0;
+    font-size: 12px;
+    @media (max-width: 850px) {
+      font-size: 10px;
+    }
+  }
 `;
 
 // markup

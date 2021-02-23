@@ -11,6 +11,7 @@ const SecondBarStyle = styled.div`
   border-right: solid #d3d3d3 2px;
   height: calc(100vh - 77px);
   width: 30vw;
+  min-width: 350px;
   z-index: 9;
   position: absolute;
   left: 70px;

@@ -40,9 +40,10 @@ class MyApp extends App {
           ico
           <meta
             name='viewport'
-            content='minimum-scale=1, initial-scale=1, width=device-width'
+            content='minimum-scale=1, maximum-scale=1, initial-scale=1, width=device-width'
           />
-          <meta charset='UTF-8' />
+          <meta charSet='UTF-8' />
+          <link rel='shortcut icon' href='/images/favicon.ico' />
           <title>Mapa Educativo</title>
         </Head>
         <Component {...pageProps} />
