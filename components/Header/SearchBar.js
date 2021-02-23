@@ -45,6 +45,9 @@ const SearchBarRightDiv = styled.div`
   height: 100%;
   padding: 0;
   margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   @media (max-width: 850px) {
     width: 30%;
     height: 100%;
@@ -58,15 +61,16 @@ const SearchBarRightDiv = styled.div`
 const SearchBarButton = styled.button`
   padding: 0;
   margin: 0;
-  width: 100%;
-  height: 100%;
+  width: 95%;
+  height: 90%;
   border: none;
   display: flex;
   justify-content: center;
   align-items: center;
   outline: none;
   cursor: pointer;
-  color: black;
+  background-color: black;
+  color: white;
   p {
     margin: 0;
     font-size: 12px;
