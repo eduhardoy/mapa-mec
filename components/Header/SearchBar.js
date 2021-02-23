@@ -69,7 +69,7 @@ const SearchBarButton = styled.button`
   align-items: center;
   outline: none;
   cursor: pointer;
-  background-color: black;
+  background-color: #1e1e1e;
   color: white;
   p {
     margin: 0;

@@ -170,9 +170,19 @@ const IconButtonUser = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   border: none;
   background-color: transparent;
   cursor: pointer;
+  p {
+    margin: 0;
+    color: white;
+    font-family: "Lato";
+    font-size: 12px;
+    @media (max-width: 426px) {
+      font-size: 8px;
+    }
+  }
   :focus {
     border: none;
     outline: none;
@@ -212,6 +222,7 @@ const Header = ({ selectFirstBar, firstBar }) => {
         <UserContainer>
           <IconButtonUser>
             <AccountCircleIcon />
+            <p>SALIR</p>
           </IconButtonUser>
         </UserContainer>
       </NormalHeader>
