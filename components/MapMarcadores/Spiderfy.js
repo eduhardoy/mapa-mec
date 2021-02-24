@@ -8,8 +8,8 @@ const Spiderfy = (props) => {
     const { setInfoWindow } = useMap()
 
     useConstructor(() => {
-        const oms = require(`npm-overlapping-marker-spiderfier/lib/oms.min`);
-        setOms(new oms.OverlappingMarkerSpiderfier(
+        const OverlappingMarkerSpiderfier = require(`overlapping-marker-spiderfier`);
+        setOms(new OverlappingMarkerSpiderfier(
             MapContext._currentValue,
             {}
         ))
@@ -24,8 +24,7 @@ const Spiderfy = (props) => {
             console.log(childrenEl)
 
             //SPIDER CLICK
-            window.google.maps.event.addListener(ref.marker, "spider_click", e => {
-                if (props.onSpiderClick) props.onSpiderClick(e);
+            oms.addListener("click", (marker, ev) => {
                 setInfoWindow(true, childrenEl.data)
                 props.map.panTo({
                     lng: childrenEl.data.domicilio.geo.geometry.coordinates[0],
@@ -33,6 +32,13 @@ const Spiderfy = (props) => {
                 })
             });
 
+            oms.addListener("spiderfy", markers => {
+                setInfoWindow(true, childrenEl.data)
+                props.map.panTo({
+                    lng: childrenEl.data.domicilio.geo.geometry.coordinates[0],
+                    lat: childrenEl.data.domicilio.geo.geometry.coordinates[1],
+                })
+            });
         }
     };
 
