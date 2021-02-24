@@ -54,6 +54,14 @@ function MyComponent() {
           },
           streetViewControl: false,
           fullscreenControl: false,
+          // restriction: {
+          //   latLngBounds: {
+          //     north: -10,
+          //     south: -40,
+          //     east: 200,
+          //     west: 500,
+          //   },
+          // },
         }}
         onLoad={onLoad}
         onUnmount={onUnmount}

@@ -8,7 +8,7 @@ const MapMarcadores = React.forwardRef((props, ref) => {
   const { marcadores } = useMarcadores()
 
   return (
-    <Spiderfy>
+    <Spiderfy map={props.map}>
       {marcadores.map(ele => {
         if (ele.domicilio) {
           const latlng = {

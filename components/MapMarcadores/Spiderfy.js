@@ -26,12 +26,10 @@ const Spiderfy = (props) => {
             //SPIDER CLICK
             window.google.maps.event.addListener(ref.marker, "spider_click", e => {
                 if (props.onSpiderClick) props.onSpiderClick(e);
+                setInfoWindow(true, childrenEl.data)
+                
             });
 
-            //PRIMARY CLICK
-            // google.maps.event.addListener(ref.marker, 'click', function () {
-            //     setInfoWindow(true, childrenEl.data)
-            // });
         }
     };
 
