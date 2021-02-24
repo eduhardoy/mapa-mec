@@ -1,34 +1,98 @@
 import { Marker } from "@react-google-maps/api";
 import React from "react";
-import useMap from "../../hooks/Map";
 import useMarcadores from "../../hooks/Marcadores";
-import Spiderfy from "./Spiderfy";
+import { MapContext } from "@react-google-maps/api";
+import { useDispatch } from "react-redux";
+import * as type from "../../redux/types"
 
-const MapMarcadores = React.forwardRef((props, ref) => {
+
+const MapMarcadores = (props) => {
+  //LOGGER
+  console.log("MapMarcadores RENDERED")
+
+  //OMS
+  const [oms, setOms] = React.useState(() => {
+    const OverlappingMarkerSpiderfier = require(`overlapping-marker-spiderfier`);
+    return new OverlappingMarkerSpiderfier(
+      MapContext._currentValue,
+      {}
+    )
+  })
+
+  //MARCADORES
   const { marcadores } = useMarcadores()
 
+  //REFERENCIAS
+  const markersRef = React.useRef([])
+
+  //INFOWINDOW DISPATCHER
+  const dispatch = useDispatch()
+  const setInfoWindow = (show, data) => {
+    dispatch({
+      type: type.SHOW_INFO_WINDOW,
+      payload: { show, data }
+    })
+  }
+
+
+  //MARCADORES LOGICA
+  React.useEffect(() => {
+    markersRef.current = markersRef.current.slice(0, marcadores.length)
+
+    oms.clearMarkers()
+    markersRef.current.map(el => {
+      //SPIDERFY
+      if (!oms.getMarkers().includes(el.marker))
+        oms.addMarker(el.marker);
+    })
+  }, [marcadores]);
+
+  React.useEffect(() => {
+    //Reiniciar Listeners
+    oms.clearListeners("click")
+    oms.clearListeners("spiderfy")
+
+    //SPIDER CLICK
+    oms.addListener("click", (marker, ev) => {
+      const ele = markersRef.current[parseInt(marker.title)].props.data
+      console.log(ele)
+      setInfoWindow(true, ele)
+      props.map.panTo({
+        lng: ele.domicilio.geo.geometry.coordinates[0],
+        lat: ele.domicilio.geo.geometry.coordinates[1],
+      })
+    });
+
+    //SPIDERFY
+    oms.addListener("spiderfy", markers => {
+    });
+  }, [])
+
   return (
-    <Spiderfy map={props.map}>
-      {marcadores.map(ele => {
-        if (ele.domicilio) {
-          const latlng = {
-            lng: ele.domicilio.geo.geometry.coordinates[0],
-            lat: ele.domicilio.geo.geometry.coordinates[1],
-          };
-          return (
-            <Marker
-              key={ele.cueanexo}
-              position={latlng}
-              icon={obtenerIcono(ele)}
-              ref={ref}
-              data={ele}
-            />
-          );
-        }
-      })}
-    </Spiderfy>
-  );
-});
+    <>
+      {
+        marcadores.map((ele, i) => {
+          if (ele.domicilio) {
+            const latlng = {
+              lng: ele.domicilio.geo.geometry.coordinates[0],
+              lat: ele.domicilio.geo.geometry.coordinates[1],
+            };
+            return (
+              <Marker
+                title={`${i}`}
+                key={ele.cueanexo}
+                position={latlng}
+                icon={obtenerIcono(ele)}
+                ref={el => markersRef.current[i] = el}
+                data={ele}
+              />
+            );
+          }
+        })
+      }
+    </>
+  )
+}
 
 const obtenerIcono = (ele) => {
 

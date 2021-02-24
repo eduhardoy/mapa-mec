@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { GoogleMap, useJsApiLoader } from "@react-google-maps/api";
 import MapMarcadores from "../MapMarcadores";
 import styled from "styled-components";
-import useMap from "../../hooks/Map";
 import MapInfoWindow from "../MapInfoWindow";
 
 //TODO Map Container styled component as MapContainer
@@ -23,13 +22,14 @@ const containerStyle = {
   bottom: "0",
 };
 
-function MyComponent() {
+const Map = () => {
+  //LOGGER
+  console.log("Map RENDERED");
+
   const { isLoaded, loadError } = useJsApiLoader({
     googleMapsApiKey: "AIzaSyB9T71MrqTWubzHayatyn7RP5lpDMdcrgo",
   });
   const [map, setMap] = React.useState(null);
-
-  const { infowindow } = useMap();
 
   const onLoad = React.useCallback(function callback(map) {
     setMap(map);
@@ -67,12 +67,12 @@ function MyComponent() {
         onUnmount={onUnmount}
       >
         <MapMarcadores map={map} />
-        {infowindow.show && <MapInfoWindow />}
+        <MapInfoWindow />
       </GoogleMap>
     </MapContainer>
   ) : (
     <>Loading...</>
   );
-}
+};
 
-export default React.memo(MyComponent);
+export default React.memo(Map);

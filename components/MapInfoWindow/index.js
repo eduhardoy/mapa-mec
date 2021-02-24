@@ -18,6 +18,9 @@ const InfoStyled = styled.div`
 `;
 
 export const MapInfoWindow = () => {
+  //LOGGER
+  console.log("MapInfoWindow RENDERED")
+
   const { infowindow, setInfoWindow } = useMap()
 
   const closeInfoWindow = () => {
@@ -25,19 +28,23 @@ export const MapInfoWindow = () => {
   }
 
   return (
-    <InfoWindow
-      position={{
-        lng: infowindow.data.domicilio.geo.geometry.coordinates[0],
-        lat: infowindow.data.domicilio.geo.geometry.coordinates[1],
-      }}
-      onCloseClick={closeInfoWindow}
-      options={{ pixelOffset: new google.maps.Size(0, -48) }}
-    >
-      <InfoStyled>
-        <h1>{infowindow.data.colegio ? infowindow.data.colegio.nombre : ""}</h1>
-        <h3>CUE: {infowindow.data.cueanexo}</h3>
-      </InfoStyled>
-    </InfoWindow>
+    <>
+      {infowindow.show &&
+        <InfoWindow
+          position={{
+            lng: infowindow.data.domicilio.geo.geometry.coordinates[0],
+            lat: infowindow.data.domicilio.geo.geometry.coordinates[1],
+          }}
+          onCloseClick={closeInfoWindow}
+          options={{ pixelOffset: new google.maps.Size(0, -48) }}
+        >
+          <InfoStyled>
+            <h1>{infowindow.data.colegio ? infowindow.data.colegio.nombre : ""}</h1>
+            <h3>CUE: {infowindow.data.cueanexo}</h3>
+          </InfoStyled>
+        </InfoWindow>
+      }
+    </>
   );
 };
 
