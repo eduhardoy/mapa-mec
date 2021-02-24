@@ -27,7 +27,10 @@ const Spiderfy = (props) => {
             window.google.maps.event.addListener(ref.marker, "spider_click", e => {
                 if (props.onSpiderClick) props.onSpiderClick(e);
                 setInfoWindow(true, childrenEl.data)
-                
+                props.map.panTo({
+                    lng: childrenEl.data.domicilio.geo.geometry.coordinates[0],
+                    lat: childrenEl.data.domicilio.geo.geometry.coordinates[1],
+                })
             });
 
         }
