@@ -29,7 +29,7 @@ function MyComponent() {
   });
   const [map, setMap] = React.useState(null);
 
-  const { infowindow } = useMap()
+  const { infowindow } = useMap();
 
   const onLoad = React.useCallback(function callback(map) {
     setMap(map);
@@ -40,7 +40,7 @@ function MyComponent() {
   }, []);
 
   return isLoaded ? (
-    <MapContainer ancho={"100vw"} >
+    <MapContainer ancho={"100vw"}>
       <GoogleMap
         mapContainerStyle={containerStyle}
         center={{ lat: -28.737328845367706, lng: -57.722286004532684 }}
@@ -54,28 +54,25 @@ function MyComponent() {
           },
           streetViewControl: false,
           fullscreenControl: false,
-          // restriction: {
-          //   latLngBounds: {
-          //     north: -10,
-          //     south: -40,
-          //     east: 200,
-          //     west: 500,
-          //   },
-          // },
+          restriction: {
+            latLngBounds: {
+              north: -26,
+              south: -31,
+              east: -54,
+              west: -60,
+            },
+          },
         }}
         onLoad={onLoad}
         onUnmount={onUnmount}
       >
         <MapMarcadores map={map} />
-        {infowindow.show && (
-          <MapInfoWindow />
-        )}
+        {infowindow.show && <MapInfoWindow />}
       </GoogleMap>
     </MapContainer>
   ) : (
-      <>Loading...</>
-    )
-
+    <>Loading...</>
+  );
 }
 
 export default React.memo(MyComponent);
