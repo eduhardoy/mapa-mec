@@ -124,7 +124,6 @@ const FiltrosButton = styled.button`
 // markup
 const FilterBar = () => {
   const { secondBar } = useBars();
-  const { marcadores } = useMarcadores();
   return (
     <SecondBarStyle display={secondBar == "FILTROS" ? "flex" : "none"}>
       <FiltrosContainer>

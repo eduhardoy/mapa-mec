@@ -1,6 +1,7 @@
 import * as React from "react";
 import styled from "styled-components";
 import useBars from "../../hooks/Bars";
+import useMarcadores from "../../hooks/Marcadores/index.js";
 import InfoWrapper from "../Filters/InfoWrapper";
 import GetAppIcon from "@material-ui/icons/GetApp";
 import CloudDownloadIcon from "@material-ui/icons/CloudDownload";
@@ -76,7 +77,7 @@ const Download = styled.div`
 const Total = styled.div`
   width: 60%;
   p {
-    font-size: 12px;
+    font-size: 14px;
   }
 `;
 
@@ -112,6 +113,7 @@ const InfoContainer = styled.div`
 // markup
 const InfoBar = () => {
   const { secondBar } = useBars();
+  const { marcadores } = useMarcadores();
   return (
     <InfoBarStyle display={secondBar == "INFO" ? "flex" : "none"}>
       <InfoTitleContainer>
@@ -120,7 +122,7 @@ const InfoBar = () => {
         </InfoTitle>
         <InfoDownload>
           <Total>
-            <p>TOTAL:</p>
+            <p>TOTAL: {marcadores.length}</p>
           </Total>
           <Download>
             <button>
