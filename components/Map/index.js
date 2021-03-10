@@ -66,7 +66,9 @@ const Map = () => {
         onLoad={onLoad}
         onUnmount={onUnmount}
       >
-        <MapMarcadores map={map} />
+        {map &&
+          <MapMarcadores map={map} />
+        }
         <MapInfoWindow />
       </GoogleMap>
     </MapContainer>
