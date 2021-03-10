@@ -9,6 +9,7 @@ import { Checkbox } from "@material-ui/core";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 
 import RadioButtonCheckedIcon from "@material-ui/icons/RadioButtonChecked";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 
 
@@ -80,6 +81,7 @@ const FiltroCabeceras = ({ filtros, setCabecerasFilter }) => {
       square
     >
       <AccordionSummary
+        expandIcon={<ExpandMoreIcon />}
         aria-label="Expand"
         aria-controls="additional-actions1-content"
         id="additional-actions1-header"
@@ -100,6 +102,29 @@ const FiltroCabeceras = ({ filtros, setCabecerasFilter }) => {
         />
         <p>CABECERAS PRIMARIAS</p>
       </AccordionSummary>
+      <AccordionDetails>
+        <CheckboxFilter>
+          {[
+            {
+              label: "PRIMARIAS",
+              id: "PRIMARIAS"
+            },
+          ].map(cab => (
+            <FormControlLabel
+              key={cab.id}
+              value={cab.id}
+              control={
+                <CheckboxNew
+                  onChange={handleChecked}
+                  checked={filtros.cabeceras.includes(cab.id)}
+                />
+              }
+              label={cab.label}
+              labelPlacement='end'
+            />
+          ))}
+        </CheckboxFilter>
+      </AccordionDetails>
     </Accordion>
   );
 };
