@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import * as type from '../../redux/types'
 import useMarcadores from '../Marcadores';
 import usePrecargado from '../Precargado';
+import cabecerasJson from "./cabeceras.json";
 
 
 const useFiltros = () => {
@@ -392,6 +393,15 @@ const useFiltros = () => {
         }
     }
 
+    const setCabeceras = (arg) => {
+        if (arg == "all") {
+            dispatch({
+                type: type.SET_CABECERAS,
+                payload: filtro.cabeceras.includes(true) ? [] : [true],
+            });
+        }
+    };
+
     React.useEffect(() => {
         //Cantidad de filtros
         let filterPassed = {
@@ -406,7 +416,8 @@ const useFiltros = () => {
             gestiones: true,
             ambitos: true,
             internet: true,
-            internetProveedores: true
+            internetProveedores: true,
+            cabeceras: false,
         }
         const isTrue = (e => e === true)
         let marcadoresFiltered = localizaciones.filter(l => {
@@ -516,6 +527,14 @@ const useFiltros = () => {
                     : false
             }
 
+            //DEPARTAMENTOS CABECERAS
+            filterPassed["cabeceras"] = filtro.cabeceras[0]
+                ? cabecerasJson.filter((e) => e["CUA-ANEXO"] == l.cueanexo).length > 0
+                    ? true
+                    : false
+                : true;
+
+
             return Object.values(filterPassed).every(isTrue);
         })
 
@@ -536,7 +555,8 @@ const useFiltros = () => {
         setGestionesFilter: setGestiones,
         setAmbitosFilter: setAmbitos,
         setInternetFilter: setInternet,
-        setInternetProveedoresFilter: setInternetProveedores
+        setInternetProveedoresFilter: setInternetProveedores,
+        setCabecerasFilter: setCabeceras
     }
 }
 

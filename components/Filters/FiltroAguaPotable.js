@@ -66,7 +66,6 @@ const AccordionDetails = withStyles(theme => ({
 
 const FiltroAguaPotable = () => {
   const [expanded, setExpanded] = React.useState();
-  const { filtros } = useFiltros()
   const { localidades } = usePrecargado()
 
   const handleChange = panel => (event, newExpanded) => {

@@ -174,7 +174,7 @@ const Tag = ({ label, onDelete }) => (
   </StyledTag>
 );
 
-export default function Filter3() {
+export default function SearchFilter() {
   const { localizaciones } = usePrecargado();
   const { setHeaderFilter } = useFiltros();
   const { buscador } = useSelector(state => state.header);

@@ -9,7 +9,6 @@ import { Checkbox } from "@material-ui/core";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import RadioButtonCheckedIcon from "@material-ui/icons/RadioButtonChecked";
-import useFiltros from "../../hooks/Filtros";
 import usePrecargado from "../../hooks/Precargado";
 
 const CheckboxFilter = styled.div`
