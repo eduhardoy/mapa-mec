@@ -2,6 +2,8 @@ import * as React from "react";
 import styled from "styled-components";
 import useBars from "../../hooks/Bars";
 import InfoWrapper from "../Filters/InfoWrapper";
+import GetAppIcon from "@material-ui/icons/GetApp";
+import CloudDownloadIcon from "@material-ui/icons/CloudDownload";
 
 // styles
 const InfoBarStyle = styled.div`
@@ -27,9 +29,60 @@ const InfoBarStyle = styled.div`
   }
 `;
 
+const InfoTitleContainer = styled.div`
+  width: 100%;
+  height: 15%;
+  padding-top: 10px;
+  border-bottom: 1px solid #e2e2e2;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(245, 245, 245);
+`;
+
+const InfoTitle = styled.div`
+  width: 100%;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  p {
+    margin: 0;
+    font-weight: 400;
+    font-size: 20px;
+  }
+`;
+const InfoDownload = styled.div`
+  width: 100%;
+  height: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const Download = styled.div`
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  button {
+    width: 50%;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-size: 20px;
+  }
+`;
+
+const Total = styled.div`
+  width: 60%;
+  p {
+    font-size: 12px;
+  }
+`;
+
 const InfoContainer = styled.div`
   width: 100%;
-  height: 100%;
+  height: 85%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -61,6 +114,24 @@ const InfoBar = () => {
   const { secondBar } = useBars();
   return (
     <InfoBarStyle display={secondBar == "INFO" ? "flex" : "none"}>
+      <InfoTitleContainer>
+        <InfoTitle>
+          <p>INFORMACION</p>
+        </InfoTitle>
+        <InfoDownload>
+          <Total>
+            <p>TOTAL:</p>
+          </Total>
+          <Download>
+            <button>
+              <CloudDownloadIcon />
+            </button>
+            <button>
+              <GetAppIcon />
+            </button>
+          </Download>
+        </InfoDownload>
+      </InfoTitleContainer>
       <InfoContainer>
         <InfoWrapper />
       </InfoContainer>

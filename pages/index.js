@@ -2,6 +2,7 @@ import * as React from "react";
 import Layout from "../components/Layout";
 import Header from "../components/Header";
 import LeftSideBarMenu from "../components/LeftSideBar";
+import Loader from "../components/Loader";
 import axios from "axios";
 import Map from "../components/Map";
 import * as type from "../redux/types";
@@ -73,6 +74,7 @@ const IndexPage = () => {
       <div>
         <Header />
         <Map />
+        {/* <Loader /> */}
         <LeftSideBarMenu />
       </div>
     </Layout>

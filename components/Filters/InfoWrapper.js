@@ -53,11 +53,11 @@ const TituloFilter = styled.div`
   margin-left: 15px;
   h3 {
     font-weight: 700;
-    font-size: 16px;
+    font-size: 14px;
     margin: 5px;
   }
   p {
-    font-size: 14px;
+    font-size: 12px;
     margin: 5px;
     color: grey;
   }

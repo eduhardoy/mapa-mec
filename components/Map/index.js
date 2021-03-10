@@ -59,16 +59,14 @@ const Map = () => {
               north: -26,
               south: -31,
               east: -54,
-              west: -60,
+              west: -64,
             },
           },
         }}
         onLoad={onLoad}
         onUnmount={onUnmount}
       >
-        {map &&
-          <MapMarcadores map={map} />
-        }
+        {map && <MapMarcadores map={map} />}
         <MapInfoWindow />
       </GoogleMap>
     </MapContainer>
