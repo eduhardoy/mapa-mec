@@ -3,12 +3,13 @@ import { createWrapper, HYDRATE } from "next-redux-wrapper";
 import { composeWithDevTools } from "redux-devtools-extension";
 import rootReducer from "../reducers";
 import thunk from "redux-thunk";
+import marcadoresFilterMiddleware from "../middlewares/marcadoresFilterMiddleware";
 
 const initialState = {};
-const middlewares = [thunk];
+const middlewares = [thunk, marcadoresFilterMiddleware];
 
 // create a makeStore function
-const makeStore = (preloadState,options) =>
+const makeStore = (preloadState, options) =>
   createStore(
     rootReducer,
     {},

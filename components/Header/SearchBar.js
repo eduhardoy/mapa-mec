@@ -2,7 +2,7 @@ import * as React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 // import { useSelector } from "react-redux";
-import Filter3 from "./Filter3";
+import SearchFilter from "./SerachFilter";
 import * as type from "../../redux/types";
 
 // styles
@@ -98,7 +98,7 @@ const SearchBar = () => {
   return (
     <SearchBarWrapper>
       <SearchBarLeftDiv>
-        <Filter3 />
+        <SearchFilter />
       </SearchBarLeftDiv>
 
       <SearchBarRightDiv>

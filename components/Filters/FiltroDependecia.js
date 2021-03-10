@@ -10,7 +10,6 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import RadioButtonCheckedIcon from "@material-ui/icons/RadioButtonChecked";
 import usePrecargado from "../../hooks/Precargado";
-import useFiltros from "../../hooks/Filtros";
 
 const CheckboxFilter = styled.div`
   label {

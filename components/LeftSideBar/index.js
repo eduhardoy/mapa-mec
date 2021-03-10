@@ -1,7 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
 import FilterBar from "./FilterBar";
-import SpecialFilterBar from "./SpecialFilterBar";
 import FirstBar from "./FirstBar.js";
 import InfoBar from "./InfoBar.js";
 import ToolsBar from "./ToolsBar.js";
@@ -19,7 +18,6 @@ const LeftSideBarMenu = ({ firstBar, secondBar }) => {
     <LeftSideBarMenuStyle>
       {firstBar && <FirstBar />}
       <FilterBar />
-      <SpecialFilterBar />
       <InfoBar />
       <ToolsBar />
     </LeftSideBarMenuStyle>

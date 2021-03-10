@@ -17,7 +17,8 @@ const initialState = {
   internet: [],
   aguaPotable: [],
   proveedoresInternet: [],
-  agrupaciones: []
+  agrupaciones: [],
+  cabeceras: []
 };
 
 const filtrosReducer = (state = initialState, action) => {
@@ -50,6 +51,8 @@ const filtrosReducer = (state = initialState, action) => {
       return { ...state, internet: action.payload }
     case type.SET_PROVEEDORES_INTERNET:
       return { ...state, proveedoresInternet: action.payload }
+    case type.SET_CABECERAS:
+      return { ...state, cabeceras: action.payload };
     default:
       return state;
   }
