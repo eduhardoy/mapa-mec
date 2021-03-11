@@ -1,0 +1,867 @@
+[
+    {
+      "CueAnexo": "180062800",
+      "Nombre": "ESCUELA Nº 280 DOCTOR PEDRO ARMANDO MONTAÑA",
+      "predio": "180518",
+      "Fecha Fin LAC": "4/19/19",
+      "Domicilio Ppal": "AVDA.MAIPU KM.10 , BO.DR.MONTAÑA (W3400)",
+      "Localidad": "CORRIENTES",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180111300",
+      "Nombre": "ESCUELA Nº 2 DOMINGO FAUSTINO SARMIENTO",
+      "predio": "180902",
+      "Fecha Fin LAC": "4/12/19",
+      "Domicilio Ppal": "BUENOS AIRES 576, (W3400)",
+      "Localidad": "CORRIENTES",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180039800",
+      "Nombre": "COLEGIO SECUNDARIO PARA ADOLESCENTES Y ADULTOS FRAY JOSE DE LA QUINTANA",
+      "predio": "180003",
+      "Fecha Fin LAC": "1/18/19",
+      "Domicilio Ppal": "FELIX DE AZARA MANZANA 5 S/N, BO DR. JUAN PUJOL (W3400)",
+      "Localidad": "CORRIENTES",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180149700",
+      "Nombre": "COLEGIO SECUNDARIO PTE. JUAN DOMINGO PERON",
+      "predio": "180100",
+      "Fecha Fin LAC": "1/18/19",
+      "Domicilio Ppal": "AVDA. PEDRO FERRE 2755, BO.SANTA ROSA (W3400)",
+      "Localidad": "CORRIENTES",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180012600",
+      "Nombre": "ESCUELA Nº 404 DR. EDUARDO WILDE",
+      "predio": "180108",
+      "Fecha Fin LAC": "11/30/18",
+      "Domicilio Ppal": "AV. Patagonia S/N 0, GRAL. SAN MARTIN (W3400)",
+      "Localidad": "CORRIENTES",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180012700",
+      "Nombre": "ESCUELA Nº 34 EL SANTO DE LA ESPADA",
+      "predio": "180109",
+      "Fecha Fin LAC": "2/27/18",
+      "Domicilio Ppal": "AV. DEL MAESTRO Y CRUZ DEL EJE , BARRIO GRAL.SAN MARTIN 1000 VIV. (W3400)",
+      "Localidad": "CORRIENTES",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180082400",
+      "Nombre": "CENTRO DE EDUCACION SECUNDARIA PARA ADULTOS Nº 4",
+      "predio": "180120",
+      "Fecha Fin LAC": "9/5/18",
+      "Domicilio Ppal": "SANTA CRUZ 1660, EX AERO CLUB (W3400)",
+      "Localidad": "CORRIENTES",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180014000",
+      "Nombre": "ESCUELA TECNICA JUANA MANSO",
+      "predio": "180121",
+      "Fecha Fin LAC": "11/14/18",
+      "Domicilio Ppal": "AVDA. TENIENTE IBAÑEZ 1951, BO. BERON DE ASTRADA (W3400)",
+      "Localidad": "CORRIENTES",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180067900",
+      "Nombre": "ESCUELA PRIMARIA P/ADOLESC.Y ADULTOS Nº 6",
+      "predio": "180157",
+      "Fecha Fin LAC": "1/25/19",
+      "Domicilio Ppal": "REPÚBLICA DEL LIBANO 340, BO.BERON DE ASTRADA (W3400)",
+      "Localidad": "CORRIENTES",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180117500",
+      "Nombre": "ESCUELA Nº 160 NUESTRA SRA.DE LA MISERICORDIA",
+      "predio": "180170",
+      "Fecha Fin LAC": "5/17/19",
+      "Domicilio Ppal": "9 DE JULIO 796, DEL DEPORTE (W3400)",
+      "Localidad": "CORRIENTES",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180036500",
+      "Nombre": "ESCUELA Nº 850 GOBERNADOR JOSE MARIA DE LLANO",
+      "predio": "180326",
+      "Fecha Fin LAC": "3/7/18",
+      "Domicilio Ppal": "AV.DEL IV CENTENARIO 3200, JUAN XXIII (W3400)",
+      "Localidad": "CORRIENTES",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180142505",
+      "Nombre": "EXTENSION AULICA DE ADULTOS QUE FUNCIONA EN ESC. Nº 14 (CESPA Nº 9)",
+      "predio": "180330",
+      "Fecha Fin LAC": "3/13/18",
+      "Domicilio Ppal": "AVDA. ARMENIA 4335, ANAHI (W3400)",
+      "Localidad": "CORRIENTES",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180038200",
+      "Nombre": "CENTRO DE EDUCACION SECUNDARIA PARA ADULTOS Nº 5",
+      "predio": "180340",
+      "Fecha Fin LAC": "4/5/19",
+      "Domicilio Ppal": "HIPOLITO YRIGOYEN 1584, CENTRO (W3400)",
+      "Localidad": "CORRIENTES",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180038500",
+      "Nombre": "ESCUELA PRIMARIA P/ADOLESC.Y ADULTOS Nº 9",
+      "predio": "180342",
+      "Fecha Fin LAC": "11/5/18",
+      "Domicilio Ppal": "SANTIAGO DEL ESTERO 512, BARRIO BAÑADO NORTE (W3400)",
+      "Localidad": "CORRIENTES",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180038600",
+      "Nombre": "ESCUELA Nº 12 ALMIRANTE GUILLERMO BROWN",
+      "predio": "180343",
+      "Fecha Fin LAC": "11/16/18",
+      "Domicilio Ppal": "AVENIDA ARTIGAS 1301, BO.BELGRANO (W3400)",
+      "Localidad": "CORRIENTES",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180042100",
+      "Nombre": "COLEGIO SECUNDARIO PARA ADOLESCENTES Y ADULTOS ISLAS ARGENTINAS DEL ATLANTICO SUR",
+      "predio": "180344",
+      "Fecha Fin LAC": "11/5/18",
+      "Domicilio Ppal": "AVDA. AYACUCHO 3369, CELIA (W3400)",
+      "Localidad": "CORRIENTES",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180039700",
+      "Nombre": "ESCUELA PRIMARIA Nº 258 REPUBLICA DEL PARAGUAY",
+      "predio": "180349",
+      "Fecha Fin LAC": "4/2/19",
+      "Domicilio Ppal": "Ntra. Sra. de la Asunción 2500, BO.PROGRESO (W3400)",
+      "Localidad": "CORRIENTES",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180040900",
+      "Nombre": "ESCUELA ESPECIAL Nº 20 IRREGULARES MOTORES",
+      "predio": "180359",
+      "Fecha Fin LAC": "4/5/19",
+      "Domicilio Ppal": "JOSE M.ROLON 2090, BO.ALDANA (W3400)",
+      "Localidad": "CORRIENTES",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180055400",
+      "Nombre": "ESCUELA NORMAL DR. JUAN GREGORIO PUJOL",
+      "predio": "180360",
+      "Fecha Fin LAC": "5/10/19",
+      "Domicilio Ppal": "BOLIVAR 1148, BO. CENTRO (W3400)",
+      "Localidad": "CORRIENTES",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180041100",
+      "Nombre": "INSTITUTO SUPERIOR DE SERVICIO SOCIAL REMEDIOS DE ESCALADA DE SAN MARTIN",
+      "predio": "180361",
+      "Fecha Fin LAC": "4/13/18",
+      "Domicilio Ppal": "HIPOLITO IRIGOYEN 2145, LIBERTAD (W3400)",
+      "Localidad": "CORRIENTES",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180113901",
+      "Nombre": "EXTENSION AULICA QUE FUNCIONA EN LA ESC. Nº 430 (COLEGIO SEC. BRIGADIER GRAL. PEDRO FERRE)",
+      "predio": "180363",
+      "Fecha Fin LAC": "4/26/19",
+      "Domicilio Ppal": "ESTADOS UNIDOS 858, YAPEYU (W3400)",
+      "Localidad": "CORRIENTES",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180038201",
+      "Nombre": "EXTENSION AULICA DE ADULTOS QUE FUNCIONA EN LA ESC. TECNICA PEDRO FERRE (CESPA Nº 5)",
+      "predio": "180364",
+      "Fecha Fin LAC": "9/14/18",
+      "Domicilio Ppal": "H.Irigoyen 1584, (W3400)",
+      "Localidad": "CORRIENTES",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180041800",
+      "Nombre": "ESCUELA Nº 146 CRUCERO GRAL.BELGRANO",
+      "predio": "180365",
+      "Fecha Fin LAC": "4/16/18",
+      "Domicilio Ppal": "HAWAI 4050, BºREPUBLICA DE VENEZUELA (W3400)",
+      "Localidad": "CORRIENTES",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180041900",
+      "Nombre": "ESCUELA PRIMARIA Nº 345 FRANCISCO REGIS ORTIZ",
+      "predio": "180366",
+      "Fecha Fin LAC": "9/14/18",
+      "Domicilio Ppal": "PITAGORAS S/N , Bº LAGUNA SECA (W3400)",
+      "Localidad": "CORRIENTES",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180042000",
+      "Nombre": "ESCUELA Nº 275 SUPERVISOR ISIDRO ESTEBAN MOREIRA",
+      "predio": "180367",
+      "Fecha Fin LAC": "10/2/18",
+      "Domicilio Ppal": "PEATONAL , BARRIO REPUBLICA DE VENEZUELA (W3400)",
+      "Localidad": "CORRIENTES",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180042200",
+      "Nombre": "ESCUELA Nº 157 TERCERA ORDEN FRANCISCANA",
+      "predio": "180368",
+      "Fecha Fin LAC": "4/5/19",
+      "Domicilio Ppal": "PERU 1391, Bº LIBERTAD (W3400)",
+      "Localidad": "CORRIENTES",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180042300",
+      "Nombre": "ESCUELA Nº 158 COLEGIO ARGENTINO",
+      "predio": "180369",
+      "Fecha Fin LAC": "3/2/18",
+      "Domicilio Ppal": "DOMINGO LASTRA 820, BARRIO SAN GERONIMO (W3400)",
+      "Localidad": "CORRIENTES",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180042400",
+      "Nombre": "ESCUELA Nº 296 PROFESOR MANUEL CABRAL (H)",
+      "predio": "180370",
+      "Fecha Fin LAC": "11/8/18",
+      "Domicilio Ppal": "SANCHEZ DE BUSTAMENTE s/n , BO.SAN GERONIMO (W3400)",
+      "Localidad": "CORRIENTES",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180044000",
+      "Nombre": "ESCUELA NORMAL JOSE MANUEL ESTRADA",
+      "predio": "180379",
+      "Fecha Fin LAC": "4/26/19",
+      "Domicilio Ppal": "SARGENTO CABRAL 2120, ALDANA (W3400)",
+      "Localidad": "CORRIENTES",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180044200",
+      "Nombre": "ESCUELA Nº 139 AMBROSIO DE ACOSTA",
+      "predio": "180380",
+      "Fecha Fin LAC": "3/7/18",
+      "Domicilio Ppal": "LAVALLE 4300, BARRIO GUEMES (W3400)",
+      "Localidad": "CORRIENTES",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180044300",
+      "Nombre": "COLEGIO SECUNDARIO AGOP SEFERIAN",
+      "predio": "180381",
+      "Fecha Fin LAC": "11/30/18",
+      "Domicilio Ppal": "PEDRO LAPLACE 4737, SAN GERONIMO (W3400)",
+      "Localidad": "CORRIENTES",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180176100",
+      "Nombre": "COLEGIO SECUNDARIO de PASO PESOA",
+      "predio": "180402",
+      "Fecha Fin LAC": "1/18/19",
+      "Domicilio Ppal": "ex ruta Nac. Nº 12 , (3401)",
+      "Localidad": "PASO PESOA",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180047000",
+      "Nombre": "ESCUELA Nº 445",
+      "predio": "180403",
+      "Fecha Fin LAC": "11/2/18",
+      "Domicilio Ppal": "5ta.sección Rural , (W3400)",
+      "Localidad": "PASO MARTINEZ",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180179900",
+      "Nombre": "COLEGIO SECUNDARIO del BARRIO SANTA RITA",
+      "predio": "180404",
+      "Fecha Fin LAC": "4/23/18",
+      "Domicilio Ppal": ", SANTA RITA (3400)",
+      "Localidad": "CORRIENTES",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180047400",
+      "Nombre": "ESCUELA Nº 729 VICEPRESIDENTE JUAN HORTENSIO QUIJANO",
+      "predio": "180405",
+      "Fecha Fin LAC": "3/23/18",
+      "Domicilio Ppal": "RUTA 12 - KM 1040 , YECOHA (W3400)",
+      "Localidad": "YECOHA KM10-RUTA 12",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180047500",
+      "Nombre": "ESCUELA Nº 401 MANUEL LAINEZ",
+      "predio": "180406",
+      "Fecha Fin LAC": "11/14/18",
+      "Domicilio Ppal": "RUTA Nº 43- KM.3 , BO.LAGUNA SOTO (W3400)",
+      "Localidad": "LAGUNA SOTO",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180047600",
+      "Nombre": "ESCUELA Nº 240 ALMAFUERTE",
+      "predio": "180407",
+      "Fecha Fin LAC": "10/26/18",
+      "Domicilio Ppal": "CALLE VECINAL S/N , (W3400)",
+      "Localidad": "EL PERICHON",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180050100",
+      "Nombre": "ESCUELA Nº 356 JORGE LUIS BORGES",
+      "predio": "180425",
+      "Fecha Fin LAC": "3/8/18",
+      "Domicilio Ppal": "PASAJE PLAYADITO , ESPERANZA (W3400)",
+      "Localidad": "CORRIENTES",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180050200",
+      "Nombre": "ESCUELA Nº 368 MAESTROS CORRENTINOS",
+      "predio": "180426",
+      "Fecha Fin LAC": "7/26/18",
+      "Domicilio Ppal": "NICARAGUA , PIRAYUI (W3400)",
+      "Localidad": "CORRIENTES",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180050300",
+      "Nombre": "ESCUELA Nº 369 MAESTRO CESAR RODOLFO TELECHEA",
+      "predio": "180427",
+      "Fecha Fin LAC": "12/21/18",
+      "Domicilio Ppal": "NAPOLES Y NIZA , BARRIO 17 DE AGOSTO (W3400)",
+      "Localidad": "CORRIENTES",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180053500",
+      "Nombre": "ESCUELA PRIMARIA Nº 13 REPUBLICA DEL PERU",
+      "predio": "180453",
+      "Fecha Fin LAC": "4/5/19",
+      "Domicilio Ppal": "Punta Taitalo (W3400)",
+      "Localidad": "CORRIENTES",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180155000",
+      "Nombre": "COLEGIO SECUNDARIO FERNANDO PIRAGINE NIVEYRO",
+      "predio": "180455",
+      "Fecha Fin LAC": "9/22/18",
+      "Domicilio Ppal": "SANTA MARIA DE ORO 1600, BO.17 DE AGOSTO (W3400)",
+      "Localidad": "CORRIENTES",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180053800",
+      "Nombre": "ESCUELA NORMALCNEL. JOSE ARMAND",
+      "predio": "180456",
+      "Fecha Fin LAC": "12/12/18",
+      "Domicilio Ppal": "ARMAND DECOUD 608, (W3416)",
+      "Localidad": "RIACHUELO",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180147201",
+      "Nombre": "EXTENSION AULICA QUE FUNCIONA EN LA ESCUELA Nº 606 (COLEGIO SEC. PTE. DR. ARTURO FRONDIZI)",
+      "predio": "180457",
+      "Fecha Fin LAC": "9/18/18",
+      "Domicilio Ppal": "RUTA NAC. Nº 12 KM.5 , BO.COLLANTE (W3400)",
+      "Localidad": "CORRIENTES",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180142511",
+      "Nombre": "EXTENSION AULICA DE ADULTOS QUE FUNCIONA EN COL. JOSE HERNANDEZ (CESPA Nº 9)",
+      "predio": "180458",
+      "Fecha Fin LAC": "2/27/18",
+      "Domicilio Ppal": "MINISTRO FERNANDEZ S/N , (W3401)",
+      "Localidad": "LAGUNA BRAVA",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180148100",
+      "Nombre": "COLEGIO SECUNDARIO PTE.HIPOLITO YRIGOYEN",
+      "predio": "180471",
+      "Fecha Fin LAC": "5/17/19",
+      "Domicilio Ppal": "SAN MARTIN 850, Bº LA CRUZ (W3400)",
+      "Localidad": "CORRIENTES",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180057500",
+      "Nombre": "ESCUELA Nº 553 SAN CAYETANO",
+      "predio": "180481",
+      "Fecha Fin LAC": "10/4/19",
+      "Domicilio Ppal": "SANTA CLARA DE ASIS , (W3401)",
+      "Localidad": "SAN CAYETANO",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180176700",
+      "Nombre": "COLEGIO SECUNDARIO ING.ELISEO POPOLIZIO",
+      "predio": "180482",
+      "Fecha Fin LAC": "3/15/18",
+      "Domicilio Ppal": "MARIANO MORENO 114, BO.FERRE (W3400)",
+      "Localidad": "CORRIENTES",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180141200",
+      "Nombre": "INSTITUTO DE FORMACION DOCENTE JOSE MANUEL ESTRADA",
+      "predio": "180486",
+      "Fecha Fin LAC": "12/13/19",
+      "Domicilio Ppal": "SAN MARTIN 850, LA CRUZ (W3400)",
+      "Localidad": "CORRIENTES",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180063400",
+      "Nombre": "INSTITUTO SUPERIOR DE EDUCACION FISICA PROF. ANTONIO ALEJANDRO ALVAREZ",
+      "predio": "180522",
+      "Fecha Fin LAC": "4/19/19",
+      "Domicilio Ppal": "AVDA. PATAGONIA 1801, Bº CACIQUE CANINDEYU (W3400)",
+      "Localidad": "CORRIENTES",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180062400",
+      "Nombre": "ESCUELA Nº 9 GUSTAVO SOLANO GOMEZ",
+      "predio": "180524",
+      "Fecha Fin LAC": "11/7/18",
+      "Domicilio Ppal": "BLAS BENJAMIN DE LA VEGA 1771, BO.SAN BENITO (W3400)",
+      "Localidad": "CORRIENTES",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180067800",
+      "Nombre": "ESCUELA Nº 11 DR.LISANDRO SEGOVIA",
+      "predio": "180525",
+      "Fecha Fin LAC": "3/2/18",
+      "Domicilio Ppal": "NECOCHEA 1102, (W3400)",
+      "Localidad": "CORRIENTES",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180063900",
+      "Nombre": "ESCUELA PRIMARIA P/ADOLESC.Y ADULTOS Nº 28",
+      "predio": "180526",
+      "Fecha Fin LAC": "4/19/19",
+      "Domicilio Ppal": "HERNAN CORTES 760, JUAN DE VERA (W3400)",
+      "Localidad": "CORRIENTES",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180155900",
+      "Nombre": "COLEGIO SECUNDARIO IBERA",
+      "predio": "180527",
+      "Fecha Fin LAC": "5/17/19",
+      "Domicilio Ppal": "PERUGORRIA 545, BO.SAN BENITO (W3400)",
+      "Localidad": "CORRIENTES",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180066500",
+      "Nombre": "ESCUELA Nº 299 JUAN ALFREDO ASUAD",
+      "predio": "180549",
+      "Fecha Fin LAC": "4/5/19",
+      "Domicilio Ppal": "SUIPACHA 2470, GALVAN (W3400)",
+      "Localidad": "CORRIENTES",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180066600",
+      "Nombre": "COLEGIO SECUNDARIO DR. LUIS FEDERICO LELOIR",
+      "predio": "180550",
+      "Fecha Fin LAC": "8/23/18",
+      "Domicilio Ppal": "AVDA. LA PAZ 2735, EX AERO CLUB (W3400)",
+      "Localidad": "CORRIENTES",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180066700",
+      "Nombre": "ESCUELA DE EDUC.ESPECIAL Nº 1 DRA.CAROLINA TOBAR GARCIA",
+      "predio": "180551",
+      "Fecha Fin LAC": "10/25/18",
+      "Domicilio Ppal": "CALIFORNIA Y ROMA , BO.SERANTES (W3400)",
+      "Localidad": "CORRIENTES",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180066800",
+      "Nombre": "ESCUELA Nº 444 SALVADOR MARIA DIAZ",
+      "predio": "180552",
+      "Fecha Fin LAC": "7/13/18",
+      "Domicilio Ppal": "AVDA.MAIPU - KM.4 , SAN ANTONIO (W3400)",
+      "Localidad": "CORRIENTES",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180081700",
+      "Nombre": "COLEGIO SECUNDARIO MANUEL VICENTE FIGUERERO",
+      "predio": "180673",
+      "Fecha Fin LAC": "11/7/18",
+      "Domicilio Ppal": "YAPEYU entre RAFAELA y PEDRO CENTENO , BARRIO EX AERO CLUB (W3400)",
+      "Localidad": "CORRIENTES",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180083400",
+      "Nombre": "COLEGIO SECUNDARIO PARA ADOLESCENTES Y ADULTOS JOSE G.PERUGORRIA",
+      "predio": "180677",
+      "Fecha Fin LAC": "10/15/18",
+      "Domicilio Ppal": "AVDA.PEDRO FERRE 2188, BO. LIBERTAD (W3400)",
+      "Localidad": "CORRIENTES",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180147300",
+      "Nombre": "COLEGIO SECUNDARIO OLGA COSSETTINI",
+      "predio": "181055",
+      "Fecha Fin LAC": "2/8/18",
+      "Domicilio Ppal": "LAS CUEVAS , BO.ALTA GRACIA (W3400)",
+      "Localidad": "CORRIENTES",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180113700",
+      "Nombre": "ESCUELA Nº 6 PUBLIO ESCOBAR",
+      "predio": "180920",
+      "Fecha Fin LAC": "10/25/19",
+      "Domicilio Ppal": "BRASIL 658, BO.LIBERTAD (W3400)",
+      "Localidad": "CORRIENTES",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180113900",
+      "Nombre": "COLEGIO SECUNDARIO BRIGADIER GENERAL PEDRO FERRE",
+      "predio": "180924",
+      "Fecha Fin LAC": "3/19/18",
+      "Domicilio Ppal": "VELEZ SARSFIELD 1148, BELGRANO (W3400)",
+      "Localidad": "CORRIENTES",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180117400",
+      "Nombre": "ESCUELA Nº 155 SAN VICENTE DE PAUL",
+      "predio": "180925",
+      "Fecha Fin LAC": "7/13/18",
+      "Domicilio Ppal": "MARIANO MORENO 1163, LA CRUZ (W3400)",
+      "Localidad": "CORRIENTES",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180164400",
+      "Nombre": "ESCUELA TECNICACARMEN M.DE LLANO",
+      "predio": "180939",
+      "Fecha Fin LAC": "4/5/19",
+      "Domicilio Ppal": "LA RIOJA 687, DEPORTE (W3400)",
+      "Localidad": "CORRIENTES",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180142501",
+      "Nombre": "EXTENSION AULICA DE ADULTOS QUE FUNCIONA EN COL. ARTURO FRONDIZI (CESPA Nº 9)",
+      "predio": "180956",
+      "Fecha Fin LAC": "2/8/18",
+      "Domicilio Ppal": "SARA SAENZ CAVIA S/N , MOLINA PUNTA (W3400)",
+      "Localidad": "CORRIENTES",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180121900",
+      "Nombre": "ESCUELA PRIMARIA Nº 371 GRAL.TORIBIO DE LUZURIAGA",
+      "predio": "180958",
+      "Fecha Fin LAC": "3/12/19",
+      "Domicilio Ppal": "ARGERICH 5400, BO.110 VIV. U.O.C.R.A. (W3400)",
+      "Localidad": "CORRIENTES",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180132600",
+      "Nombre": "ESCUELA Nº 955 LIBERTADOR DE AMERICA",
+      "predio": "180975",
+      "Fecha Fin LAC": "3/1/19",
+      "Domicilio Ppal": "AV.JUAN DOMINGO PERON 5500, Bº 17 DE AGOSTO (W3400)",
+      "Localidad": "CORRIENTES",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180135200",
+      "Nombre": "COLEGIO SECUNDARIO DR.ELOY MIGUEL ORTEGA",
+      "predio": "180989",
+      "Fecha Fin LAC": "3/13/18",
+      "Domicilio Ppal": "CERDEÑA 5500, BO.17 DE AGOSTO (W3400)",
+      "Localidad": "CORRIENTES",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180136200",
+      "Nombre": "ESCUELA PRIMARIA Nº 375 SANTA CATALINA DE SIENA",
+      "predio": "180992",
+      "Fecha Fin LAC": "5/7/19",
+      "Domicilio Ppal": "calle 289, RIO PARANA (W3400)",
+      "Localidad": "CORRIENTES",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180140200",
+      "Nombre": "CENTRO DE FORMACION PROFESIONAL DON ELIAS ABAD",
+      "predio": "180996",
+      "Fecha Fin LAC": "10/4/19",
+      "Domicilio Ppal": "AVDA. INDEPENDENCIA 5751, (W3400)",
+      "Localidad": "CORRIENTES",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180140400",
+      "Nombre": "ESCUELA TECNICA FRAY LUIS BELTRAN",
+      "predio": "180997",
+      "Fecha Fin LAC": "3/22/19",
+      "Domicilio Ppal": "AVDA. INDEPENDENCIA 5751, (W3400)",
+      "Localidad": "CORRIENTES",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180142300",
+      "Nombre": "ESCUELA TECNICA U.O.C.R.A.ISLAS MALVINAS",
+      "predio": "181022",
+      "Fecha Fin LAC": "4/13/18",
+      "Domicilio Ppal": "NEUQUEN 1470, 300 VIVIENDAS (W3400)",
+      "Localidad": "CORRIENTES",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180143200",
+      "Nombre": "COLEGIO SECUNDARIO FRAY JOSE DE LA QUINTANA",
+      "predio": "181035",
+      "Fecha Fin LAC": "3/19/18",
+      "Domicilio Ppal": "CALLE 202 , BO. FRAY JOSE DE LA QUINTANA (W3400)",
+      "Localidad": "CORRIENTES",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180146400",
+      "Nombre": "ESCUELA PRIMARIA COMUN Nº 957 DOCTOR JUAN RAMON FERNANDEZ",
+      "predio": "181047",
+      "Fecha Fin LAC": "5/10/19",
+      "Domicilio Ppal": "R. F. Giusti S/N , BO.DR.MONTAÑA (W3400)",
+      "Localidad": "CORRIENTES",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180148000",
+      "Nombre": "COLEGIO SECUNDARIO DR. RENE FAVALORO",
+      "predio": "181059",
+      "Fecha Fin LAC": "11/30/18",
+      "Domicilio Ppal": "CALLE 15 , BO. DR.MONTAÑA (W3400)",
+      "Localidad": "CORRIENTES",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180038400",
+      "Nombre": "ESCUELA N° 808 ¨DR. VICTORIANO E. MONTES¨",
+      "predio": "181085",
+      "Fecha Fin LAC": "2/22/18",
+      "Domicilio Ppal": "JOSE M.ROLON 2090, BO.ALDANA (W3400)",
+      "Localidad": "CORRIENTES",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180142506",
+      "Nombre": "EXTENSION AULICA DE ADULTOS FUNCIONA EN ESCUELA Nº 158 (CESPA Nº 9)",
+      "predio": "181088",
+      "Fecha Fin LAC": "4/23/18",
+      "Domicilio Ppal": "MARECHAL S/N , SAN GERONIMO (W3400)",
+      "Localidad": "CORRIENTES",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180162400",
+      "Nombre": "COLEGIO SECUNDARIO JOSE MARIA PONCE",
+      "predio": "181158",
+      "Fecha Fin LAC": "3/1/19",
+      "Domicilio Ppal": "César Álvarez S/N , José María Ponce (W3400)",
+      "Localidad": "CORRIENTES",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180164600",
+      "Nombre": "INSTITUTO SUPERIOR DE MUSICA PROF.CARMELO H.DE BIASI",
+      "predio": "181169",
+      "Fecha Fin LAC": "3/22/19",
+      "Domicilio Ppal": "CATAMATCA 853, (W3400)",
+      "Localidad": "CORRIENTES",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180168900",
+      "Nombre": "COLEGIO SECUNDARIO SAN CAYETANO",
+      "predio": "181193",
+      "Fecha Fin LAC": "11/15/18",
+      "Domicilio Ppal": "STA.CLARA DE ASIS S/N , (W3401)",
+      "Localidad": "RIACHUELO",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180173000",
+      "Nombre": "INSTITUTO SUPERIOR DE FORMACION POLICIAL",
+      "predio": "181253",
+      "Fecha Fin LAC": "3/15/19",
+      "Domicilio Ppal": "Tacuarí 1365, Celia (W3400)",
+      "Localidad": "CORRIENTES",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180176300",
+      "Nombre": "COLEGIO SECUNDARIO JUANA F.CABRAL",
+      "predio": "181290",
+      "Fecha Fin LAC": "11/15/18",
+      "Domicilio Ppal": "PJE.PLAYADITO , ESPERANZA (W3400)",
+      "Localidad": "CORRIENTES",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180183100",
+      "Nombre": "ESCUELA Nº 983",
+      "predio": "181318",
+      "Fecha Fin LAC": "4/5/19",
+      "Domicilio Ppal": ", (W3400)",
+      "Localidad": "CORRIENTES",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "189000100",
+      "Nombre": "ESC.REG.DE AGRICULTURA,GANADERIA E IND.AFINES (E.R.A.G.I.A.)",
+      "predio": "181335",
+      "Fecha Fin LAC": "9/19/18",
+      "Domicilio Ppal": "RUTA NAC.Nº 12 (KM 1031) , Barrio Cremonte (W3400)",
+      "Localidad": "CORRIENTES",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180111400",
+      "Nombre": "COLEGIO SECUNDARIO GENERAL SAN MARTIN",
+      "predio": "181445",
+      "Fecha Fin LAC": "9/27/19",
+      "Domicilio Ppal": "FRAY JOSE DE LA QUINTANA 699, DEPORTE (W3400)",
+      "Localidad": "CORRIENTES",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180041000",
+      "Nombre": "ESCUELA Nº 4 MARIANO MORENO",
+      "predio": "181446",
+      "Fecha Fin LAC": "9/30/19",
+      "Domicilio Ppal": "25 DE MAYO 1398, LA ROSADA (W3400)",
+      "Localidad": "CORRIENTES",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180082000",
+      "Nombre": "ESCUELA TECNICA BERNARDINO RIVADAVIA",
+      "predio": "181447",
+      "Fecha Fin LAC": "9/27/19",
+      "Domicilio Ppal": "AVDA. TTE. IBAÑEZ 1897, BERON DE ASTRADA (W3400)",
+      "Localidad": "CORRIENTES",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180114500",
+      "Nombre": "INSTITUTO SUPERIOR JOSEFINA CONTTE",
+      "predio": "181448",
+      "Fecha Fin LAC": "9/30/19",
+      "Domicilio Ppal": "CARLOS PELLEGRINI 702, (W3400)",
+      "Localidad": "CORRIENTES",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180044100",
+      "Nombre": "COLEGIO SECUNDARIO PTE.DR.ARTURO UMBERTO ILLIA",
+      "predio": "181464",
+      "Fecha Fin LAC": "9/27/19",
+      "Domicilio Ppal": "LARREA , BºLAGUNA SECA (W3400)",
+      "Localidad": "CORRIENTES",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180081600",
+      "Nombre": "ESCUELA Nº 291 DR.EUDORO VARGAS GOMEZ",
+      "predio": "181465",
+      "Fecha Fin LAC": "9/30/19",
+      "Domicilio Ppal": "JOSE R.VIDAL 4000, SANTA MARTA (W3400)",
+      "Localidad": "CORRIENTES",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180142504",
+      "Nombre": "EXTENSION AULICA DE ADULTOS QUE FUNCIONA EN COL. CAUTIVAS CORRENTINAS (CESPA Nº 9)",
+      "predio": "181481",
+      "Fecha Fin LAC": "9/30/19",
+      "Domicilio Ppal": "NAPOLES S/N , PIRAYUI (W3400)",
+      "Localidad": "CORRIENTES",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180142502",
+      "Nombre": "EXTENSION AULICA DE ADULTOS QUE FUNCIONA EN ESCUELA N° 605 (CESPA Nº 9)",
+      "predio": "181485",
+      "Fecha Fin LAC": "11/8/19",
+      "Domicilio Ppal": "EJERCITO ARGENTINO S/N , (W3400)",
+      "Localidad": "CAÑADA QUIROZ",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180053900",
+      "Nombre": "ESCUELA Nº 403 BARTOLOME MITRE",
+      "predio": "181486",
+      "Fecha Fin LAC": "9/9/19",
+      "Domicilio Ppal": "EULOGIO CABRAL 490, (W3416)",
+      "Localidad": "RIACHUELO",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180144200",
+      "Nombre": "ESCUELA Nº 956NTRA.SRA.DE LA MEDALLA MILAGROSA",
+      "predio": "181496",
+      "Fecha Fin LAC": "9/19/19",
+      "Domicilio Ppal": "CALLE 216, FRAY JOSE DE LA QUINTANA (W3400)",
+      "Localidad": "CORRIENTES",
+      "Departamento": "CAPITAL"
+    },
+    {
+      "CueAnexo": "180185500",
+      "Nombre": "COLEGIO SECUNDARIO Bº APIPE",
+      "predio": "181500",
+      "Fecha Fin LAC": "9/9/19",
+      "Domicilio Ppal": "BADAJOZ S/N , Bº APIPE (W3400)",
+      "Localidad": "CORRIENTES",
+      "Departamento": "CAPITAL"
+    }
+  ]
+  

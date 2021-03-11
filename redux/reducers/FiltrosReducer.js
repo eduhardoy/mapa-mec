@@ -18,7 +18,8 @@ const initialState = {
   aguaPotable: [],
   proveedoresInternet: [],
   agrupaciones: [],
-  cabeceras: []
+  cabeceras: [],
+  planConectividad: [],
 };
 
 const filtrosReducer = (state = initialState, action) => {
@@ -55,6 +56,8 @@ const filtrosReducer = (state = initialState, action) => {
       return { ...state, cabeceras: action.payload };
     case type.SET_AULA_DIGITAL_MOVIL:
       return { ...state, aulaDigitalMoviles: action.payload }
+    case type.SET_PLAN_CONECTIVIDAD:
+      return { ...state, planConectividad: action.payload }
     default:
       return state;
   }

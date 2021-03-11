@@ -1,5 +1,6 @@
 import * as type from '../types'
 import cabecerasJson from "./cabeceras.json";
+import lineaCJson from "./lineaC.json";
 
 const marcadoresFilterMiddleware = store => next => action => {
     // console.log("STATE BEFORE", store.getState());
@@ -26,7 +27,8 @@ const marcadoresFilterMiddleware = store => next => action => {
         action.type == type.SET_INTENET ||
         action.type == type.SET_PROVEEDORES_INTERNET ||
         action.type == type.SET_CABECERAS ||
-        action.type == type.SET_AULA_DIGITAL_MOVIL
+        action.type == type.SET_AULA_DIGITAL_MOVIL ||
+        action.type == type.SET_PLAN_CONECTIVIDAD
     ) {
         //Condicion de Filtrado
         let filterCondition = {
@@ -44,6 +46,7 @@ const marcadoresFilterMiddleware = store => next => action => {
             internetProveedores: true,
             cabeceras: true,
             ADM: true,
+            planConectividad: true
         }
         const isTrue = (e => e === true)
         let marcadoresFiltered = localizaciones.filter(l => {
@@ -169,6 +172,24 @@ const marcadoresFilterMiddleware = store => next => action => {
                         ? true
                         : false
                     : false
+            }
+
+            //PLAN CONECTIVIDAD
+            if (filtro.planConectividad.length > 0) {
+                let result = false
+                if (l.colegio) {
+                    if (filtro.planConectividad.includes("lineaC")) {
+                        result = lineaCJson.filter(e => e['CueAnexo'] == l.cueanexo).length > 0
+                            ? true
+                            : false
+                    }
+                    else if (filtro.planConectividad.includes("noLineaC")) {
+                        result = lineaCJson.filter(e => e['CueAnexo'] == l.cueanexo).length > 0
+                            ? false
+                            : true
+                    }
+                }
+                filterCondition['conectividades'] = result
             }
 
             return Object.values(filterCondition).every(isTrue);
