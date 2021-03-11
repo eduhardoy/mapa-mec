@@ -15,7 +15,7 @@ const FiltroConectividad = () => {
   const options = [
     {
       id: "lineaC",
-      label: "TIENE LÍNEA C"
+      label: "TIENE LÍNEA C",
     },
     {
       id: "noLineaC",

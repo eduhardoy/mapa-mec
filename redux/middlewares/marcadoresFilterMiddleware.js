@@ -47,7 +47,7 @@ const marcadoresFilterMiddleware = store => next => action => {
             internetProveedores: true,
             cabeceras: true,
             ADM: true,
-            planConectividad: true,
+            planConectividadLineaC: true,
             aguaPotable: true
         }
         const isTrue = (e => e === true)
@@ -177,22 +177,25 @@ const marcadoresFilterMiddleware = store => next => action => {
             }
 
             //PLAN CONECTIVIDAD
-            if (filtro.planConectividad.length > 0) {
-                let result = false
-                if (l.colegio) {
-                    if (filtro.planConectividad.includes("lineaC")) {
-                        result = lineaCJson.filter(e => e['CueAnexo'] == l.cueanexo).length > 0
-                            ? true
-                            : false
-                    }
-                    else if (filtro.planConectividad.includes("noLineaC")) {
-                        result = lineaCJson.filter(e => e['CueAnexo'] == l.cueanexo).length > 0
-                            ? false
-                            : true
-                    }
-                }
-                filterCondition['conectividades'] = result
+            if (filtro.planConectividad.includes("lineaC") && filtro.planConectividad.includes("noLineaC")) {
+                filterCondition['planConectividadLineaC'] = true
             }
+            else {
+                if (filtro.planConectividad.includes("lineaC")) {
+                    filterCondition['planConectividadLineaC'] = lineaCJson.filter((e) => e["CueAnexo"] == l.cueanexo).length > 0
+                        ? true
+                        : false
+                }
+
+                if (filtro.planConectividad.includes("noLineaC")) {
+                    filterCondition['planConectividadLineaC'] = lineaCJson.filter((e) => e["CueAnexo"] == l.cueanexo).length > 0
+                        ? false
+                        : true
+                }
+            }
+
+
+
 
             //AGUA POTABLE
             if (filtro.aguaPotable.length > 0) {
