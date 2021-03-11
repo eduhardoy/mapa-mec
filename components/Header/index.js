@@ -2,6 +2,8 @@ import * as React from "react";
 import styled from "styled-components";
 
 import SearchBar from "./SearchBar.js";
+import Modal from "../Modal/index.js";
+import LoginModal from "./LoginModal.js";
 
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import MenuIcon from "@material-ui/icons/Menu";
@@ -226,6 +228,9 @@ const Header = ({ selectFirstBar, firstBar }) => {
           </IconButtonUser>
         </UserContainer>
       </NormalHeader>
+      <Modal>
+        <LoginModal />
+      </Modal>
     </HeaderStyle>
   );
 };
