@@ -25,7 +25,8 @@ const marcadoresFilterMiddleware = store => next => action => {
         action.type == type.SET_AMBITO ||
         action.type == type.SET_INTENET ||
         action.type == type.SET_PROVEEDORES_INTERNET ||
-        action.type == type.SET_CABECERAS
+        action.type == type.SET_CABECERAS ||
+        action.type == type.SET_AULA_DIGITAL_MOVIL
     ) {
         //Condicion de Filtrado
         let filterCondition = {
@@ -42,6 +43,7 @@ const marcadoresFilterMiddleware = store => next => action => {
             internet: true,
             internetProveedores: true,
             cabeceras: true,
+            ADM: true,
         }
         const isTrue = (e => e === true)
         let marcadoresFiltered = localizaciones.filter(l => {
@@ -152,12 +154,21 @@ const marcadoresFilterMiddleware = store => next => action => {
             }
 
             //DEPARTAMENTOS CABECERAS
-            if(filtro.cabeceras.length > 0){
+            if (filtro.cabeceras.length > 0) {
                 filterCondition["cabeceras"] = l.cueanexo
                     ? cabecerasJson.filter((e) => e["CUA-ANEXO"] == l.cueanexo).length > 0
                         ? true
                         : false
                     : false;
+            }
+
+            //AULA DIGITAL MOVIL
+            if (filtro.aulaDigitalMoviles.length > 0) {
+                filterCondition['ADM'] = l.colegio
+                    ? l.colegio.adm
+                        ? true
+                        : false
+                    : false
             }
 
             return Object.values(filterCondition).every(isTrue);
