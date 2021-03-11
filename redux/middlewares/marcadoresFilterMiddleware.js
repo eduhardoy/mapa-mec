@@ -28,7 +28,8 @@ const marcadoresFilterMiddleware = store => next => action => {
         action.type == type.SET_PROVEEDORES_INTERNET ||
         action.type == type.SET_CABECERAS ||
         action.type == type.SET_AULA_DIGITAL_MOVIL ||
-        action.type == type.SET_PLAN_CONECTIVIDAD
+        action.type == type.SET_PLAN_CONECTIVIDAD ||
+        action.type == type.SET_AGUA_POTABLE
     ) {
         //Condicion de Filtrado
         let filterCondition = {
@@ -46,7 +47,8 @@ const marcadoresFilterMiddleware = store => next => action => {
             internetProveedores: true,
             cabeceras: true,
             ADM: true,
-            planConectividad: true
+            planConectividad: true,
+            aguaPotable: true
         }
         const isTrue = (e => e === true)
         let marcadoresFiltered = localizaciones.filter(l => {
@@ -190,6 +192,15 @@ const marcadoresFilterMiddleware = store => next => action => {
                     }
                 }
                 filterCondition['conectividades'] = result
+            }
+
+            //AGUA POTABLE
+            if (filtro.aguaPotable.length > 0) {
+                filterCondition['aguaPotable'] = l.agua
+                    ? filtro.aguaPotable.includes(l.agua.tiene.toString())
+                        ? true
+                        : false
+                    : false
             }
 
             return Object.values(filterCondition).every(isTrue);

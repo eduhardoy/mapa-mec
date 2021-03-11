@@ -56,7 +56,7 @@ const FilterWrapper = () => {
       <FiltroAulaDigitalMovil />
       <FiltroInternet filtros={filtros} setInternetFilter={setInternetFilter} />
       <FiltroConectividad />
-      {/* <FiltroAguaPotable /> */}
+      <FiltroAguaPotable />
       <FiltroProveedores filtros={filtros} setInternetProveedoresFilter={setInternetProveedoresFilter} />
       {/* <FiltroAgrupaciones /> */}
       <FiltroCabeceras filtros={filtros} setCabecerasFilter={setCabecerasFilter} />
