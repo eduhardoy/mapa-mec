@@ -1,5 +1,6 @@
 import * as type from '../types'
 import cabecerasJson from "./cabeceras.json";
+import lineaCJson from "./lineaC.json";
 
 const marcadoresFilterMiddleware = store => next => action => {
     // console.log("STATE BEFORE", store.getState());
@@ -26,7 +27,9 @@ const marcadoresFilterMiddleware = store => next => action => {
         action.type == type.SET_INTENET ||
         action.type == type.SET_PROVEEDORES_INTERNET ||
         action.type == type.SET_CABECERAS ||
-        action.type == type.SET_AULA_DIGITAL_MOVIL
+        action.type == type.SET_AULA_DIGITAL_MOVIL ||
+        action.type == type.SET_PLAN_CONECTIVIDAD ||
+        action.type == type.SET_AGUA_POTABLE
     ) {
         //Condicion de Filtrado
         let filterCondition = {
@@ -44,6 +47,8 @@ const marcadoresFilterMiddleware = store => next => action => {
             internetProveedores: true,
             cabeceras: true,
             ADM: true,
+            planConectividadLineaC: true,
+            aguaPotable: true
         }
         const isTrue = (e => e === true)
         let marcadoresFiltered = localizaciones.filter(l => {
@@ -166,6 +171,36 @@ const marcadoresFilterMiddleware = store => next => action => {
             if (filtro.aulaDigitalMoviles.length > 0) {
                 filterCondition['ADM'] = l.colegio
                     ? l.colegio.adm
+                        ? true
+                        : false
+                    : false
+            }
+
+            //PLAN CONECTIVIDAD
+            if (filtro.planConectividad.includes("lineaC") && filtro.planConectividad.includes("noLineaC")) {
+                filterCondition['planConectividadLineaC'] = true
+            }
+            else {
+                if (filtro.planConectividad.includes("lineaC")) {
+                    filterCondition['planConectividadLineaC'] = lineaCJson.filter((e) => e["CueAnexo"] == l.cueanexo).length > 0
+                        ? true
+                        : false
+                }
+
+                if (filtro.planConectividad.includes("noLineaC")) {
+                    filterCondition['planConectividadLineaC'] = lineaCJson.filter((e) => e["CueAnexo"] == l.cueanexo).length > 0
+                        ? false
+                        : true
+                }
+            }
+
+
+
+
+            //AGUA POTABLE
+            if (filtro.aguaPotable.length > 0) {
+                filterCondition['aguaPotable'] = l.agua
+                    ? filtro.aguaPotable.includes(l.agua.tiene.toString())
                         ? true
                         : false
                     : false

@@ -7,21 +7,19 @@ import { useDispatch, useSelector } from "react-redux";
 import * as type from '../../redux/types';
 import { Accordion, AccordionSummary, AccordionDetails, CheckboxFilter, CheckboxNew } from "./styles";
 
-const FiltroAguaPotable = () => {
+const FiltroConectividad = () => {
 
   const dispatch = useDispatch()
-  const { aguaPotable } = useSelector(state => state.filtro)
+  const { planConectividad } = useSelector(state => state.filtro)
 
   const options = [
     {
-      id: "tieneAgua",
-      label: "TIENE",
-      value: "true",
+      id: "lineaC",
+      label: "TIENE LÍNEA C",
     },
     {
-      id: "noTieneAgua",
-      label: "NO TIENE",
-      value: "false",
+      id: "noLineaC",
+      label: "NO TIENE LÍNEA C"
     }
   ]
 
@@ -30,13 +28,13 @@ const FiltroAguaPotable = () => {
 
     if (value != "all") {
       dispatch({
-        type: type.SET_AGUA_POTABLE,
-        payload: aguaPotable.includes(value) ? aguaPotable.filter(e => e !== value) : [...aguaPotable, value]
+        type: type.SET_PLAN_CONECTIVIDAD,
+        payload: planConectividad.includes(value) ? planConectividad.filter(e => e !== value) : [...planConectividad, value]
       })
     } else {
       dispatch({
-        type: type.SET_AGUA_POTABLE,
-        payload: aguaPotable.length > 0 ? [] : [...options.map(e => (e.value))]
+        type: type.SET_PLAN_CONECTIVIDAD,
+        payload: planConectividad.length > 0 ? [] : [...options.map(e => (e.id))]
       })
     }
   };
@@ -61,23 +59,23 @@ const FiltroAguaPotable = () => {
               onChange={handleChecked}
               icon={<RadioButtonUnchecked />}
               checkedIcon={<RadioButtonCheckedIcon />}
-              checked={aguaPotable.length > 0 ? true : null}
+              checked={planConectividad.length > 0 ? true : null}
             />
           }
           label=''
         />
-        <p>AGUA POTABLE</p>
+        <p>PLAN DE CONECTIVIDAD</p>
       </AccordionSummary>
       <AccordionDetails>
         <CheckboxFilter>
           {options.map(lin => (
             <FormControlLabel
               key={lin.id}
-              value={lin.value}
+              value={lin.id}
               control={
                 <CheckboxNew
                   onChange={handleChecked}
-                  checked={aguaPotable.includes(lin.value.toString())}
+                  checked={planConectividad.includes(lin.id)}
                 />
               }
               label={lin.label}
@@ -90,4 +88,4 @@ const FiltroAguaPotable = () => {
   );
 };
 
-export default FiltroAguaPotable;
+export default FiltroConectividad;
