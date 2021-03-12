@@ -2,7 +2,7 @@ import React from "react";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import RadioButtonCheckedIcon from "@material-ui/icons/RadioButtonChecked";
-import RadioButtonUnchecked from '@material-ui/icons/RadioButtonUnchecked';
+import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked';
 import { useDispatch, useSelector } from "react-redux";
 import * as type from '../../redux/types';
 import { Accordion, AccordionSummary, AccordionDetails, CheckboxFilter, CheckboxNew } from "./styles";
@@ -53,7 +53,7 @@ const FiltroAgrupaciones = () => {
           control={
             <CheckboxNew
               onChange={handleChecked}
-              icon={<RadioButtonUnchecked />}
+              icon={<RadioButtonUncheckedIcon />}
               checkedIcon={<RadioButtonCheckedIcon />}
               checked={agrupaciones.length > 0 ? true : null}
             />
