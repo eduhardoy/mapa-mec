@@ -75,11 +75,18 @@ const Button = styled.button`
   outline: none;
   font-size: 12px;
   margin-top: 10px;
-  background-color: #7cb342;
+  background-color: #67a534;
   text-transform: uppercase;
   display: flex;
   align-items: center;
   justify-content: center;
+  :hover {
+    background-color: #7cb342;
+  }
+  :focus {
+    border: 5px solid #b9e2c2;
+    background-color: #7cb342;
+  }
   input {
     background-color: #f5f5f5;
     height: 16px;
@@ -134,7 +141,7 @@ const FilterBar = () => {
           <Button>Ver escuelas sin georeferencia</Button>
           <Button>
             Escuelas con matricula menor a{" "}
-            <input type='text' maxlength='3' size='3'></input>
+            <input type='text' maxlength='3' placeholder='5' size='3'></input>
           </Button>
         </ButtonWrapper>
       </FiltrosContainer>

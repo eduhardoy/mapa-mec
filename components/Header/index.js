@@ -16,7 +16,7 @@ import {
   LoginFormWrapper,
   LoginForm,
   CloseButton,
-} from "./ModalStyles";
+} from "./styles";
 // styles
 
 const HeaderStyle = styled.div`
