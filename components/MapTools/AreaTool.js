@@ -1,10 +1,23 @@
 import React from "react";
 import styled from "styled-components";
 
-const AreaWrapper = styled.div``;
+const AreaToolWrapper = styled.div`
+  width: 80%;
+  background-color: #f7f7f7;
+`;
+
+const AreaToolTitle = styled.div``;
+const AreaToolDescription = styled.div``;
+const AreaToolButton = styled.button``;
 
 const AreaTool = () => {
-  return <AreaWrapper></AreaWrapper>;
+  return (
+    <AreaToolWrapper>
+      <AreaToolTitle></AreaToolTitle>
+      <AreaToolDescription></AreaToolDescription>
+      <AreaToolButton></AreaToolButton>
+    </AreaToolWrapper>
+  );
 };
 
 export default AreaTool;
