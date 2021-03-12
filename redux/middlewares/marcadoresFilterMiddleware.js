@@ -1,6 +1,7 @@
 import * as type from '../types'
 import cabecerasJson from "./cabeceras.json";
 import lineaCJson from "./lineaC.json";
+import efasJson from './efas.json';
 
 const marcadoresFilterMiddleware = store => next => action => {
     // console.log("STATE BEFORE", store.getState());
@@ -48,7 +49,8 @@ const marcadoresFilterMiddleware = store => next => action => {
             cabeceras: true,
             ADM: true,
             planConectividadLineaC: true,
-            aguaPotable: true
+            aguaPotable: true,
+            agrupaciones: true
         }
         const isTrue = (e => e === true)
         let marcadoresFiltered = localizaciones.filter(l => {
@@ -194,9 +196,6 @@ const marcadoresFilterMiddleware = store => next => action => {
                 }
             }
 
-
-
-
             //AGUA POTABLE
             if (filtro.aguaPotable.length > 0) {
                 filterCondition['aguaPotable'] = l.agua
@@ -204,6 +203,15 @@ const marcadoresFilterMiddleware = store => next => action => {
                         ? true
                         : false
                     : false
+            }
+
+            //AGRUPACIONES
+            if (filtro.agrupaciones.length > 0) {
+                if (filtro.agrupaciones.includes("efas")) {
+                    filterCondition['agrupaciones'] = efasJson.filter(e => e['cueanexo'] == l.cueanexo).length > 0
+                        ? true
+                        : false
+                }
             }
 
             return Object.values(filterCondition).every(isTrue);

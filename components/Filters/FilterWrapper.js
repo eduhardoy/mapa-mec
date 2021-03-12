@@ -58,7 +58,7 @@ const FilterWrapper = () => {
       <FiltroConectividad />
       <FiltroAguaPotable />
       <FiltroProveedores filtros={filtros} setInternetProveedoresFilter={setInternetProveedoresFilter} />
-      {/* <FiltroAgrupaciones /> */}
+      <FiltroAgrupaciones />
       <FiltroCabeceras filtros={filtros} setCabecerasFilter={setCabecerasFilter} />
     </Wrapper>
   );

@@ -60,6 +60,8 @@ const filtrosReducer = (state = initialState, action) => {
       return { ...state, planConectividad: action.payload }
     case type.SET_AGUA_POTABLE:
       return { ...state, aguaPotable: action.payload }
+    case type.SET_AGRUPACIONES:
+      return { ...state, agrupaciones: action.payload }
     default:
       return state;
   }
