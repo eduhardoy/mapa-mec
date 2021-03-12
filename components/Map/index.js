@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
-import { GoogleMap, LoadScript, useJsApiLoader } from "@react-google-maps/api";
+import { GoogleMap, useJsApiLoader } from "@react-google-maps/api";
 import MapMarcadores from "../MapMarcadores";
 import styled from "styled-components";
+import MapInfoWindow from "../MapInfoWindow";
 
 //TODO Map Container styled component as MapContainer
 const MapContainer = styled.div`
@@ -21,7 +22,10 @@ const containerStyle = {
   bottom: "0",
 };
 
-function MyComponent() {
+const Map = () => {
+  //LOGGER
+  console.log("Map RENDERED");
+
   const { isLoaded, loadError } = useJsApiLoader({
     googleMapsApiKey: "AIzaSyB9T71MrqTWubzHayatyn7RP5lpDMdcrgo",
   });
@@ -35,35 +39,40 @@ function MyComponent() {
     setMap(null);
   }, []);
 
-  return (
-    <MapContainer>
-      {isLoaded ? (
-        <MapContainer ancho={"100vw"}>
-          <GoogleMap
-            mapContainerStyle={containerStyle}
-            center={{ lat: -28.737328845367706, lng: -57.722286004532684 }}
-            zoom={8}
-            options={{
-              mapTypeControl: true,
-              mapTypeControlOptions: {
-                style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
-                // mapTypeIds: ["roadmap", "terrain"],
-                position: google.maps.ControlPosition.TOP_RIGHT,
-              },
-              streetViewControl: false,
-              fullscreenControl: false,
-            }}
-            onLoad={onLoad}
-            onUnmount={onUnmount}
-          >
-            <MapMarcadores map={map} />
-          </GoogleMap>
-        </MapContainer>
-      ) : (
-        <>Loading...</>
-      )}
+  return isLoaded ? (
+    <MapContainer ancho={"100vw"}>
+      <GoogleMap
+        mapContainerStyle={containerStyle}
+        center={{ lat: -28.737328845367706, lng: -57.722286004532684 }}
+        zoom={8}
+        options={{
+          mapTypeControl: true,
+          mapTypeControlOptions: {
+            style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
+            // mapTypeIds: ["roadmap", "terrain"],
+            position: google.maps.ControlPosition.TOP_RIGHT,
+          },
+          streetViewControl: false,
+          fullscreenControl: false,
+          restriction: {
+            latLngBounds: {
+              north: -26,
+              south: -31,
+              east: -54,
+              west: -64,
+            },
+          },
+        }}
+        onLoad={onLoad}
+        onUnmount={onUnmount}
+      >
+        {map && <MapMarcadores map={map} />}
+        <MapInfoWindow />
+      </GoogleMap>
     </MapContainer>
+  ) : (
+    <>Loading...</>
   );
-}
+};
 
-export default React.memo(MyComponent);
+export default React.memo(Map);

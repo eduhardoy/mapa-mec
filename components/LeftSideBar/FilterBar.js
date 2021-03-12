@@ -10,6 +10,7 @@ const SecondBarStyle = styled.div`
   border-right: solid #d3d3d3 2px;
   height: calc(100vh - 77px);
   width: 30vw;
+  min-width: 350px;
   z-index: 9;
   position: absolute;
   left: 70px;
@@ -56,6 +57,41 @@ const FiltrosContainer = styled.div`
   }
 `;
 
+const ButtonWrapper = styled.div`
+  width: 100%;
+  margin: 10px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+`;
+
+const Button = styled.button`
+  box-sizing: border-box;
+  width: 45%;
+  border: #67a534 5px solid;
+  height: 60px;
+  font-weight: 500;
+  outline: none;
+  font-size: 10px;
+  margin-top: 10px;
+  background-color: #7cb342;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  input {
+    background-color: #f5f5f5;
+    height: 16px;
+    margin: 5px;
+    outline: none;
+    border: none;
+    font-size: 12px;
+    line-height: 16px;
+    text-align: center;
+  }
+`;
+
 const ButtonContainer = styled.div`
   width: 100%;
   height: 10%;
@@ -75,6 +111,7 @@ const FiltrosButton = styled.button`
   color: white;
   outline: none;
   box-sizing: border-box;
+  width: 5%;
   :hover {
     background-color: #7cb342;
   }
@@ -91,6 +128,15 @@ const FilterBar = () => {
     <SecondBarStyle display={secondBar == "FILTROS" ? "flex" : "none"}>
       <FiltrosContainer>
         <FilterWrapper />
+        <ButtonWrapper>
+          <Button>Ver mapa de conectividad</Button>
+          <Button>Ver mapa de proveedores</Button>
+          <Button>Ver escuelas sin georeferencia</Button>
+          <Button>
+            Escuelas con matricula menor a{" "}
+            <input type='text' maxlength='3' size='3'></input>
+          </Button>
+        </ButtonWrapper>
       </FiltrosContainer>
       {/* <ButtonContainer>
         <FiltrosButton>FILTRAR</FiltrosButton>

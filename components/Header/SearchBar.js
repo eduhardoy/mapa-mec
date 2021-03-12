@@ -1,18 +1,17 @@
 import * as React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 // import { useSelector } from "react-redux";
-import SearchIcon from "@material-ui/icons/Search";
-import Filter from "./Filter";
-import Filter2 from "./Filter2";
-import Filter3 from "./Filter3";
+import SearchFilter from "./SerachFilter";
+import * as type from "../../redux/types";
 
 // styles
 const SearchBarWrapper = styled.div`
   padding: 0;
   margin: 0;
   display: flex;
-  justify-content:center;
-  align-items:center;
+  justify-content: center;
+  align-items: center;
   width: 60%;
   height: 60%;
   background-color: #fff;
@@ -30,43 +29,53 @@ const SearchBarWrapper = styled.div`
 `;
 
 const SearchBarLeftDiv = styled.div`
-
-  width:90%;
-  height:100%;
-  @media (max-width: 769px) {
-    width:85%;
-    height:100%;
+  width: 80%;
+  height: 100%;
+  @media (max-width: 850px) {
+    width: 70%;
+    height: 100%;
   }
-`
+  @media (max-width: 426px) {
+    width: 70%;
+    height: 100%;
+  }
+`;
 const SearchBarRightDiv = styled.div`
-  width:10%;
-  height:100%;
-  @media (max-width: 769px) {
-    width:15%;
-    height:100%;
+  width: 20%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @media (max-width: 850px) {
+    width: 30%;
+    height: 100%;
   }
-`
+  @media (max-width: 426px) {
+    width: 30%;
+    height: 100%;
+  }
+`;
 
 const SearchBarButton = styled.button`
   padding: 0;
   margin: 0;
-  width: 100%;
-  height:100%;
+  width: 95%;
+  height: 90%;
   border: none;
-  background-color: white;
   display: flex;
   justify-content: center;
   align-items: center;
   outline: none;
   cursor: pointer;
-  color: #e9ecef;
-  border-left: solid 1px #337e3c;
-  svg {
-    width: auto;
-    height: 30px;
-    color: #33691e;
-    @media (max-width: 769px) {
-      height: 20px;
+  background-color: #1e1e1e;
+  color: white;
+  p {
+    margin: 0;
+    font-size: 12px;
+    @media (max-width: 850px) {
+      font-size: 10px;
     }
   }
 `;
@@ -76,16 +85,31 @@ const SearchBarButton = styled.button`
 //   const lupaIcon = images.filter((e) => e.nombre === "search")[0];
 
 const SearchBar = () => {
+  const dispatch = useDispatch();
+  const { buscador } = useSelector(state => state.header);
+
+  const setBuscadorState = arg => {
+    dispatch({
+      type: type.SET_HEADER_STATE,
+      payload: arg,
+    });
+  };
+
   return (
     <SearchBarWrapper>
-      {/* <Filter2></Filter2> */}
       <SearchBarLeftDiv>
-        <Filter3 />
+        <SearchFilter />
       </SearchBarLeftDiv>
 
       <SearchBarRightDiv>
-        <SearchBarButton>
-          <SearchIcon />
+        <SearchBarButton
+          onClick={() =>
+            buscador == "NOMBRE"
+              ? setBuscadorState("CUEANEXO")
+              : setBuscadorState("NOMBRE")
+          }
+        >
+          <p>{buscador == "NOMBRE" ? "NOMBRE" : "CUEANEXO"}</p>
         </SearchBarButton>
       </SearchBarRightDiv>
     </SearchBarWrapper>

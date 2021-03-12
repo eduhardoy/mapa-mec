@@ -2,6 +2,8 @@ import * as React from "react";
 import styled from "styled-components";
 
 import SearchBar from "./SearchBar.js";
+import Modal from "../Modal/index.js";
+import LoginModal from "./LoginModal.js";
 
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import MenuIcon from "@material-ui/icons/Menu";
@@ -13,7 +15,8 @@ const HeaderStyle = styled.div`
   width: 100vw;
   background-color: #7cb342;
   box-shadow: 0px 1px 5px 3px rgba(53, 53, 53, 0.47);
-  height: 77px;
+  height: 70px;
+  border-bottom: solid 7px #67a534;
   position: absolute;
   top: 0;
   z-index: 500;
@@ -85,8 +88,8 @@ const SearchBarContainer = styled.div`
   justify-content: center;
   align-items: center;
   position: relative;
-  @media (max-width: 769px) {
-    width: 100%;
+  @media (max-width: 426px) {
+    width: 90%;
     max-width: 90%;
   }
 `;
@@ -105,6 +108,15 @@ const Logos = styled.div`
   }
   @media (max-width: 1200px) {
     width: 50%;
+  }
+  @media (max-width: 1000px) {
+    width: 60%;
+  }
+  @media (max-width: 900px) {
+    width: 70%;
+  }
+  @media (max-width: 800px) {
+    width: 90%;
   }
   @media (max-width: 426px) {
     display: none;
@@ -160,9 +172,19 @@ const IconButtonUser = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   border: none;
   background-color: transparent;
   cursor: pointer;
+  p {
+    margin: 0;
+    color: white;
+    font-family: "Lato";
+    font-size: 12px;
+    @media (max-width: 426px) {
+      font-size: 8px;
+    }
+  }
   :focus {
     border: none;
     outline: none;
@@ -183,7 +205,7 @@ const Header = ({ selectFirstBar, firstBar }) => {
   return (
     <HeaderStyle>
       <PhoneLogo>
-        <img src="./images/Logos.png" alt="" />
+        <img src='./images/Logos.png' alt='' />
       </PhoneLogo>
       <NormalHeader>
         <MenuContainer>
@@ -193,7 +215,7 @@ const Header = ({ selectFirstBar, firstBar }) => {
         </MenuContainer>
         <MiddleContainer>
           <Logos>
-            <img src="./images/Logos.png" alt="" />
+            <img src='./images/Logos.png' alt='' />
           </Logos>
           <SearchBarContainer>
             <SearchBar />
@@ -202,19 +224,23 @@ const Header = ({ selectFirstBar, firstBar }) => {
         <UserContainer>
           <IconButtonUser>
             <AccountCircleIcon />
+            <p>SALIR</p>
           </IconButtonUser>
         </UserContainer>
       </NormalHeader>
+      <Modal>
+        <LoginModal />
+      </Modal>
     </HeaderStyle>
   );
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   firstBar: state.bar.firstBar,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  selectFirstBar: (arg) => dispatch(selectFirstBar(arg)),
+const mapDispatchToProps = dispatch => ({
+  selectFirstBar: arg => dispatch(selectFirstBar(arg)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

@@ -53,11 +53,11 @@ const TituloFilter = styled.div`
   margin-left: 15px;
   h3 {
     font-weight: 700;
-    font-size: 16px;
+    font-size: 14px;
     margin: 5px;
   }
   p {
-    font-size: 14px;
+    font-size: 12px;
     margin: 5px;
     color: grey;
   }
@@ -90,7 +90,7 @@ const Elemento = styled.div`
 
 export default function ControlledAccordions() {
   const [expanded, setExpanded] = React.useState(false);
-  const [marcadores] = useMarcadores();
+  const { marcadores } = useMarcadores();
 
   const handleChange = panel => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);

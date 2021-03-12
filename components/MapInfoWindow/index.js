@@ -1,6 +1,7 @@
 import { InfoWindow } from "@react-google-maps/api";
 import React from "react";
 import styled from "styled-components";
+import useMap from "../../hooks/Map";
 
 const InfoStyled = styled.div`
   background: #ffffff;
@@ -16,20 +17,34 @@ const InfoStyled = styled.div`
   }
 `;
 
-export const MapInfoWindow = ({ position, closeInfoWindow, info }) => {
+export const MapInfoWindow = () => {
+  //LOGGER
+  console.log("MapInfoWindow RENDERED")
+
+  const { infowindow, setInfoWindow } = useMap()
+
+  const closeInfoWindow = () => {
+    setInfoWindow(false, null)
+  }
+
   return (
-    <InfoWindow position={position} onCloseClick={closeInfoWindow}>
-      <InfoStyled>
-        <h1>{info.colegio ? info.colegio.nombre : ""}</h1>
-        <h3>CUE: {info.cueanexo}</h3>
-        {/* {info.ofertas
-          ? info.ofertas.map(ofe => (
-            <h5>{ofe.idOferta}</h5>
-          ))
-          : null
-        } */}
-      </InfoStyled>
-    </InfoWindow>
+    <>
+      {infowindow.show &&
+        <InfoWindow
+          position={{
+            lng: infowindow.data.domicilio.geo.geometry.coordinates[0],
+            lat: infowindow.data.domicilio.geo.geometry.coordinates[1],
+          }}
+          onCloseClick={closeInfoWindow}
+          options={{ pixelOffset: new google.maps.Size(0, -48) }}
+        >
+          <InfoStyled>
+            <h1>{infowindow.data.colegio ? infowindow.data.colegio.nombre : ""}</h1>
+            <h3>CUE: {infowindow.data.cueanexo}</h3>
+          </InfoStyled>
+        </InfoWindow>
+      }
+    </>
   );
 };
 

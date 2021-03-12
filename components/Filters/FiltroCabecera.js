@@ -7,11 +7,12 @@ import MuiAccordionSummary from "@material-ui/core/AccordionSummary";
 import MuiAccordionDetails from "@material-ui/core/AccordionDetails";
 import { Checkbox } from "@material-ui/core";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+
 import RadioButtonCheckedIcon from "@material-ui/icons/RadioButtonChecked";
-import useFiltros from "../../hooks/Filtros";
-import usePrecargado from "../../hooks/Precargado";
-import useSpecialFilter from "../../hooks/Filtros/SpecialFilter";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+
+
+
 
 const CheckboxFilter = styled.div`
   label {
@@ -67,37 +68,64 @@ const AccordionDetails = withStyles((theme) => ({
   },
 }))(MuiAccordionDetails);
 
-const FiltroCabeceras = () => {
+const FiltroCabeceras = ({ filtros, setCabecerasFilter }) => {
   const [expanded, setExpanded] = React.useState();
-  const { setCabeceras } = useSpecialFilter();
 
   const handleChecked = (ev) => {
     const { value, checked } = ev.target;
-    setCabeceras(value);
+    setCabecerasFilter(value);
   };
 
   return (
-    <AccordionSummary
-      aria-label="Expand"
-      aria-controls="additional-actions1-content"
-      id="additional-actions1-header"
+    <Accordion
+      square
     >
-      <FormControlLabel
-        aria-label="Acknowledge"
-        value="all"
-        onClick={(event) => event.stopPropagation()}
-        onFocus={(event) => event.stopPropagation()}
-        control={
-          <CheckboxNew
-            onChange={handleChecked}
-            icon={<RadioButtonCheckedIcon />}
-            checkedIcon={<RadioButtonCheckedIcon />}
-          />
-        }
-        label=""
-      />
-      <p>CABECERAS PRIMARIAS</p>
-    </AccordionSummary>
+      <AccordionSummary
+        expandIcon={<ExpandMoreIcon />}
+        aria-label="Expand"
+        aria-controls="additional-actions1-content"
+        id="additional-actions1-header"
+      >
+        <FormControlLabel
+          aria-label="Acknowledge"
+          value="all"
+          onClick={(event) => event.stopPropagation()}
+          onFocus={(event) => event.stopPropagation()}
+          control={
+            <CheckboxNew
+              onChange={handleChecked}
+              icon={<RadioButtonCheckedIcon />}
+              checkedIcon={<RadioButtonCheckedIcon />}
+            />
+          }
+          label=""
+        />
+        <p>CABECERAS PRIMARIAS</p>
+      </AccordionSummary>
+      <AccordionDetails>
+        <CheckboxFilter>
+          {[
+            {
+              label: "PRIMARIAS",
+              id: "PRIMARIAS"
+            },
+          ].map(cab => (
+            <FormControlLabel
+              key={cab.id}
+              value={cab.id}
+              control={
+                <CheckboxNew
+                  onChange={handleChecked}
+                  checked={filtros.cabeceras.includes(cab.id)}
+                />
+              }
+              label={cab.label}
+              labelPlacement='end'
+            />
+          ))}
+        </CheckboxFilter>
+      </AccordionDetails>
+    </Accordion>
   );
 };
 

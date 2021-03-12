@@ -1,16 +1,22 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import * as type from '../../redux/types'
-import useMarcadores from '../Marcadores';
 import usePrecargado from '../Precargado';
+
 
 
 const useFiltros = () => {
     const dispatch = useDispatch()
     const { localizaciones, localidades, departamentos, estados, ambitos, internetProveedores } = usePrecargado()
     const { filtro } = useSelector(state => state)
-    const [marcadores, setMarcadores] = useMarcadores()
 
+
+    const setHeader = arg => {
+        dispatch({
+            type: type.SET_HEADER,
+            payload: arg
+        })
+    }
 
     const setDepartamento = (arg) => {
         if (arg == "all") {
@@ -385,133 +391,25 @@ const useFiltros = () => {
         }
     }
 
-    React.useEffect(() => {
-        //Cantidad de filtros
-        let filterPassed = {
-            departamento: false,
-            localidades: false,
-            dependencias: false,
-            estados: false,
-            jurisdicciones: true,
-            organismoDependencias: true,
-            niveles: true,
-            modalidades: true,
-            gestiones: true,
-            ambitos: true,
-            internet: true,
-            internetProveedores: true
-        }
-        const isTrue = (e => e === true)
-        let marcadoresFiltered = localizaciones.filter(l => {
+    const setCabeceras = (arg) => {
+        if (arg == "all")
+            dispatch({
+                type: type.SET_CABECERAS,
+                payload: filtro.cabeceras.length > 0 ? [] : ["PRIMARIAS"],
+            });
 
-            //DEPARTAMENTOS FILTRO
-            filterPassed["departamento"] = l.domicilio
-                ? filtro.departamentos.includes(l.domicilio.departamento.id)
-                    ? true
-                    : false
-                : false
-
-            //LOCALIDADES FILTRO
-            filterPassed["localidades"] = l.domicilio
-                ? filtro.localidades.includes(l.domicilio.localidad.id)
-                    ? true
-                    : false
-                : false
-
-            //DEPENDENCIA FILTRO ["Provincial", "Municipal", "Nacional"]
-            filterPassed["dependencias"] = l.establecimiento
-                ? filtro.dependencias.includes(l.establecimiento.dependencia)
-                    ? true
-                    : false
-                : false
-
-            //ESTADO FILTRO
-            filterPassed["estados"] = l.estado
-                ? filtro.estados.includes(l.estado.id)
-                    ? true
-                    : false
-                : false
-
-            //JURISDICCION FILTRO
-            if (filtro.jurisdicciones.length > 0) {
-                filterPassed['jurisdicciones'] = l.colegio
-                    ? filtro.jurisdicciones.includes(l.colegio.jurisdiccion)
-                        ? true
-                        : false
-                    : false
-            }
-
-            //ORGANISMOS DEPENDENCIAS FILTRO
-            if (filtro.organismoDependencias.length > 0) {
-                filterPassed['organismoDependencias'] = l.colegio
-                    ? filtro.organismoDependencias.includes(l.colegio.nivelJur)
-                        ? true
-                        : false
-                    : false
-            }
-
-            //NIVELES FILTRO
-            if (filtro.niveles.length > 0) {
-                filterPassed['niveles'] = l.ofertas
-                    ? Object.values(l.ofertas).some(o => filtro.niveles.includes(o.idOferta))
-                        ? true
-                        : false
-                    : false
-            }
-
-            //MODALIDADES FILTRO
-            if (filtro.modalidades.length > 0) {
-                filterPassed['modalidades'] = l.ofertas
-                    ? Object.values(l.ofertas).some(o => filtro.modalidades.includes(o.modalidad))
-                        ? true
-                        : false
-                    : false
-            }
-
-            //GESTIONES FILTRO
-            if (filtro.gestiones.length > 0) {
-                filterPassed['gestiones'] = l.establecimiento
-                    ? filtro.gestiones.includes(l.establecimiento.sector)
-                        ? true
-                        : false
-                    : false
-            }
-
-            //AMBITOS FILTRO
-            if (filtro.ambitos.length > 0) {
-                filterPassed['ambitos'] = l.ambito
-                    ? filtro.ambitos.includes(l.ambito.id)
-                        ? true
-                        : false
-                    : false
-            }
-
-            //INTERNET FILTRO
-            if (filtro.internet.length > 0) {
-                filterPassed['internet'] = l.colegio
-                    ? filtro.internet.includes(l.colegio.internet)
-                        ? true
-                        : false
-                    : false
-            }
-
-            //INTERNET PROVEEDORES FILTRO
-            if (filtro.proveedoresInternet.length > 0) {
-                filterPassed['internetProveedores'] = l.conexiones
-                    ? Object.values(l.conexiones).some(o => filtro.proveedoresInternet.includes(o.conexionProveedor.id))
-                        ? true
-                        : false
-                    : false
-            }
-
-            return Object.values(filterPassed).every(isTrue);
-        })
-
-        setMarcadores(marcadoresFiltered)
-    }, [filtro])
+        if (arg == "PRIMARIAS")
+            dispatch({
+                type: type.SET_CABECERAS,
+                payload: filtro.cabeceras.includes("PRIMARIAS") 
+                ? filtro.cabeceras.filter(c => c !== "PRIMARIAS")
+                : [...filtro.cabeceras, "PRIMARIAS"]
+            });
+    };
 
     return {
         filtros: filtro,
+        setHeaderFilter: setHeader,
         setDepartamentoFilter: setDepartamento,
         setLocalidadFilter: setLocalidad,
         setDependenciaFilter: setDependencia,
@@ -523,7 +421,8 @@ const useFiltros = () => {
         setGestionesFilter: setGestiones,
         setAmbitosFilter: setAmbitos,
         setInternetFilter: setInternet,
-        setInternetProveedoresFilter: setInternetProveedores
+        setInternetProveedoresFilter: setInternetProveedores,
+        setCabecerasFilter: setCabeceras
     }
 }
 

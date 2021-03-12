@@ -1,10 +1,11 @@
 import React from "react";
 import useAutocomplete from "@material-ui/lab/useAutocomplete";
-import NoSsr from "@material-ui/core/NoSsr";
 import CheckIcon from "@material-ui/icons/Check";
 import CloseIcon from "@material-ui/icons/Close";
 import styled from "styled-components";
 import usePrecargado from "../../hooks/Precargado";
+import { useDispatch, useSelector } from "react-redux";
+import useFiltros from "../../hooks/Filtros";
 
 const Label = styled("label")`
   padding: 0 0 4px;
@@ -56,6 +57,25 @@ const Listbox = styled("ul")`
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   z-index: 1;
 
+  ::-webkit-scrollbar {
+    width: 25px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #d6dee1;
+    border-radius: 20px;
+    border: 6px solid transparent;
+    background-clip: content-box;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #666666;
+  }
+
   & li {
     padding: 5px 12px;
     display: flex;
@@ -79,7 +99,7 @@ const Listbox = styled("ul")`
   }
 
   & li[data-focus="true"] {
-    background-color: #e6f7ff;
+    background-color: #f6faf1;
     cursor: pointer;
 
     & svg {
@@ -106,7 +126,7 @@ const StyledTag = styled.div`
     position: fixed;
     top: 68px;
     left: 50%;
-    z-index:9999;
+    z-index: 9999;
     visibility: hidden;
     background-color: black;
     color: #fff;
@@ -116,7 +136,7 @@ const StyledTag = styled.div`
     @media (max-width: 426px) {
       top: 120px;
       left: 5%;
-  }
+    }
   }
 
   &:hover {
@@ -147,18 +167,20 @@ const StyledTag = styled.div`
 `;
 
 const Tag = ({ label, onDelete }) => (
-  <StyledTag onClick={onDelete}>
+  <StyledTag>
     <span>{label}</span>
-    <span className="tooltip">{label}</span>
+    <span className='tooltip'>{label}</span>
+    <CloseIcon onClick={onDelete} />
   </StyledTag>
 );
 
-export default function Filter3() {
+export default function SearchFilter() {
   const { localizaciones } = usePrecargado();
+  const { setHeaderFilter } = useFiltros();
+  const { buscador } = useSelector(state => state.header);
 
   const {
     getRootProps,
-    getInputLabelProps,
     getInputProps,
     getTagProps,
     getListboxProps,
@@ -170,9 +192,11 @@ export default function Filter3() {
   } = useAutocomplete({
     id: "customized-hook-demo",
     multiple: true,
-    options: localizaciones.filter((e) => e.colegio),
-    getOptionLabel: (option) => option.colegio.nombre,
+    options: localizaciones.filter(e => e.colegio),
+    getOptionLabel: option =>
+      buscador == "NOMBRE" ? option.colegio.nombre : option.cueanexo,
     disableCloseOnSelect: true,
+    onChange: (ev, values) => setHeaderFilter(values),
   });
 
   return (
@@ -180,7 +204,12 @@ export default function Filter3() {
       <div {...getRootProps()}>
         <InputWrapper ref={setAnchorEl} className={focused ? "focused" : ""}>
           {value.map((option, index) => (
-            <Tag label={option.colegio.nombre} {...getTagProps({ index })} />
+            <Tag
+              label={
+                buscador == "NOMBRE" ? option.colegio.nombre : option.cueanexo
+              }
+              {...getTagProps({ index })}
+            />
           ))}
 
           <input {...getInputProps()} />
@@ -190,8 +219,10 @@ export default function Filter3() {
         <Listbox {...getListboxProps()}>
           {groupedOptions.map((option, index) => (
             <li {...getOptionProps({ option, index })}>
-              <span>{option.colegio.nombre}</span>
-              <CheckIcon fontSize="small" />
+              <span>
+                {buscador == "NOMBRE" ? option.colegio.nombre : option.cueanexo}
+              </span>
+              <CheckIcon fontSize='small' />
             </li>
           ))}
         </Listbox>
@@ -215,12 +246,13 @@ const ComboBox = styled.div`
       width: 100%;
       margin: 0;
       padding: 0;
+      padding-left: 3px;
+      padding-right: 3px;
       display: flex;
       flex-wrap: nowrap;
       position: relative;
 
       & div {
-        width: 80%;
         height: 90%;
         /* min-width:60%; */
         margin-left: 4px;

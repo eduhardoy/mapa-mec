@@ -9,8 +9,9 @@ import { Checkbox } from "@material-ui/core";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import RadioButtonCheckedIcon from "@material-ui/icons/RadioButtonChecked";
-import useFiltros from "../../hooks/Filtros";
-import usePrecargado from "../../hooks/Precargado";
+import RadioButtonUnchecked from '@material-ui/icons/RadioButtonUnchecked';
+import { useDispatch, useSelector } from "react-redux";
+import * as type from '../../redux/types';
 
 const CheckboxFilter = styled.div`
   label {
@@ -67,26 +68,25 @@ const AccordionDetails = withStyles(theme => ({
 }))(MuiAccordionDetails);
 
 const FiltroAulaDigitalMovil = () => {
-  const [expanded, setExpanded] = React.useState();
-  const { filtros } = useFiltros()
-  const { localidades } = usePrecargado()
 
-  const handleChange = panel => (event, newExpanded) => {
-    setExpanded(newExpanded ? panel : false);
-  };
+  const dispatch = useDispatch()
+  const { aulaDigitalMoviles } = useSelector(state => state.filtro)
 
   const handleChecked = ev => {
     const { value, checked } = ev.target;
+
+    dispatch({
+      type: type.SET_AULA_DIGITAL_MOVIL,
+      payload: aulaDigitalMoviles.length > 0 ? [] : ["ADM"]
+    })
   };
 
   return (
     <Accordion
       square
-      expanded={expanded === "panel11"}
-      onChange={handleChange("panel11")}
     >
       <AccordionSummary
-        expandIcon={<ExpandMoreIcon />}
+        // expandIcon={<ExpandMoreIcon />}
         aria-label='Expand'
         aria-controls='additional-actions1-content'
         id='additional-actions1-header'
@@ -99,7 +99,7 @@ const FiltroAulaDigitalMovil = () => {
           control={
             <CheckboxNew
               onChange={handleChecked}
-              icon={<RadioButtonCheckedIcon />}
+              icon={<RadioButtonUnchecked />}
               checkedIcon={<RadioButtonCheckedIcon />}
             />
           }
@@ -107,7 +107,7 @@ const FiltroAulaDigitalMovil = () => {
         />
         <p>AULA DIGITAL MOVIL</p>
       </AccordionSummary>
-      <AccordionDetails>
+      {/* <AccordionDetails>
         <CheckboxFilter>
           {localidades.map(dep => (
             <FormControlLabel
@@ -123,7 +123,7 @@ const FiltroAulaDigitalMovil = () => {
             />
           ))}
         </CheckboxFilter>
-      </AccordionDetails>
+      </AccordionDetails> */}
     </Accordion>
   );
 };

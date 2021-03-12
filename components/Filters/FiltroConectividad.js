@@ -7,16 +7,20 @@ import { useDispatch, useSelector } from "react-redux";
 import * as type from '../../redux/types';
 import { Accordion, AccordionSummary, AccordionDetails, CheckboxFilter, CheckboxNew } from "./styles";
 
-const FiltroAgrupaciones = () => {
+const FiltroConectividad = () => {
 
   const dispatch = useDispatch()
-  const { agrupaciones } = useSelector(state => state.filtro)
+  const { planConectividad } = useSelector(state => state.filtro)
 
   const options = [
     {
-      id: "efas",
-      label: "EFAS",
+      id: "lineaC",
+      label: "TIENE LÍNEA C",
     },
+    {
+      id: "noLineaC",
+      label: "NO TIENE LÍNEA C"
+    }
   ]
 
   const handleChecked = ev => {
@@ -24,13 +28,13 @@ const FiltroAgrupaciones = () => {
 
     if (value != "all") {
       dispatch({
-        type: type.SET_AGRUPACIONES,
-        payload: agrupaciones.includes(value) ? agrupaciones.filter(e => e !== value) : [...agrupaciones, value]
+        type: type.SET_PLAN_CONECTIVIDAD,
+        payload: planConectividad.includes(value) ? planConectividad.filter(e => e !== value) : [...planConectividad, value]
       })
     } else {
       dispatch({
-        type: type.SET_AGRUPACIONES,
-        payload: agrupaciones.length > 0 ? [] : [...options.map(e => (e.id))]
+        type: type.SET_PLAN_CONECTIVIDAD,
+        payload: planConectividad.length > 0 ? [] : [...options.map(e => (e.id))]
       })
     }
   };
@@ -55,12 +59,12 @@ const FiltroAgrupaciones = () => {
               onChange={handleChecked}
               icon={<RadioButtonUnchecked />}
               checkedIcon={<RadioButtonCheckedIcon />}
-              checked={agrupaciones.length > 0 ? true : null}
+              checked={planConectividad.length > 0 ? true : null}
             />
           }
           label=''
         />
-        <p>AGRUPACIONES</p>
+        <p>PLAN DE CONECTIVIDAD</p>
       </AccordionSummary>
       <AccordionDetails>
         <CheckboxFilter>
@@ -71,7 +75,7 @@ const FiltroAgrupaciones = () => {
               control={
                 <CheckboxNew
                   onChange={handleChecked}
-                  checked={agrupaciones.includes(lin.id)}
+                  checked={planConectividad.includes(lin.id)}
                 />
               }
               label={lin.label}
@@ -84,4 +88,4 @@ const FiltroAgrupaciones = () => {
   );
 };
 
-export default FiltroAgrupaciones;
+export default FiltroConectividad;

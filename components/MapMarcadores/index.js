@@ -1,96 +1,136 @@
-import React, { useEffect } from "react";
 import { Marker } from "@react-google-maps/api";
-import { connect, useSelector } from "react-redux";
-import MapInfoWindow from "../MapInfoWindow";
+import React from "react";
+import useMarcadores from "../../hooks/Marcadores";
+import { MapContext } from "@react-google-maps/api";
+import { useDispatch } from "react-redux";
+import * as type from "../../redux/types"
 
-const MapMarcadores = ({ map, marcadores }) => {
-  const [positionInfoWindow, setPositionInfoWindow] = React.useState({});
-  const [showInfoWindow, setShowInfoWindow] = React.useState(false);
-  const [mapInfoData, setMapInfoData] = React.useState({});
 
-  const clickMarker = (marcador, latlng) => {
-    setMapInfoData(marcador);
-    setPositionInfoWindow(latlng);
-    setShowInfoWindow(true);
-    map.panTo(latlng);
-  };
+const MapMarcadores = (props) => {
+  //LOGGER
+  console.log("MapMarcadores RENDERED")
 
-  const closeInfoWindow = () => {
-    setMapInfoData({});
-    setShowInfoWindow(false);
-  };
+  //OMS
+  const [oms, setOms] = React.useState(() => {
+    const OverlappingMarkerSpiderfier = require(`overlapping-marker-spiderfier`);
+    return new OverlappingMarkerSpiderfier(
+      MapContext._currentValue,
+      {}
+    )
+  })
 
-  const obtenerIcono = (ele) => {
+  //MARCADORES
+  const { marcadores } = useMarcadores()
 
-    if (ele.domicilio.geo.geometry.coordinates.includes(0))
-      return "./images/pinSinGeo.png"
+  //REFERENCIAS
+  const markersRef = React.useRef([])
 
-    const inicial = [152, 155, 121, 122, 100, 101]
-    const primaria = [136, 123, 126, 140, 102, 105, 153, 156, 158]
-    const secundaria = [143, 144, 108, 109, 110, 111, 129, 130, 147, 148, 151, 154, 157, 159, 131, 132, 149, 150, 138]
-    const superior = [117, 115]
-
-    if (Object.values(ele.ofertas).every(e => inicial.includes(parseInt(e.idOferta))))
-      return './images/pinIni.png'
-    else if (Object.values(ele.ofertas).every(e => primaria.includes(parseInt(e.idOferta))))
-      return './images/pinPrim.png'
-    else if (Object.values(ele.ofertas).every(e => secundaria.includes(parseInt(e.idOferta))))
-      return './images/pinSecu.png'
-    else if (Object.values(ele.ofertas).every(e => superior.includes(parseInt(e.idOferta))))
-      return './images/pinSup.png'
-
-    let ar = []
-
-    Object.values(ele.ofertas).map(e => {
-      if (inicial.includes(parseInt(e.idOferta)))
-        ar.push('inicial')
-      if (primaria.includes(parseInt(e.idOferta)))
-        ar.push('primaria')
-      if (secundaria.includes(parseInt(e.idOferta)))
-        ar.push('secundaria')
-      if (superior.includes(parseInt(e.idOferta)))
-        ar.push('superior')
+  //INFOWINDOW DISPATCHER
+  const dispatch = useDispatch()
+  const setInfoWindow = (show, data) => {
+    dispatch({
+      type: type.SHOW_INFO_WINDOW,
+      payload: { show, data }
     })
-
-    if (ar.length == 0)
-      return './images/pinComp.png'
-
-    return './images/pinVar.png'
   }
 
+
+  //MARCADORES LOGICA
+  React.useEffect(() => {
+    markersRef.current = markersRef.current.slice(0, marcadores.length)
+
+    oms.clearMarkers()
+    markersRef.current.map(el => {
+      //SPIDERFY
+      if (!oms.getMarkers().includes(el.marker))
+        oms.addMarker(el.marker);
+    })
+  }, [marcadores]);
+
+  React.useEffect(() => {
+    //Reiniciar Listeners
+    oms.clearListeners("click")
+    oms.clearListeners("spiderfy")
+
+    //SPIDER CLICK
+    oms.addListener("click", (marker, ev) => {
+      const ele = markersRef.current[parseInt(marker.title)].props.data
+      console.log(ele)
+      setInfoWindow(true, ele)
+      props.map.panTo({
+        lng: ele.domicilio.geo.geometry.coordinates[0],
+        lat: ele.domicilio.geo.geometry.coordinates[1],
+      })
+    });
+
+    //SPIDERFY
+    oms.addListener("spiderfy", markers => {
+    });
+  }, [])
+
   return (
-    <div>
-      {marcadores.map(ele => {
-        if (ele && ele.domicilio) {
-          const latlng = {
-            lng: ele.domicilio.geo.geometry.coordinates[0],
-            lat: ele.domicilio.geo.geometry.coordinates[1],
-          };
-          return (
-            <Marker
-              key={ele.cueanexo}
-              position={latlng}
-              icon={obtenerIcono(ele)}
-              onClick={() => clickMarker(ele, latlng)}
-            />
-          );
-        }
-      })}
-      {showInfoWindow && (
-        <MapInfoWindow
-          position={positionInfoWindow}
-          closeInfoWindow={closeInfoWindow}
-          info={mapInfoData}
-        />
-      )}
-    </div>
-  );
-};
+    <>
+      {
+        marcadores.map((ele, i) => {
+          if (ele.domicilio) {
+            const latlng = {
+              lng: ele.domicilio.geo.geometry.coordinates[0],
+              lat: ele.domicilio.geo.geometry.coordinates[1],
+            };
+            return (
+              <Marker
+                title={`${i}`}
+                key={ele.cueanexo}
+                position={latlng}
+                icon={obtenerIcono(ele)}
+                ref={el => markersRef.current[i] = el}
+                data={ele}
+              />
+            );
+          }
+        })
+      }
+    </>
+  )
+}
 
-const mapStateToProps = state => ({
-  marcadores: state.marcador.marcadores,
-});
+const obtenerIcono = (ele) => {
 
-const mapDispatchToProps = dispatch => ({});
+  if (ele.domicilio.geo.geometry.coordinates.includes(0))
+    return "./images/pinSinGeo.png"
 
-export default connect(mapStateToProps, mapDispatchToProps)(MapMarcadores);
+  const inicial = [152, 155, 121, 122, 100, 101]
+  const primaria = [136, 123, 126, 140, 102, 105, 153, 156, 158]
+  const secundaria = [143, 144, 108, 109, 110, 111, 129, 130, 147, 148, 151, 154, 157, 159, 131, 132, 149, 150, 138]
+  const superior = [117, 115]
+
+  if (Object.values(ele.ofertas).every(e => inicial.includes(parseInt(e.idOferta))))
+    return './images/pinIni.png'
+  else if (Object.values(ele.ofertas).every(e => primaria.includes(parseInt(e.idOferta))))
+    return './images/pinPrim.png'
+  else if (Object.values(ele.ofertas).every(e => secundaria.includes(parseInt(e.idOferta))))
+    return './images/pinSecu.png'
+  else if (Object.values(ele.ofertas).every(e => superior.includes(parseInt(e.idOferta))))
+    return './images/pinSup.png'
+
+  let ar = []
+
+  Object.values(ele.ofertas).map(e => {
+    if (inicial.includes(parseInt(e.idOferta)))
+      ar.push('inicial')
+    if (primaria.includes(parseInt(e.idOferta)))
+      ar.push('primaria')
+    if (secundaria.includes(parseInt(e.idOferta)))
+      ar.push('secundaria')
+    if (superior.includes(parseInt(e.idOferta)))
+      ar.push('superior')
+  })
+
+  if (ar.length == 0)
+    return './images/pinComp.png'
+
+  return './images/pinVar.png'
+}
+
+
+export default MapMarcadores;

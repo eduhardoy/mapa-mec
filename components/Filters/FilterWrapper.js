@@ -16,6 +16,8 @@ import FiltroAguaPotable from "./FiltroAguaPotable.js";
 import FiltroProveedores from "./FiltroProveedores.js";
 import FiltroAgrupaciones from "./FiltroAgrupaciones.js";
 import useFiltros from "../../hooks/Filtros/index.js";
+import FiltroCabeceras from "./FiltroCabecera.js";
+import FiltroConectividad from './FiltroConectividad'
 
 const Wrapper = styled.div`
   width: 100%;
@@ -36,7 +38,8 @@ const FilterWrapper = () => {
     setGestionesFilter,
     setAmbitosFilter,
     setInternetFilter,
-    setInternetProveedoresFilter
+    setInternetProveedoresFilter,
+    setCabecerasFilter
   } = useFiltros()
   return (
     <Wrapper>
@@ -50,11 +53,13 @@ const FilterWrapper = () => {
       <FiltroModalidad filtros={filtros} setModalidadesFilter={setModalidadesFilter} />
       <FiltroGestion filtros={filtros} setGestionesFilter={setGestionesFilter} />
       <FiltroAmbito filtros={filtros} setAmbitosFilter={setAmbitosFilter} />
-      {/* <FiltroAulaDigitalMovil /> */}
+      <FiltroAulaDigitalMovil />
       <FiltroInternet filtros={filtros} setInternetFilter={setInternetFilter} />
-      {/* <FiltroAguaPotable /> */}
+      <FiltroConectividad />
+      <FiltroAguaPotable />
       <FiltroProveedores filtros={filtros} setInternetProveedoresFilter={setInternetProveedoresFilter} />
-      {/* <FiltroAgrupaciones /> */}
+      <FiltroAgrupaciones />
+      <FiltroCabeceras filtros={filtros} setCabecerasFilter={setCabecerasFilter} />
     </Wrapper>
   );
 };
