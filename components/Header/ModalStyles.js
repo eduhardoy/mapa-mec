@@ -1,8 +1,6 @@
-import React from "react";
 import styled from "styled-components";
-import CloseIcon from "@material-ui/icons/Close";
 
-const StyledLoginModal = styled.div`
+export const StyledLoginModal = styled.div`
   width: 30%;
   min-width: 350px;
   height: 50%;
@@ -20,7 +18,7 @@ const StyledLoginModal = styled.div`
   }
 `;
 
-const LoginTitleWrapper = styled.div`
+export const LoginTitleWrapper = styled.div`
   height: 20%;
   font-size: 25px;
   display: flex;
@@ -28,7 +26,7 @@ const LoginTitleWrapper = styled.div`
   align-items: center;
 `;
 
-const LoginFormWrapper = styled.div`
+export const LoginFormWrapper = styled.div`
   height: 70%;
   width: 100%;
   input {
@@ -54,14 +52,14 @@ const LoginFormWrapper = styled.div`
   }
 `;
 
-const LoginForm = styled.form`
+export const LoginForm = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 `;
 
-const CloseButton = styled.button`
+export const CloseButton = styled.button`
   position: absolute;
   top: 5px;
   right: 5px;
@@ -69,25 +67,3 @@ const CloseButton = styled.button`
   outline: none;
   background-color: transparent;
 `;
-
-const LoginModal = () => {
-  return (
-    <StyledLoginModal>
-      <CloseButton>
-        <CloseIcon />
-      </CloseButton>
-      <LoginTitleWrapper>
-        <h4>INGRESAR</h4>
-      </LoginTitleWrapper>
-      <LoginFormWrapper>
-        <LoginForm>
-          <input type='text' placeholder='Usuario' />
-          <input type='password' placeholder='Contraseña' />
-          <button>Iniciar Sesión</button>
-        </LoginForm>
-      </LoginFormWrapper>
-    </StyledLoginModal>
-  );
-};
-
-export default LoginModal;
