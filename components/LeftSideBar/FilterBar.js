@@ -73,7 +73,7 @@ const Button = styled.button`
   height: 60px;
   font-weight: 500;
   outline: none;
-  font-size: 10px;
+  font-size: 12px;
   margin-top: 10px;
   background-color: #7cb342;
   text-transform: uppercase;
