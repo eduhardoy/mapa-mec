@@ -1,14 +1,22 @@
 import * as React from "react";
+import { useState } from "react";
 import styled from "styled-components";
 
 import SearchBar from "./SearchBar.js";
-import Modal from "../Modal/index.js";
-import LoginModal from "./LoginModal.js";
+import CloseIcon from "@material-ui/icons/Close";
 
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import MenuIcon from "@material-ui/icons/Menu";
 import { connect } from "react-redux";
 import { selectBar, selectFirstBar } from "../../redux/actions/BarActions";
+
+import {
+  StyledLoginModal,
+  LoginTitleWrapper,
+  LoginFormWrapper,
+  LoginForm,
+  CloseButton,
+} from "./styles";
 // styles
 
 const HeaderStyle = styled.div`
@@ -200,8 +208,21 @@ const IconButtonUser = styled.button`
   }
 `;
 
+const StyledModal = styled.div`
+  position: absolute;
+  z-index: 9999;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(40, 40, 40, 0.6);
+  display: ${props => props.display};
+  justify-content: center;
+  align-items: center;
+`;
+
 // markup
 const Header = ({ selectFirstBar, firstBar }) => {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
   return (
     <HeaderStyle>
       <PhoneLogo>
@@ -222,15 +243,31 @@ const Header = ({ selectFirstBar, firstBar }) => {
           </SearchBarContainer>
         </MiddleContainer>
         <UserContainer>
-          <IconButtonUser>
+          <IconButtonUser onClick={() => setModalIsOpen(true)}>
             <AccountCircleIcon />
             <p>SALIR</p>
           </IconButtonUser>
         </UserContainer>
       </NormalHeader>
-      <Modal>
-        <LoginModal />
-      </Modal>
+      <StyledModal display={modalIsOpen == true ? "flex" : "none"}>
+        <StyledLoginModal>
+          <CloseButton onClick={() => setModalIsOpen(false)}>
+            <CloseIcon />
+          </CloseButton>
+          <LoginTitleWrapper>
+            <h4>INGRESAR</h4>
+          </LoginTitleWrapper>
+          <LoginFormWrapper>
+            <LoginForm>
+              <input type='text' placeholder='Usuario' />
+              <input type='password' placeholder='Contraseña' />
+              <button onClick={() => setModalIsOpen(false)}>
+                Iniciar Sesión
+              </button>
+            </LoginForm>
+          </LoginFormWrapper>
+        </StyledLoginModal>
+      </StyledModal>
     </HeaderStyle>
   );
 };

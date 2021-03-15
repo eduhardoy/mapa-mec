@@ -1,6 +1,8 @@
 import * as React from "react";
 import styled from "styled-components";
 import useBars from "../../hooks/Bars";
+import AreaTool from "../MapTools/AreaTool";
+import DistanceTool from "../MapTools/DistanceTool";
 
 // styles
 const ToolsBarStyle = styled.div`
@@ -60,7 +62,11 @@ const ToolsBar = () => {
   const { secondBar } = useBars();
   return (
     <ToolsBarStyle display={secondBar == "TOOLS" ? "flex" : "none"}>
-      <ToolsContainer></ToolsContainer>
+      <h4>HERRAMIENTAS</h4>
+      <ToolsContainer>
+        <DistanceTool />
+        <AreaTool />
+      </ToolsContainer>
     </ToolsBarStyle>
   );
 };
