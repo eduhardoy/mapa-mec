@@ -1,28 +1,42 @@
 import React from "react";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import RadioButtonUnchecked from '@material-ui/icons/RadioButtonUnchecked';
+import FormControlLabel from "@material-ui/core/FormControlLabel";
 import RadioButtonCheckedIcon from "@material-ui/icons/RadioButtonChecked";
-import { Accordion, AccordionDetails, AccordionSummary, CheckboxFilter, CheckboxNew } from "./styles";
+import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked';
+import { useDispatch, useSelector } from "react-redux";
+import * as type from '../../redux/types';
+import { Accordion, AccordionSummary, AccordionDetails, CheckboxFilter, CheckboxNew } from "./styles";
 
 const FiltroDependencia = ({ filtros, setDependenciaFilter }) => {
-  const [expanded, setExpanded] = React.useState();
 
-  const handleChange = panel => (event, newExpanded) => {
-    setExpanded(newExpanded ? panel : false);
-  };
+  const dispatch = useDispatch()
+  const { dependencias } = useSelector(state => state.filtro)
+
+  const options = [
+    "Provincial", "Municipal", "Nacional"
+  ]
 
   const handleChecked = ev => {
     const { value, checked } = ev.target;
-    console.log(value)
-    setDependenciaFilter(value)
+
+    if (value != "all") {
+      dispatch({
+        type: type.SET_DEPENDENCIA,
+        payload: dependencias.includes(value)
+          ? dependencias.filter(c => c !== value)
+          : [...filtro.dependencias, value]
+      })
+    } else {
+      dispatch({
+        type: type.SET_DEPENDENCIA,
+        payload: dependencias.length > 0 ? [] : [...options.map(e => (e))]
+      })
+    }
   };
 
   return (
     <Accordion
       square
-      expanded={expanded === "panel3"}
-      onChange={handleChange("panel3")}
     >
       <AccordionSummary
         expandIcon={<ExpandMoreIcon />}
@@ -38,8 +52,9 @@ const FiltroDependencia = ({ filtros, setDependenciaFilter }) => {
           control={
             <CheckboxNew
               onChange={handleChecked}
-              icon={<RadioButtonUnchecked />}
+              icon={<RadioButtonUncheckedIcon />}
               checkedIcon={<RadioButtonCheckedIcon />}
+              checked={dependencias.length > 0 ? true : null}
             />
           }
           label=''
@@ -48,14 +63,14 @@ const FiltroDependencia = ({ filtros, setDependenciaFilter }) => {
       </AccordionSummary>
       <AccordionDetails>
         <CheckboxFilter>
-          {["Provincial", "Municipal", "Nacional"].map(dep => (
+          {options.map(dep => (
             <FormControlLabel
               key={dep}
               value={dep}
               control={
                 <CheckboxNew
                   onChange={handleChecked}
-                  checked={filtros.dependencias.includes(dep)}
+                  checked={dependencias.includes(dep)}
                 />
               }
               label={dep}

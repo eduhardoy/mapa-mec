@@ -62,14 +62,14 @@ const marcadoresFilterMiddleware = store => next => action => {
 
             //DEPARTAMENTOS FILTRO
             filterCondition["departamento"] = l.domicilio
-                ? filtro.departamentos.includes(l.domicilio.departamento.id)
+                ? filtro.departamentos.includes(l.domicilio.departamento.id.toString())
                     ? true
                     : false
                 : false
 
             //LOCALIDADES FILTRO
             filterCondition["localidades"] = l.domicilio
-                ? filtro.localidades.includes(l.domicilio.localidad.id)
+                ? filtro.localidades.includes(l.domicilio.localidad.id.toString())
                     ? true
                     : false
                 : false

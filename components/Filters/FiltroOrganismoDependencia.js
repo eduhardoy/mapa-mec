@@ -1,27 +1,49 @@
 import React from "react";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import RadioButtonUnchecked from '@material-ui/icons/RadioButtonUnchecked';
+import FormControlLabel from "@material-ui/core/FormControlLabel";
 import RadioButtonCheckedIcon from "@material-ui/icons/RadioButtonChecked";
-import { Accordion, AccordionDetails, AccordionSummary, CheckboxFilter, CheckboxNew } from "./styles";
+import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked';
+import { useDispatch, useSelector } from "react-redux";
+import * as type from '../../redux/types';
+import { Accordion, AccordionSummary, AccordionDetails, CheckboxFilter, CheckboxNew } from "./styles";
 
-const FiltroOrganismoDependencia = ({ filtros, setOrganismoDependenciaFilter }) => {
-  const [expanded, setExpanded] = React.useState();
+const FiltroOrganismoDependencia = () => {
 
-  const handleChange = panel => (event, newExpanded) => {
-    setExpanded(newExpanded ? panel : false);
-  };
+
+  const dispatch = useDispatch()
+  const { organismoDependencias } = useSelector(state => state.filtro)
+
+  const options = [
+    { value: "NOASIG *No asignado*", title: "NO ASIGNADO" },
+    { value: "CGE    Consejo General de Educacion", title: "CONSEJO GENERAL DE EDUCACION" },
+    { value: "DNS Direccion de Nivel Secundario", title: "DIRECCION DE NIVEL SECUNDARIO" },
+    { value: "DEP   Direccion de Enseñanza Privada", title: "DIRECCION DE ENSEÑANZA PRIVADA" },
+    { value: "DETP Direccion de Educación Tecnico Profesional", title: "DIRECCION DE EDUCACIÓN TECNICO PROFESIONAL" },
+    { value: "DNSU Direccion de Nivel Superior", title: "DIRECCION DE NIVEL SUPERIOR" },
+    { value: "DEF Direccion de Educación Fisica", title: "DIRECCION DE EDUCACIÓN FISICA" },
+    { value: "NC Nivel Central", title: "NIVEL CENTRAL" },
+  ]
 
   const handleChecked = ev => {
     const { value, checked } = ev.target;
-    setOrganismoDependenciaFilter(value)
+    if (value != "all") {
+      dispatch({
+        type: type.SET_ORGANISMO_DEPENDENIA,
+        payload: organismoDependencias.includes(value)
+          ? organismoDependencias.filter(c => c !== value)
+          : [...organismoDependencias, value]
+      })
+    } else {
+      dispatch({
+        type: type.SET_ORGANISMO_DEPENDENIA,
+        payload: organismoDependencias.length > 0 ? [] : [...options.map(e => (e.value))]
+      })
+    }
   };
 
   return (
     <Accordion
       square
-      expanded={expanded === "panel6"}
-      onChange={handleChange("panel6")}
     >
       <AccordionSummary
         expandIcon={<ExpandMoreIcon />}
@@ -37,8 +59,9 @@ const FiltroOrganismoDependencia = ({ filtros, setOrganismoDependenciaFilter }) 
           control={
             <CheckboxNew
               onChange={handleChecked}
-              icon={<RadioButtonUnchecked />}
+              icon={<RadioButtonUncheckedIcon />}
               checkedIcon={<RadioButtonCheckedIcon />}
+              checked={organismoDependencias.length > 0 ? true : null}
             />
           }
           label=''
@@ -47,23 +70,14 @@ const FiltroOrganismoDependencia = ({ filtros, setOrganismoDependenciaFilter }) 
       </AccordionSummary>
       <AccordionDetails>
         <CheckboxFilter>
-          {[
-            { value: "NOASIG *No asignado*", title: "NO ASIGNADO" },
-            { value: "CGE    Consejo General de Educacion", title: "CONSEJO GENERAL DE EDUCACION" },
-            { value: "DNS Direccion de Nivel Secundario", title: "DIRECCION DE NIVEL SECUNDARIO" },
-            { value: "DEP   Direccion de Enseñanza Privada", title: "DIRECCION DE ENSEÑANZA PRIVADA" },
-            { value: "DETP Direccion de Educación Tecnico Profesional", title: "DIRECCION DE EDUCACIÓN TECNICO PROFESIONAL" },
-            { value: "DNSU Direccion de Nivel Superior", title: "DIRECCION DE NIVEL SUPERIOR" },
-            { value: "DEF Direccion de Educación Fisica", title: "DIRECCION DE EDUCACIÓN FISICA" },
-            { value: "NC Nivel Central", title: "NIVEL CENTRAL" },
-          ].map(dep => (
+          {options.map(dep => (
             <FormControlLabel
               key={dep.value}
               value={dep.value}
               control={
                 <CheckboxNew
                   onChange={handleChecked}
-                  checked={filtros.organismoDependencias.includes(dep.value)}
+                  checked={organismoDependencias.includes(dep.value)}
                 />
               }
               label={dep.title}

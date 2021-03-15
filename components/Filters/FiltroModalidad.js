@@ -1,27 +1,43 @@
 import React from "react";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import RadioButtonUnchecked from '@material-ui/icons/RadioButtonUnchecked';
+import FormControlLabel from "@material-ui/core/FormControlLabel";
 import RadioButtonCheckedIcon from "@material-ui/icons/RadioButtonChecked";
-import { Accordion, AccordionDetails, AccordionSummary, CheckboxFilter, CheckboxNew } from "./styles";
+import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked';
+import { useDispatch, useSelector } from "react-redux";
+import * as type from '../../redux/types';
+import { Accordion, AccordionSummary, AccordionDetails, CheckboxFilter, CheckboxNew } from "./styles";
 
-const FiltroModalidad = ({ filtros, setModalidadesFilter }) => {
-  const [expanded, setExpanded] = React.useState();
+const FiltroModalidad = () => {
 
-  const handleChange = panel => (event, newExpanded) => {
-    setExpanded(newExpanded ? panel : false);
-  };
+  const dispatch = useDispatch()
+  const { modalidades } = useSelector(state => state.filtro)
+
+  const options = [
+    { value: "Común", title: "COMUN" },
+    { value: "Especial", title: "ESPECIAL" },
+    { value: "Adultos", title: "ADULTOS" }
+  ]
 
   const handleChecked = ev => {
     const { value, checked } = ev.target;
-    setModalidadesFilter(value)
+    if (value != "all") {
+      dispatch({
+        type: type.SET_MODALIDAD,
+        payload: modalidades.includes(value)
+          ? modalidades.filter(c => c !== value)
+          : [...modalidades, value]
+      })
+    } else {
+      dispatch({
+        type: type.SET_MODALIDAD,
+        payload: modalidades.length > 0 ? [] : [...options.map(e => (e.value))]
+      })
+    }
   };
 
   return (
     <Accordion
       square
-      expanded={expanded === "panel8"}
-      onChange={handleChange("panel8")}
     >
       <AccordionSummary
         expandIcon={<ExpandMoreIcon />}
@@ -37,8 +53,9 @@ const FiltroModalidad = ({ filtros, setModalidadesFilter }) => {
           control={
             <CheckboxNew
               onChange={handleChecked}
-              icon={<RadioButtonUnchecked />}
+              icon={<RadioButtonUncheckedIcon />}
               checkedIcon={<RadioButtonCheckedIcon />}
+              checked={modalidades.length > 0 ? true : null}
             />
           }
           label=''
@@ -47,18 +64,14 @@ const FiltroModalidad = ({ filtros, setModalidadesFilter }) => {
       </AccordionSummary>
       <AccordionDetails>
         <CheckboxFilter>
-          {[
-            { value: "Común", title: "COMUN" },
-            { value: "Especial", title: "ESPECIAL" },
-            { value: "Adultos", title: "ADULTOS" }
-          ].map(dep => (
+          {options.map(dep => (
             <FormControlLabel
               key={dep.value}
               value={dep.value}
               control={
                 <CheckboxNew
                   onChange={handleChecked}
-                  checked={filtros.modalidades.includes(dep.value)}
+                  checked={modalidades.includes(dep.value)}
                 />
               }
               label={dep.title}
