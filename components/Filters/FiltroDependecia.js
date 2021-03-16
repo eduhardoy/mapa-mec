@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import * as type from '../../redux/types';
 import { Accordion, AccordionSummary, AccordionDetails, CheckboxFilter, CheckboxNew } from "./styles";
 
-const FiltroDependencia = ({ filtros, setDependenciaFilter }) => {
+const FiltroDependencia = () => {
 
   const dispatch = useDispatch()
   const { dependencias } = useSelector(state => state.filtro)

@@ -28,7 +28,7 @@ const FiltroDepartamentos = () => {
         type: type.SET_DEPARTAMENTOS,
         payload: departamentosFiltro.length > 0
           ? []
-          : [...departamentos.map(e => (e.id))]
+          : [...departamentos.map(e => (e.id.toString()))]
       })
     }
   };
