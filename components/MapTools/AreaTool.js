@@ -2,7 +2,9 @@ import React from "react";
 import styled from "styled-components";
 
 const AreaToolWrapper = styled.div`
-  width: 80%;
+  margin: 20px;
+  padding: 20px;
+  width: 70%;
   background-color: #f7f7f7;
 `;
 
@@ -13,9 +15,13 @@ const AreaToolButton = styled.button``;
 const AreaTool = () => {
   return (
     <AreaToolWrapper>
-      <AreaToolTitle></AreaToolTitle>
-      <AreaToolDescription></AreaToolDescription>
-      <AreaToolButton></AreaToolButton>
+      <AreaToolTitle>
+        <p>CALCULAR ÁREA</p>
+      </AreaToolTitle>
+      <AreaToolDescription>
+        <p>Calcula el área comprendida entre varios puntos.</p>
+      </AreaToolDescription>
+      <AreaToolButton>DIBUJAR ÁREA</AreaToolButton>
     </AreaToolWrapper>
   );
 };

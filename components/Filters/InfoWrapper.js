@@ -181,7 +181,9 @@ export default function ControlledAccordions() {
             </TituloFilter>
           </StyledAccordionSummary>
           <StyledAccordionDetails>
-            <h3>INFORMACION GENERAL</h3>
+            <h3>INFORMACION GENERAL</h3> <br />
+            <p>{mar.colegio.nombre}</p>
+            <p>CUEANEXO: {mar.cueanexo}</p>
             <Elemento>
               <h4>Sector</h4>
               <p>{mar.establecimiento.sector}</p>
