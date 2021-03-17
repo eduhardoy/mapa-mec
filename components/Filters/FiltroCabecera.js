@@ -1,17 +1,38 @@
 import React from "react";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-
-import RadioButtonUnchecked from '@material-ui/icons/RadioButtonUnchecked';
-import RadioButtonCheckedIcon from "@material-ui/icons/RadioButtonChecked";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import { Accordion, AccordionDetails, AccordionSummary, CheckboxFilter, CheckboxNew } from "./styles";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import RadioButtonCheckedIcon from "@material-ui/icons/RadioButtonChecked";
+import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked';
+import { useDispatch, useSelector } from "react-redux";
+import * as type from '../../redux/types';
+import { Accordion, AccordionSummary, AccordionDetails, CheckboxFilter, CheckboxNew } from "./styles";
 
-const FiltroCabeceras = ({ filtros, setCabecerasFilter }) => {
-  const [expanded, setExpanded] = React.useState();
+const FiltroCabeceras = () => {
+  const dispatch = useDispatch()
+  const { cabeceras } = useSelector(state => state.filtro)
 
-  const handleChecked = (ev) => {
+  const options = [
+    {
+      label: "PRIMARIAS",
+      id: "PRIMARIAS"
+    },
+  ]
+
+  const handleChecked = ev => {
     const { value, checked } = ev.target;
-    setCabecerasFilter(value);
+    if (value != "all") {
+      dispatch({
+        type: type.SET_CABECERAS,
+        payload: cabeceras.includes(value)
+          ? cabeceras.filter(c => c !== value)
+          : [...cabeceras, value]
+      })
+    } else {
+      dispatch({
+        type: type.SET_CABECERAS,
+        payload: cabeceras.length > 0 ? [] : [...options.map(e => (e.id))]
+      })
+    }
   };
 
   return (
@@ -32,8 +53,9 @@ const FiltroCabeceras = ({ filtros, setCabecerasFilter }) => {
           control={
             <CheckboxNew
               onChange={handleChecked}
-              icon={<RadioButtonUnchecked />}
+              icon={<RadioButtonUncheckedIcon />}
               checkedIcon={<RadioButtonCheckedIcon />}
+              checked={cabeceras.length > 0 ? true : null}
             />
           }
           label=""
@@ -42,19 +64,14 @@ const FiltroCabeceras = ({ filtros, setCabecerasFilter }) => {
       </AccordionSummary>
       <AccordionDetails>
         <CheckboxFilter>
-          {[
-            {
-              label: "PRIMARIAS",
-              id: "PRIMARIAS"
-            },
-          ].map(cab => (
+          {options.map(cab => (
             <FormControlLabel
               key={cab.id}
               value={cab.id}
               control={
                 <CheckboxNew
                   onChange={handleChecked}
-                  checked={filtros.cabeceras.includes(cab.id)}
+                  checked={cabeceras.includes(cab.id)}
                 />
               }
               label={cab.label}

@@ -141,7 +141,7 @@ const FilterBar = () => {
           <Button>Ver escuelas sin georeferencia</Button>
           <Button>
             Escuelas con matricula menor a{" "}
-            <input type='text' maxlength='3' placeholder='5' size='3'></input>
+            <input type='text' maxLength='3' placeholder='5' size='3'></input>
           </Button>
         </ButtonWrapper>
       </FiltrosContainer>

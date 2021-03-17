@@ -62,14 +62,14 @@ const marcadoresFilterMiddleware = store => next => action => {
 
             //DEPARTAMENTOS FILTRO
             filterCondition["departamento"] = l.domicilio
-                ? filtro.departamentos.includes(l.domicilio.departamento.id)
+                ? filtro.departamentos.includes(l.domicilio.departamento.id.toString())
                     ? true
                     : false
                 : false
 
             //LOCALIDADES FILTRO
             filterCondition["localidades"] = l.domicilio
-                ? filtro.localidades.includes(l.domicilio.localidad.id)
+                ? filtro.localidades.includes(l.domicilio.localidad.id.toString())
                     ? true
                     : false
                 : false
@@ -136,7 +136,7 @@ const marcadoresFilterMiddleware = store => next => action => {
             //AMBITOS FILTRO
             if (filtro.ambitos.length > 0) {
                 filterCondition['ambitos'] = l.ambito
-                    ? filtro.ambitos.includes(l.ambito.id)
+                    ? filtro.ambitos.includes(l.ambito.id.toString())
                         ? true
                         : false
                     : false
@@ -144,17 +144,33 @@ const marcadoresFilterMiddleware = store => next => action => {
 
             //INTERNET FILTRO
             if (filtro.internet.length > 0) {
-                filterCondition['internet'] = l.colegio
-                    ? filtro.internet.includes(l.colegio.internet)
-                        ? true
+                if (filtro.internet.includes("tiene") && filtro.internet.includes("notiene")) {
+                    filterCondition['internet'] = l.colegio
+                        ? l.colegio.internet
+                            ? true
+                            : true
                         : false
-                    : false
+                }
+                else if (filtro.internet.includes("tiene")) {
+                    filterCondition['internet'] = l.colegio
+                        ? l.colegio.internet
+                            ? true
+                            : false
+                        : false
+                }
+                else if (filtro.internet.includes("notiene")) {
+                    filterCondition['internet'] = l.colegio
+                        ? l.colegio.internet
+                            ? false
+                            : true
+                        : false
+                }
             }
 
             //INTERNET PROVEEDORES FILTRO
             if (filtro.proveedoresInternet.length > 0) {
                 filterCondition['internetProveedores'] = l.conexiones
-                    ? Object.values(l.conexiones).some(o => filtro.proveedoresInternet.includes(o.conexionProveedor.id))
+                    ? Object.values(l.conexiones).some(o => filtro.proveedoresInternet.includes(o.conexionProveedor.id.toString()))
                         ? true
                         : false
                     : false

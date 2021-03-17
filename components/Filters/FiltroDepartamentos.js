@@ -7,10 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import * as type from '../../redux/types';
 import { Accordion, AccordionSummary, AccordionDetails, CheckboxFilter, CheckboxNew } from "./styles";
 
-
-
-
-const FiltroDepartamentos = ({ filtros, setDepartamentoFilter }) => {
+const FiltroDepartamentos = () => {
 
   const dispatch = useDispatch()
   const { departamentos: departamentosFiltro } = useSelector(state => state.filtro)
@@ -18,7 +15,22 @@ const FiltroDepartamentos = ({ filtros, setDepartamentoFilter }) => {
 
   const handleChecked = (ev) => {
     const { value, checked } = ev.target;
-    setDepartamentoFilter(value)
+
+    if (value != "all") {
+      dispatch({
+        type: type.SET_DEPARTAMENTOS,
+        payload: departamentosFiltro.includes(value)
+          ? departamentosFiltro.filter(e => e !== value)
+          : [...departamentosFiltro, value]
+      })
+    } else {
+      dispatch({
+        type: type.SET_DEPARTAMENTOS,
+        payload: departamentosFiltro.length > 0
+          ? []
+          : [...departamentos.map(e => (e.id.toString()))]
+      })
+    }
   };
 
   return (
@@ -41,6 +53,7 @@ const FiltroDepartamentos = ({ filtros, setDepartamentoFilter }) => {
               onChange={handleChecked}
               icon={<RadioButtonUncheckedIcon />}
               checkedIcon={<RadioButtonCheckedIcon />}
+              checked={departamentosFiltro.length > 0 ? true : null}
             />
           }
           label=''
@@ -56,7 +69,7 @@ const FiltroDepartamentos = ({ filtros, setDepartamentoFilter }) => {
               control={
                 <CheckboxNew
                   onChange={handleChecked}
-                  checked={filtros.departamentos.includes(dep.id)}
+                  checked={departamentosFiltro.includes(dep.id.toString())}
                 />
               }
               label={dep.nombre}

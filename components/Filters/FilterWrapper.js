@@ -15,7 +15,6 @@ import FiltroInternet from "./FiltroInternet.js";
 import FiltroAguaPotable from "./FiltroAguaPotable.js";
 import FiltroProveedores from "./FiltroProveedores.js";
 import FiltroAgrupaciones from "./FiltroAgrupaciones.js";
-import useFiltros from "../../hooks/Filtros/index.js";
 import FiltroCabeceras from "./FiltroCabecera.js";
 import FiltroConectividad from './FiltroConectividad'
 
@@ -25,41 +24,25 @@ const Wrapper = styled.div`
 `;
 
 const FilterWrapper = () => {
-  const {
-    filtros,
-    setDepartamentoFilter,
-    setLocalidadFilter,
-    setDependenciaFilter,
-    setEstadoFilter,
-    setJurisdiccionFilter,
-    setOrganismoDependenciaFilter,
-    setNivelesFilter,
-    setModalidadesFilter,
-    setGestionesFilter,
-    setAmbitosFilter,
-    setInternetFilter,
-    setInternetProveedoresFilter,
-    setCabecerasFilter
-  } = useFiltros()
   return (
     <Wrapper>
-      <FiltroDepartamentos filtros={filtros} setDepartamentoFilter={setDepartamentoFilter} />
-      <FiltroLocalidades filtros={filtros} setLocalidadFilter={setLocalidadFilter} />
-      <FiltroDependencia filtros={filtros} setDependenciaFilter={setDependenciaFilter} />
-      <FiltroEstado filtros={filtros} setEstadoFilter={setEstadoFilter} />
-      <FiltroJurisdiccion filtros={filtros} setJurisdiccionFilter={setJurisdiccionFilter} />
-      <FiltroOrganismoDependencia filtros={filtros} setOrganismoDependenciaFilter={setOrganismoDependenciaFilter} />
-      <FiltroNivel filtros={filtros} setNivelesFilter={setNivelesFilter} />
-      <FiltroModalidad filtros={filtros} setModalidadesFilter={setModalidadesFilter} />
-      <FiltroGestion filtros={filtros} setGestionesFilter={setGestionesFilter} />
-      <FiltroAmbito filtros={filtros} setAmbitosFilter={setAmbitosFilter} />
+      <FiltroDepartamentos />
+      <FiltroLocalidades />
+      <FiltroDependencia />
+      <FiltroEstado />
+      <FiltroJurisdiccion />
+      <FiltroOrganismoDependencia />
+      <FiltroNivel />
+      <FiltroModalidad />
+      <FiltroGestion />
+      <FiltroAmbito />
       <FiltroAulaDigitalMovil />
-      <FiltroInternet filtros={filtros} setInternetFilter={setInternetFilter} />
+      <FiltroInternet />
       <FiltroConectividad />
       <FiltroAguaPotable />
-      <FiltroProveedores filtros={filtros} setInternetProveedoresFilter={setInternetProveedoresFilter} />
+      <FiltroProveedores />
       <FiltroAgrupaciones />
-      <FiltroCabeceras filtros={filtros} setCabecerasFilter={setCabecerasFilter} />
+      <FiltroCabeceras />
     </Wrapper>
   );
 };
