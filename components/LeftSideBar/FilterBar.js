@@ -67,25 +67,27 @@ const ButtonWrapper = styled.div`
 `;
 
 const Button = styled.button`
-  box-sizing: border-box;
   width: 45%;
-  border: #67a534 5px solid;
+  margin: 5px;
   height: 60px;
   font-weight: 500;
   outline: none;
   font-size: 12px;
-  margin-top: 10px;
-  background-color: #67a534;
+  background-color: #28a745;
+  color: white;
   text-transform: uppercase;
   display: flex;
   align-items: center;
   justify-content: center;
+  border: none;
+  border-radius: 5px;
   :hover {
-    background-color: #7cb342;
+    background-color: #218838;
+    color: white;
   }
   :focus {
-    border: 5px solid #b9e2c2;
-    background-color: #7cb342;
+    border: 3px solid #bfe5c8;
+    background-color: #28a745;
   }
   input {
     background-color: #f5f5f5;
