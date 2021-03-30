@@ -24,7 +24,7 @@ const FiltroDependencia = () => {
         type: type.SET_DEPENDENCIA,
         payload: dependencias.includes(value)
           ? dependencias.filter(c => c !== value)
-          : [...filtro.dependencias, value]
+          : [...dependencias, value]
       })
     } else {
       dispatch({
