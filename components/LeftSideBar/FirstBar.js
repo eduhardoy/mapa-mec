@@ -3,7 +3,7 @@ import styled from "styled-components";
 import TuneIcon from "@material-ui/icons/Tune";
 import InfoIcon from "@material-ui/icons/Info";
 import SettingsIcon from "@material-ui/icons/Settings";
-import SchoolIcon from '@material-ui/icons/School';
+import SchoolIcon from "@material-ui/icons/School";
 import BarChartIcon from "@material-ui/icons/BarChart";
 import useBars from "../../hooks/Bars";
 
@@ -184,10 +184,10 @@ const FirstBar = () => {
             </IconButton>
           </ButtonItem>
           <ButtonItem>
-            <IconButton>
+            {/* <IconButton>
               <BarChartIcon />
               <ButtonText>Estadísticas</ButtonText>
-            </IconButton>
+            </IconButton> */}
           </ButtonItem>
         </ButtonList>
       </FirstBarStyle>
