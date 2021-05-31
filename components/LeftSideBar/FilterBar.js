@@ -59,7 +59,7 @@ const FiltrosContainer = styled.div`
 
 const ButtonWrapper = styled.div`
   width: 100%;
-  margin: 10px;
+  margin: 10px 0px 10px 0px;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -133,12 +133,13 @@ const FiltrosButton = styled.button`
 // markup
 const FilterBar = () => {
   const { secondBar } = useBars();
+
   return (
     <SecondBarStyle display={secondBar == "FILTROS" ? "flex" : "none"}>
       <FiltrosContainer>
         <FilterWrapper />
         <ButtonWrapper>
-          <Button>Ver mapa de conectividad</Button>
+          <Button onClick={() => selectConectividad()}>Ver mapa de conectividad</Button>
           <Button>Ver mapa de proveedores</Button>
           <Button>Ver escuelas sin georeferencia</Button>
           <Button>
